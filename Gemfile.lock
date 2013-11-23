@@ -81,6 +81,7 @@ DEPENDENCIES
   coffee-script
   dalli
   haml
+  nokogiri
   sass
   sinatra
   sinatra-reloader

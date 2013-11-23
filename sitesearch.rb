@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 require 'config'
-require 'siteseeker_normalizer'
-require 'nokogiri'
+require 'lib/helpers'
 
 class Sitesearch < Sinatra::Base
   get '/' do
     # TODO: add caching of results with client.fetch and client.parse
     client = SiteseekerNormalizer::Client.new("malmo", "webb", encoding: "UTF-8")
     @results = client.search(params)
+    @fox = "barx"
     haml :index
   end
 
