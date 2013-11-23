@@ -1,10 +1,18 @@
 class Sitesearch < Sinatra::Base
+  before do
+    env['rack.logger'] = Logger.new("#{settings.root}/log/#{settings.environment}.log")
+    logger.level = Logger::INFO
+    logger.formatter = proc do |severity, datetime, progname, msg|
+      "#{datetime} #{severity}: #{msg}\n"
+    end
+  end
+
   configure do
     enable :sessions, :logging, :static
     set :max_age, 0
 
     set :app_path, "" # No trailing slash
-    set :assets_url_base, "//assets.malmo.se/internal/3.0" # No trailing slash
+    set :assets_url_base, "//assets.malmo.se/internal/3.0/" # No trailing slash
     set :haml, format: :html5
   end
 
@@ -15,6 +23,9 @@ class Sitesearch < Sinatra::Base
     register Sinatra::Reloader
     also_reload "#{settings.root}/config.rb"
     also_reload "#{settings.root}/lib/*"
+
+    before { logger.level = Logger::DEBUG }
+    after { logger.close }
   end
 
   configure :test do
@@ -24,5 +35,9 @@ class Sitesearch < Sinatra::Base
     set :show_exceptions, false
     disable :static
     set :max_age, 3600
+  end
+
+  configure :production do
+    before { logger.level = Logger::WARN }
   end
 end

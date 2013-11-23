@@ -1,5 +1,8 @@
 $: << "./"
+require "rubygems"
 require "bundler/setup"
+Bundler.require(:default)
+
 require 'sinatra/base'
 require 'sprockets'
 require 'sitesearch'
