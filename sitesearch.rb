@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 require 'config'
 require 'siteseeker_normalizer'
-require 'digest/sha1'
+require 'nokogiri'
 
 class Sitesearch < Sinatra::Base
   get '/' do
-    logger.error 'Fox'
+    client = SiteseekerNormalizer::Client.new("malmo", "webb", encoding: "UTF-8")
+    @results = client.search(params)
     haml :index
   end
 

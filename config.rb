@@ -32,8 +32,7 @@ class Sitesearch < Sinatra::Base
   end
 
   configure :staging, :production do
-    set :show_exceptions, false
-    disable :static
+    disable :static, :show_exceptions
     set :max_age, 3600
   end
 
