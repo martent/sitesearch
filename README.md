@@ -4,9 +4,7 @@ A Ruby Sinatra app that is responsible for the user interaction part of the site
 ## Dependencies
 * Ruby 1.9.3, 2.0
 * Memcached or other cache store with ttl support
-* CoffeeScript compiler (for development and deployment)
 * PhantomJS (for testing)
-* Asset from the [asset host](https://github.com/malmostad/intranet-assets)
 
 ## Development Setup
 Use `app_config.yml.example` and `database.yml.example` as templates for you own settings. Install the dependencies. Run the following to install the required Ruby Gems, create the database and start the application:
