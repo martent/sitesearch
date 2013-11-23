@@ -1,5 +1,5 @@
 # Site Search
-A Ruby Sinatra app that is responsible for the user interaction part of the site search on the City of Malmo. It uses the [siteseeker_normalizer](../siteseeker_normalizer) Gem for the Siteseeker integration.
+A Ruby Sinatra app that is responsible for the user interaction part of the site search on the City of Malmo. It uses the [siteseeker_normalizer](https://github.com/malmostad/siteseeker_normalizer) Gem for the Siteseeker integration.
 
 ## Dependencies
 * Ruby 1.9.3, 2.0
