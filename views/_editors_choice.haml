@@ -1,4 +1,3 @@
-%pre= @results.editors_choice.to_yaml
 - @results.editors_choice.each_with_index do |entry, i|
   %li.editors_choice{ "data-entry" => i + 1 }
     %h2
