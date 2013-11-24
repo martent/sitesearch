@@ -1,1 +1,19 @@
-// 
+@media ( max-width: 44em ) {
+  body.site-search .wrapper {
+    margin: 0 1.5em;
+  }
+  section.site-search {
+    .search-and-results {
+      @include columns(12);
+    }
+    section.categories {
+      @include columns(12);
+      li {
+        margin: 1em 0;
+      }
+      li.group {
+        margin-top: 2em;
+      }
+    }
+  }
+}

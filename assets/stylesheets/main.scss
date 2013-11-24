@@ -1,0 +1,153 @@
+section.site-search {
+  max-width: 56em;
+  margin: 0 auto;
+  @include clearfix();
+
+  .search-and-results {
+    margin: .45em 0 2em;
+    @include columns(8, false, 4%);
+  }
+
+  section.categories {
+    @include columns(4, true, 4%);
+  }
+
+  h1 {
+    display: none;
+  }
+  form label {
+    font-family: $serif;
+    font-size: emize(32);
+    margin-bottom: .4em;
+  }
+  #q {
+    width: 80%;
+  }
+  .sort {
+    font-family: $sansSerif;
+    font-size: emize(13);
+  }
+  .sort li {
+    display: inline;
+    margin: 0;
+    .current {
+      font-weight: bold;
+    }
+  }
+  .results {
+    margin-top: 1.5em;
+    ul {
+      margin: 0;
+    }
+    h2 {
+      margin-top: 0;
+    }
+    li {
+      margin: 0 0 2em;
+    }
+  }
+  .results {
+    ul, li {
+      list-style: none;
+      margin-left: 0;
+      padding-left: 0;
+    }
+    .file_info {
+      font-family: $sansSerif;
+      font-size: emize(13, 22);
+    }
+    .extract {
+      margin-bottom: .3em;
+      .date {
+        font-family: $sansSerif;
+        font-size: emize(13);
+        white-space: nowrap;
+      }
+    }
+    .category {
+      font-family: $sansSerif;
+      font-size: emize(13);
+      margin-bottom: .4em;
+    }
+    .breadcrumb {
+      margin: 0;
+      line-height: 1.1;
+      font-family: $sansSerif;
+      li {
+        display: inline;
+        font-size: emize(13);
+        line-height: 1.1;
+        a:after {
+          content: "\f054";
+          font-family: $iconFont;
+          margin: 0 .5em 0 .7em;
+          font-size: emize(13);
+        }
+      }
+      li:last-child a:after {
+        content: "";
+      }
+    }
+  }
+  .suggestions {
+    list-style: none;
+    margin: 1em 0 1em;
+    padding: 0;
+    li {
+      display: inline;
+      margin-left: 0;
+    }
+  }
+  .summary {
+    margin-bottom: .5em;
+    font-family: $sansSerif;
+    font-size: emize(13);
+  }
+  .ess-bestbets {
+    .ess-header {
+      font-size: emize(22);
+      line-height: 1.1;
+      margin: 1em 0 .1em;
+    }
+    dd {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  section.categories {
+    font-size: emize(13);
+    font-family: $sansSerif;
+    ul {
+      list-style: none;
+      margin: 0 0 1em;
+      padding: 0;
+    }
+    li.group {
+      margin: 1.5em 0 .5em;
+      padding-bottom: .2em;
+      border-bottom: $border;
+    }
+    li:first-child {
+      margin-top: 0;
+    }
+    li.current {
+      font-weight: bold;
+      span.hits {
+        font-weight: normal;
+      }
+    }
+  }
+  #load-more-search-results a.btn:hover {
+    text-decoration: none;
+  }
+}
+
+
+ul.ui-autocomplete {
+  li {
+    .hits {
+      float: right;
+    }
+  }
+}
