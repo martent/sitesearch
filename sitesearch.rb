@@ -7,9 +7,13 @@ class Sitesearch < Sinatra::Base
     # TODO: add caching of results with client.fetch and client.parse
     client = SiteseekerNormalizer::Client.new("malmo", "webb", encoding: "UTF-8")
     @results = client.search(params)
-    @terms = params[:q]
     @error = false
-    haml :index
+
+    if request.xhr?
+      haml :more, layout: false
+    else
+      haml :index
+    end
   end
 
   not_found do
@@ -18,6 +22,6 @@ class Sitesearch < Sinatra::Base
   end
 
   error do
-    'Nu gick något fel. Vi är ledsna.'
+    'Nu gick något fel.'
   end
 end

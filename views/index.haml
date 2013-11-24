@@ -5,7 +5,7 @@
       %fieldset
         %label.control-label{ for: "q"}= "Sök på malmo.se:"
         .input-append
-          %input#q{ type: "text", name: "q", value: @terms, placeholder: "Ange ett eller flera sökord", "data-autocomplete-path" => settings.autocomplete_path }
+          %input#q{ type: "text", name: "q", value: params[:q], placeholder: "Ange ett eller flera sökord", "data-autocomplete-path" => settings.autocomplete_path }
           %input.btn{ type: "submit", value: "Sök", name: nil}
 
     - if @error
@@ -38,20 +38,19 @@
         - @results.editors_choice.each_with_index do |entry, i|
           %li.editors_choice{ "data-entry" => i + 1 }
             %h2
-              %a{ href: entry.url} entry.text
+              %a{ href: entry.url}= entry.text
             %p.extract= entry.summary
         = partial :results
 
-  - if @results.size > 0 && @results.category_groups
+  - if @results && @results.category_groups.size > 0
     %section.categories
       %ul
         %li.group.all{ class: (@results.category_all.current? ? "current" : nil)}
-          = link_to @results.category_all.title, "#{settings.app_path}?#{@results.category_all.query}"
+          %a{ href: "#{settings.app_path}?#{@results.category_all.query}" }= @results.category_all.title
           %span.hits= "(#{@results.category_all.hits})"
         - @results.category_groups.each do |category_group|
           %li.group= category_group.title
           - category_group.categories.each do |category|
             %li{ class: (category.current? ? "current" : nil)}
-              = link_to category.title, "#{settings.app_path}?#{category.query}"
-              %a{ href: "#{settings.app_path}?#{category.query}" } category.title
+              %a{ href: "#{settings.app_path}?#{category.query}" }= category.title
               %span.hits= "(#{category.hits})"
