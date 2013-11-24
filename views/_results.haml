@@ -1,6 +1,5 @@
-- increase_counter = @results.editors_choice.size
 - @results.entries.each do |entry|
-  %li{ "data-position" => entry.number + increase_counter }
+  %li
     %h2
       %a{ href: entry.url }= entry.title
       - unless entry.content_type == "html"
