@@ -7,7 +7,8 @@ class Sitesearch < Sinatra::Base
     # TODO: add caching of results with client.fetch and client.parse
     client = SiteseekerNormalizer::Client.new("malmo", "webb", encoding: "UTF-8")
     @results = client.search(params)
-    @fox = "barx"
+    @terms = params[:q]
+    @error = false
     haml :index
   end
 

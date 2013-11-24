@@ -12,7 +12,8 @@ class Sitesearch < Sinatra::Base
     set :max_age, 0
 
     set :app_path, "" # No trailing slash
-    set :assets_url_base, "//assets.malmo.se/internal/3.0/" # No trailing slash
+    set :assets_url_base, "//assets.malmo.se/internal/3.0/"
+    set :autocomplete_path, "http://webapps06.malmo.se/dashboard/search/autocomplete"
     set :haml, format: :html5
   end
 
