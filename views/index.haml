@@ -14,24 +14,24 @@
       = "Din sökning gav "
       = pluralize(@results.total, "träff", "träffar")
 
-    - if @results.sorting.present?
+    - if @results.sorting
       .menu.sort
         %li.label Sortera efter
         - @results.sorting.each_with_index do |entry, i|
           %li
             = succeed separator(i, @results.sorting.count) do
               - if entry.query
-                = link_to entry.text.downcase, "#{search_path}?#{entry.query}"
+                = link_to entry.text.downcase, "#{settings.app_path}?#{entry.query}"
               - else
                 %span.current= entry.text.downcase
 
-    - if @results.suggestions.present?
+    - if @results.suggestions
       %ul.suggestions
         %li Kanske menade du
         - @results.suggestions.each_with_index do |entry, i|
           %li
             = succeed separator(i, @results.suggestions.count, true) do
-              = link_to entry.text, "#{search_path}?#{entry.url}"
+              = link_to entry.text, "#{settings.app_path}?#{entry.url}"
 
     %section.results
       %ul
@@ -41,16 +41,16 @@
             %p.extract= entry.summary
         = partial :results
 
-  - if @results && @results.category_groups.present?
+  - if @results && @results.category_groups
     %section.categories
       %ul
         %li.group.all{ class: (@results.category_all.current? ? "current" : nil)}
-          = link_to @results.category_all.title, "#{search_path}?#{@results.category_all.query}"
+          = link_to @results.category_all.title, "#{settings.app_path}?#{@results.category_all.query}"
           %span.hits= "(#{@results.category_all.hits})"
         - @results.category_groups.each do |category_group|
           %li.group= category_group.title
           - category_group.categories.each do |category|
             %li{ class: (category.current? ? "current" : nil)}
-              = link_to category.title, "#{search_path}?#{category.query}"
-              %a{ href: "#{search_path}?#{category.query}" } category.title
+              = link_to category.title, "#{settings.app_path}?#{category.query}"
+              %a{ href: "#{settings.app_path}?#{category.query}" } category.title
               %span.hits= "(#{category.hits})"
