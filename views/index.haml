@@ -14,34 +14,35 @@
       = "Din sökning gav "
       = pluralize(@results.total, "träff", "träffar")
 
-    - if @results.sorting
+    - if @results.sorting.size > 0
       .menu.sort
         %li.label Sortera efter
         - @results.sorting.each_with_index do |entry, i|
           %li
             = succeed separator(i, @results.sorting.count) do
               - if entry.query
-                = link_to entry.text.downcase, "#{settings.app_path}?#{entry.query}"
+                %a{ href: "#{settings.app_path}?#{entry.query}" }= entry.text.downcase
               - else
                 %span.current= entry.text.downcase
 
-    - if @results.suggestions
+    - if @results.suggestions.size > 0
       %ul.suggestions
         %li Kanske menade du
         - @results.suggestions.each_with_index do |entry, i|
           %li
             = succeed separator(i, @results.suggestions.count, true) do
-              = link_to entry.text, "#{settings.app_path}?#{entry.url}"
+              %a{ href: "#{settings.app_path}?#{entry.url}" }= entry.text
 
     %section.results
       %ul
         - @results.editors_choice.each_with_index do |entry, i|
-          %li{ class: "editors_choice", "data-entry" => i + 1 }
-            %h2= link_to entry.text, entry.url
+          %li.editors_choice{ "data-entry" => i + 1 }
+            %h2
+              %a{ href: entry.url} entry.text
             %p.extract= entry.summary
         = partial :results
 
-  - if @results && @results.category_groups
+  - if @results.size > 0 && @results.category_groups
     %section.categories
       %ul
         %li.group.all{ class: (@results.category_all.current? ? "current" : nil)}

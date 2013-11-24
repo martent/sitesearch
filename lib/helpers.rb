@@ -9,4 +9,11 @@ class Sitesearch < Sinatra::Base
       "#{count || 0} #{word}"
     end
   end
+
+  def separator(current, total, question=false)
+    separator = ", " if total > current + 2
+    separator = " eller " if total == current + 2
+    separator = "?" if total == current + 1 && question
+    separator
+  end
 end
