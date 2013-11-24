@@ -1,7 +1,7 @@
 class Sitesearch < Sinatra::Base
   helpers do
     def partial(page, options={})
-      haml page, options.merge!(:layout => false)
+      haml "_#{page}".to_sym, options.merge!(:layout => false)
     end
 
     def pluralize(count, singular, plural)

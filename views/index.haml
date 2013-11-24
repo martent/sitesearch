@@ -1,56 +1,14 @@
 %section.site-search.body-copy
   .search-and-results
     %h1= "Sök på malmo.se"
-    %form#full-search{ action: settings.app_path, mathod: "get" }
-      %fieldset
-        %label.control-label{ for: "q"}= "Sök på malmo.se:"
-        .input-append
-          %input#q{ type: "text", name: "q", value: params[:q], placeholder: "Ange ett eller flera sökord", "data-autocomplete-path" => settings.autocomplete_path }
-          %input.btn{ type: "submit", value: "Sök", name: nil}
-
-    - if @error
-      .error= "Ett fel inträffade med Euroling Siteseeker (#{@error})"
-    %p.summary
-      = "Din sökning gav "
-      = pluralize(@results.total, "träff", "träffar")
-
-    - if @results.sorting.size > 0
-      .menu.sort
-        %li.label Sortera efter
-        - @results.sorting.each_with_index do |entry, i|
-          %li
-            = succeed separator(i, @results.sorting.count) do
-              - if entry.query
-                %a{ href: "#{settings.app_path}?#{entry.query}" }= entry.text.downcase
-              - else
-                %span.current= entry.text.downcase
-
-    - if @results.suggestions.size > 0
-      %ul.suggestions
-        %li Kanske menade du
-        - @results.suggestions.each_with_index do |entry, i|
-          %li
-            = succeed separator(i, @results.suggestions.count, true) do
-              %a{ href: "#{settings.app_path}?#{entry.url}" }= entry.text
+    = partial :form
+    = partial :summary
+    = partial :sorting
+    = partial :suggestions
 
     %section.results
       %ul
-        - @results.editors_choice.each_with_index do |entry, i|
-          %li.editors_choice{ "data-entry" => i + 1 }
-            %h2
-              %a{ href: entry.url}= entry.text
-            %p.extract= entry.summary
+        = partial :editors_choice
         = partial :results
 
-  - if @results && @results.category_groups.size > 0
-    %section.categories
-      %ul
-        %li.group.all{ class: (@results.category_all.current? ? "current" : nil)}
-          %a{ href: "#{settings.app_path}?#{@results.category_all.query}" }= @results.category_all.title
-          %span.hits= "(#{@results.category_all.hits})"
-        - @results.category_groups.each do |category_group|
-          %li.group= category_group.title
-          - category_group.categories.each do |category|
-            %li{ class: (category.current? ? "current" : nil)}
-              %a{ href: "#{settings.app_path}?#{category.query}" }= category.title
-              %span.hits= "(#{category.hits})"
+  = partial :categories

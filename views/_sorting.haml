@@ -1,0 +1,10 @@
+- if @results.sorting.size > 0
+  .menu.sort
+    %li.label Sortera efter
+    - @results.sorting.each_with_index do |entry, i|
+      %li
+        = succeed separator(i, @results.sorting.count) do
+          - if entry.query
+            %a{ href: "#{settings.app_path}?#{entry.query}" }= entry.text.downcase
+          - else
+            %span.current= entry.text.downcase

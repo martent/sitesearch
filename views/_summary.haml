@@ -1,0 +1,5 @@
+- if @error
+  .error= "Ett fel inträffade med Euroling Siteseeker (#{@error})"
+%p.summary
+  = "Din sökning gav "
+  = pluralize(@results.total, "träff", "träffar")
