@@ -1,12 +1,11 @@
 - if @results && @results.category_groups.size > 0
-  %section.categories
-    %ul
-      %li.group.all{ class: (@results.category_all.current? ? "current" : nil)}
-        %a{ href: "#{settings.app_path}?#{@results.category_all.query}" }= @results.category_all.title
-        %span.hits= "(#{@results.category_all.hits})"
-      - @results.category_groups.each do |category_group|
-        %li.group= category_group.title
-        - category_group.categories.each do |category|
-          %li{ class: (category.current? ? "current" : nil)}
-            %a{ href: "#{settings.app_path}?#{category.query}" }= category.title
-            %span.hits= "(#{category.hits})"
+  %ul
+    %li.group.all{ class: (@results.category_all.current? ? "current" : nil)}
+      %a{ href: "#{settings.app_path}?#{@results.category_all.query}" }= @results.category_all.title
+      %span.hits= "(#{@results.category_all.hits})"
+    - @results.category_groups.each do |category_group|
+      %li.group= category_group.title
+      - category_group.categories.each do |category|
+        %li{ class: (category.current? ? "current" : nil)}
+          %a{ href: "#{settings.app_path}?#{category.query}" }= category.title
+          %span.hits= "(#{category.hits})"
