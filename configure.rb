@@ -1,6 +1,9 @@
-require "json"
+require "sinatra/config_file"
 
 class Sitesearch < Sinatra::Base
+  register Sinatra::ConfigFile
+  config_file 'config.yml'
+
   before do
     env['rack.logger'] = Logger.new("#{settings.root}/log/#{settings.environment}.log")
     logger.level = Logger::INFO
@@ -10,23 +13,12 @@ class Sitesearch < Sinatra::Base
   end
 
   configure do
-    enable :sessions, :logging, :static
-
-    set :app_path, "/"
-    set :assets_url_base, "//assets.malmo.se/internal/3.0/"
-    set :autocomplete_url, "http://malmo.appliance.siteseeker.se/qc/komin2/qc"
-    set :haml, format: :html5
-    set :asset_files, {}
-
     set :cache, Dalli::Client.new('localhost:11211', namespace: "sitesearch_malmo_se", compress: true)
-    set :cache_ttl, 60*60*12
+    set :asset_files, {} # don't use a manifest if not in production
   end
 
   configure :development do
     require "sinatra/reloader"
-
-    set :max_age, 0
-    set :cache_ttl, 1
 
     register Sinatra::Reloader
     also_reload "#{settings.root}/config.rb"
@@ -36,19 +28,9 @@ class Sitesearch < Sinatra::Base
     after { logger.close }
   end
 
-  configure :test do
-  end
-
-  configure :staging, :production do
-    disable :show_exceptions
-
+  configure :production do
     assets_manifest = JSON.load(open("public/assets/manifest.json").read)
     set :asset_files, assets_manifest["assets"]
-
-    set :max_age, 60*60*4
-  end
-
-  configure :production do
     before { logger.level = Logger::WARN }
   end
 end

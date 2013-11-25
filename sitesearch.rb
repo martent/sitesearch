@@ -2,22 +2,25 @@
 require 'configure'
 require 'lib/helpers'
 require 'digest/sha1'
-require "yaml"
 
 class Sitesearch < Sinatra::Base
   get '/' do
+    logger.error settings.cache_ttl
     etag Digest::SHA1.hexdigest(params.to_s)
-    cache_control :public, :max_age => settings.max_age
+    cache_control :public, max_age: settings.max_age
 
     begin
-      raw_results = settings.cache.fetch(["search-raw-results-malmo-se", params], settings.cache_ttl) do
-        client = SiteseekerNormalizer::Client.new("malmo", "komin2", encoding: "UTF-8", read_timeout: 5)
+      raw_results = settings.cache.fetch(["raw-results", params], settings.cache_ttl) do
+        logger.debug "Cache miss"
+        client = SiteseekerNormalizer::Client.new("malmo", "webb", encoding: "UTF-8", read_timeout: 5)
         client.fetch(params)
       end
       @results = SiteseekerNormalizer::Parse.new(raw_results, encoding: "UTF-8")
+
     rescue Dalli::RingError => e
       @error = "Memcached: #{e}"
       logger.error @error
+
     rescue Exception => e
       @error = "Siteseeker: #{e}"
       logger.error @error
