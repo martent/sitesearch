@@ -10,8 +10,8 @@ class Sitesearch < Sinatra::Base
     cache_control :public, :max_age => settings.max_age
 
     begin
-      raw_results = settings.cache.fetch(["search-raw-results"], settings.cache_ttl) do
-        client = SiteseekerNormalizer::Client.new("malmo", "webb", encoding: "UTF-8", read_timeout: 5)
+      raw_results = settings.cache.fetch(["search-raw-results-malmo-se", params], settings.cache_ttl) do
+        client = SiteseekerNormalizer::Client.new("malmo", "komin2", encoding: "UTF-8", read_timeout: 5)
         client.fetch(params)
       end
       @results = SiteseekerNormalizer::Parse.new(raw_results, encoding: "UTF-8")

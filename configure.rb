@@ -14,7 +14,7 @@ class Sitesearch < Sinatra::Base
 
     set :app_path, "/"
     set :assets_url_base, "//assets.malmo.se/internal/3.0/"
-    set :autocomplete_url, "http://malmo.appliance.siteseeker.se/qc/webb/qc"
+    set :autocomplete_url, "http://malmo.appliance.siteseeker.se/qc/komin2/qc"
     set :haml, format: :html5
     set :asset_files, {}
 
