@@ -3,7 +3,7 @@
     %h1= "Sök på malmo.se"
     = partial :form
     - if @error
-      .error= "Ett fel inträffade med Euroling Siteseeker (#{@error})"
+      .error= "Ett fel inträffade (#{@error})"
     - else
       = partial :summary
       = partial :sorting

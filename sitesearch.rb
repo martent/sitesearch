@@ -1,18 +1,22 @@
 # -*- coding: utf-8 -*-
-require 'config'
+require 'configure'
 require 'lib/helpers'
+require "yaml"
 
 class Sitesearch < Sinatra::Base
   get '/' do
     begin
-      raw_results = settings.cache.fetch(["search-raw-results", params], 60*60*12) do
+      raw_results = settings.cache.fetch(["search-raw-results"], settings.cache_ttl) do
         client = SiteseekerNormalizer::Client.new("malmo", "webb", encoding: "UTF-8", read_timeout: 5)
         client.fetch(params)
       end
       @results = SiteseekerNormalizer::Parse.new(raw_results, encoding: "UTF-8")
+    rescue Dalli::RingError => e
+      @error = "Memcached: #{e}"
+      logger.error @error
     rescue Exception => e
-      logger.error "Siteseeker: #{e}"
-      @error = e
+      @error = "Siteseeker: #{e}"
+      logger.error @error
     end
 
     if request.xhr?
@@ -23,11 +27,13 @@ class Sitesearch < Sinatra::Base
   end
 
   not_found do
-    logger.error 'Sidan finns inte'
-    'Sidan finns inte'
+    logger.debug "Page not found: #{request.path}"
+    haml :error_404
   end
 
   error do
-    'Nu gick något fel.'
+    logger.error "Server error for #{request.path}"
+    logger.error "#{params['captures'].first.inspect}"
+    render :error_500
   end
 end

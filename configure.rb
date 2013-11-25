@@ -9,7 +9,6 @@ class Sitesearch < Sinatra::Base
 
   configure do
     enable :sessions, :logging, :static
-    set :max_age, 0
 
     set :app_path, "/" # No trailing slash
     set :assets_url_base, "//assets.malmo.se/internal/3.0/"
@@ -17,11 +16,14 @@ class Sitesearch < Sinatra::Base
     set :haml, format: :html5
 
     set :cache, Dalli::Client.new('localhost:11211', namespace: "sitesearch_malmo_se", compress: true)
+    set :cache_ttl, 60*60*12
   end
 
   configure :development do
     require "sinatra/reloader"
-    require "yaml"
+
+    set :max_age, 0
+    set :cache_ttl, 1
 
     register Sinatra::Reloader
     also_reload "#{settings.root}/config.rb"
@@ -35,7 +37,7 @@ class Sitesearch < Sinatra::Base
   end
 
   configure :staging, :production do
-    disable :static, :show_exceptions
+    disable :show_exceptions
     set :max_age, 3600
   end
 
