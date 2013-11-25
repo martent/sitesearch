@@ -5,7 +5,6 @@ require 'digest/sha1'
 
 class Sitesearch < Sinatra::Base
   get '/' do
-    logger.error settings.cache_ttl
     etag Digest::SHA1.hexdigest(params.to_s)
     cache_control :public, max_age: settings.max_age
 

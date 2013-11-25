@@ -2,10 +2,10 @@ require "sinatra/config_file"
 
 class Sitesearch < Sinatra::Base
   register Sinatra::ConfigFile
-  config_file 'config.yml'
+  config_file "settings.yml"
 
   before do
-    env['rack.logger'] = Logger.new("#{settings.root}/log/#{settings.environment}.log")
+    env["rack.logger"] = Logger.new("#{settings.root}/log/#{settings.environment}.log")
     logger.level = Logger::INFO
     logger.formatter = proc do |severity, datetime, progname, msg|
       "#{datetime} #{severity}: #{msg}\n"
@@ -13,7 +13,7 @@ class Sitesearch < Sinatra::Base
   end
 
   configure do
-    set :cache, Dalli::Client.new('localhost:11211', namespace: "sitesearch_malmo_se", compress: true)
+    set :cache, Dalli::Client.new("localhost:11211", namespace: "sitesearch_malmo_se", compress: true)
     set :asset_files, {} # don't use a manifest if not in production
   end
 

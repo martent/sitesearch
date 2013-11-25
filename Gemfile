@@ -19,3 +19,8 @@ group :development do
   gem "sinatra-reloader"
   gem 'thin'
 end
+
+group :test do
+  gem "rspec"
+  gem "rack-test"
+end
