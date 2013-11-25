@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 require 'configure'
 require 'lib/helpers'
-require "yaml"
 require 'digest/sha1'
+require "yaml"
 
 class Sitesearch < Sinatra::Base
   get '/' do
