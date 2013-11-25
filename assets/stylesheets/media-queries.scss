@@ -1,3 +1,21 @@
+@media ( max-width: 68em ) {
+  body {
+    min-width: 0;
+  }
+}
+
+@media ( max-width: 51em ) {
+  body {
+    .wrapper {
+      margin: 0 1.5em;
+      padding-bottom: 1em;
+    }
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 @media ( max-width: 44em ) {
   body.site-search .wrapper {
     margin: 0 1.5em;
