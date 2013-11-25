@@ -12,7 +12,7 @@ class Sitesearch < Sinatra::Base
 
     set :app_path, "/" # No trailing slash
     set :assets_url_base, "//assets.malmo.se/internal/3.0/"
-    set :autocomplete_path, "http://webapps06.malmo.se/dashboard/search/autocomplete"
+    set :autocomplete_url, "http://malmo.appliance.siteseeker.se/qc/webb/qc"
     set :haml, format: :html5
 
     set :cache, Dalli::Client.new('localhost:11211', namespace: "sitesearch_malmo_se", compress: true)
@@ -38,7 +38,7 @@ class Sitesearch < Sinatra::Base
 
   configure :staging, :production do
     disable :show_exceptions
-    set :max_age, 3600
+    set :max_age, 60*60*4
   end
 
   configure :production do

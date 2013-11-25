@@ -2,5 +2,5 @@
   %fieldset
     %label.control-label{ for: "q"}= "Sök på malmo.se:"
     .input-append
-      %input#q{ type: "text", name: "q", value: params[:q], placeholder: "Ange ett eller flera sökord", "data-autocomplete-path" => settings.autocomplete_path }
+      %input#q{ type: "text", name: "q", value: params[:q], placeholder: "Ange ett eller flera sökord", "data-autocomplete-path" => settings.autocomplete_url }
       %input.btn{ type: "submit", value: "Sök", name: nil}

@@ -2,9 +2,13 @@
 require 'configure'
 require 'lib/helpers'
 require "yaml"
+require 'digest/sha1'
 
 class Sitesearch < Sinatra::Base
   get '/' do
+    etag Digest::SHA1.hexdigest(params.to_s)
+    cache_control :public, :max_age => settings.max_age
+
     begin
       raw_results = settings.cache.fetch(["search-raw-results"], settings.cache_ttl) do
         client = SiteseekerNormalizer::Client.new("malmo", "webb", encoding: "UTF-8", read_timeout: 5)
@@ -28,12 +32,12 @@ class Sitesearch < Sinatra::Base
 
   not_found do
     logger.debug "Page not found: #{request.path}"
-    haml :error_404
+    haml "errors/error_404".to_sym
   end
 
   error do
     logger.error "Server error for #{request.path}"
     logger.error "#{params['captures'].first.inspect}"
-    render :error_500
+    render "errors/error_500".to_sym
   end
 end
