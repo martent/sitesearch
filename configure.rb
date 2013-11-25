@@ -1,3 +1,5 @@
+require "json"
+
 class Sitesearch < Sinatra::Base
   before do
     env['rack.logger'] = Logger.new("#{settings.root}/log/#{settings.environment}.log")
@@ -10,10 +12,11 @@ class Sitesearch < Sinatra::Base
   configure do
     enable :sessions, :logging, :static
 
-    set :app_path, "/" # No trailing slash
+    set :app_path, "/"
     set :assets_url_base, "//assets.malmo.se/internal/3.0/"
     set :autocomplete_url, "http://malmo.appliance.siteseeker.se/qc/webb/qc"
     set :haml, format: :html5
+    set :asset_files, {}
 
     set :cache, Dalli::Client.new('localhost:11211', namespace: "sitesearch_malmo_se", compress: true)
     set :cache_ttl, 60*60*12
@@ -38,6 +41,10 @@ class Sitesearch < Sinatra::Base
 
   configure :staging, :production do
     disable :show_exceptions
+
+    assets_manifest = JSON.load(open("public/assets/manifest.json").read)
+    set :asset_files, assets_manifest["assets"]
+
     set :max_age, 60*60*4
   end
 

@@ -81,6 +81,7 @@ DEPENDENCIES
   coffee-script
   dalli
   haml
+  json
   nokogiri
   sass
   sinatra

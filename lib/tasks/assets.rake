@@ -7,11 +7,14 @@ assets.js_compressor = :uglifier
 assets.css_compressor = :sass
 
 namespace :assets do
-  desc "Precompile assets locally"
-  task :precompile do
-    assets["application.coffee"].write_to "public/assets/application-#{assets.digest}.js"
-    assets["application.scss"].write_to "public/assets/application-#{assets.digest}.css"
-    assets["application.coffee"].write_to "public/assets/application.js"
-    assets["application.scss"].write_to "public/assets/application.css"
+  desc "Precompile assets"
+  task precompile: :clean do
+    manifest = Sprockets::Manifest.new(assets, "public/assets/manifest.json")
+    manifest.compile(["application.js", "application.css"])
+  end
+
+  desc "Clean compiled assets"
+  task :clean do
+    rm_rf "public/assets"
   end
 end
