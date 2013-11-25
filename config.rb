@@ -15,6 +15,8 @@ class Sitesearch < Sinatra::Base
     set :assets_url_base, "//assets.malmo.se/internal/3.0/"
     set :autocomplete_path, "http://webapps06.malmo.se/dashboard/search/autocomplete"
     set :haml, format: :html5
+
+    set :cache, Dalli::Client.new('localhost:11211', namespace: "sitesearch_malmo_se", compress: true)
   end
 
   configure :development do

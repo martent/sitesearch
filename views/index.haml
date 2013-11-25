@@ -2,13 +2,16 @@
   .search-and-results
     %h1= "Sök på malmo.se"
     = partial :form
-    = partial :summary
-    = partial :sorting
-    = partial :suggestions
+    - if @error
+      .error= "Ett fel inträffade med Euroling Siteseeker (#{@error})"
+    - else
+      = partial :summary
+      = partial :sorting
+      = partial :suggestions
 
-    %section.results
-      %ul
-        = partial :editors_choice
-        = partial :results
+      %section.results
+        %ul
+          = partial :editors_choice
+          = partial :results
 
-  = partial :categories
+  = partial :categories unless @error
