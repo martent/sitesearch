@@ -68,9 +68,7 @@ describe "Sitesearch", type: :feature do
     # $ RACK_ENV=production rspec
     if Capybara.app.settings.asset_files.size > 0
       it "should load more results", js: true do
-        visit "/?q=semester"
         before = all("section.results li h2").count
-        puts all("section.results li h2").count
         click_on("Visa fler")
         sleep 1
         before.should < all("section.results li h2").count
