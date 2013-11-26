@@ -1,4 +1,5 @@
 # Site Search
+
 A Ruby Sinatra app that is responsible for the user interaction part of the site search on the City of Malmo. It uses the [siteseeker_normalizer](https://github.com/malmostad/siteseeker_normalizer) Gem for the Siteseeker integration.
 
 ## Dependencies
@@ -7,12 +8,13 @@ A Ruby Sinatra app that is responsible for the user interaction part of the site
 * PhantomJS (for testing)
 
 ## Development Setup
-Use `app_config.yml.example` and `database.yml.example` as templates for you own settings. Install the dependencies. Run the following to install the required Ruby Gems, create the database and start the application:
+Copy `settings.example.yml` and add your own settings. The run:
 
 ```shell
 $ bundle install
 $ rackup
 ```
+Open localhost:9292 in your browser.
 
 ## Build and Deployment
 The application is built and deployed using Capistrano. Deployment scripts are included in the source code. To set your deployment configuration:
