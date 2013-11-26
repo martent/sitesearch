@@ -11,7 +11,7 @@ class Sitesearch < Sinatra::Base
     begin
       raw_results = settings.cache.fetch(["raw-results", params], settings.cache_ttl) do
         logger.debug "Cache miss"
-        client = SiteseekerNormalizer::Client.new("malmo", "webb", encoding: "UTF-8", read_timeout: 5)
+        client = SiteseekerNormalizer::Client.new(settings.search_account, settings.search_index, encoding: "UTF-8", read_timeout: 5)
         client.fetch(params)
       end
       @results = SiteseekerNormalizer::Parse.new(raw_results, encoding: "UTF-8")

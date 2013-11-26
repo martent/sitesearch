@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe "SiteseekerNormalizer" do
   before(:each) do
-    @client = SiteseekerNormalizer::Client.new("malmo", "webb", encoding: "UTF-8")
+    @client = SiteseekerNormalizer::Client.new(Sitesearch.settings.search_account, Sitesearch.settings.search_index, encoding: "UTF-8")
     @response = @client.search("barn")
   end
 
@@ -80,21 +80,21 @@ describe "SiteseekerNormalizer" do
 
   it "should raise an error for an invalid account name" do
     expect {
-      client = SiteseekerNormalizer::Client.new("x", "webb")
+      client = SiteseekerNormalizer::Client.new("x", Sitesearch.settings.search_index)
       response = client.search("y")
     }.to raise_error(SocketError)
   end
 
   it "should raise an error for an invalid index name" do
     expect {
-      client = SiteseekerNormalizer::Client.new("malmo", "foo")
+      client = SiteseekerNormalizer::Client.new(Sitesearch.settings.search_account, "foo")
       response = client.search("y")
     }.to raise_error(OpenURI::HTTPError)
   end
 
   it "should raise a timeout error" do
     expect {
-      client = SiteseekerNormalizer::Client.new("malmo", "webb", read_timeout: 0.01)
+      client = SiteseekerNormalizer::Client.new(Sitesearch.settings.search_account, Sitesearch.settings.search_index, read_timeout: 0.01)
       response = client.search("y")
     }.to raise_error(Timeout::Error)
   end
