@@ -63,6 +63,9 @@ describe "Sitesearch", type: :feature do
       page.should have_selector("#load-more-search-results", text: "Visa fler")
     end
 
+    # Run:
+    # $ rake assets:precompile
+    # $ RACK_ENV=production rspec
     if Capybara.app.settings.asset_files.size > 0
       it "should load more results", js: true do
         visit "/?q=semester"
