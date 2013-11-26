@@ -1,4 +1,4 @@
-ENV['RACK_ENV'] = 'test'
+ENV['RACK_ENV'] ||= 'test'
 
 $: << "./"
 require "rubygems"
@@ -6,13 +6,9 @@ require "bundler/setup"
 Bundler.require(:default)
 
 require "sitesearch"
-require "rspec"
-require "rack/test"
+require 'capybara/rspec'
+require 'capybara/poltergeist'
+require 'uri'
 
-RSpec.configure do |conf|
-  conf.include Rack::Test::Methods
-
-  def app
-    Sitesearch
-  end
-end
+Capybara.app = Sitesearch
+Capybara.javascript_driver = :poltergeist

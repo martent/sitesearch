@@ -21,6 +21,8 @@ group :development do
 end
 
 group :test do
+  gem 'capybara'
   gem "rspec"
   gem "rack-test"
+  gem 'poltergeist'
 end
