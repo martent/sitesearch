@@ -76,5 +76,5 @@ namespace :deploy do
   end
   before "deploy", "deploy:check_revision"
 
-  after :finishing, 'deploy:cleanup'
+  after :deploy, 'deploy:cleanup'
 end
