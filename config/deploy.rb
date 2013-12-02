@@ -54,7 +54,15 @@ namespace :deploy do
     end
   end
 
-  before 'deploy:restart', 'deploy:symlink_config'
+  desc "Precompile assets on server"
+  task :precompile_assets do
+    on roles(:app), except: {no_release: true} do
+      run "cd #{release_path} && bundle exec rake assets:precompile"
+    end
+  end
+
+
+  before 'deploy:restart', 'deploy:symlink_config', 'deploy:precompile_assets'
 
   desc "Make sure local git is in sync with remote."
   task :check_revision do
