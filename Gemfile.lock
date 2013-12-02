@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/capistrano/rbenv.git
+  revision: d2f83117c2d035bc9504ed4550d4ea0d229db87c
+  specs:
+    capistrano-rbenv (0.1.0)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -109,6 +117,7 @@ PLATFORMS
 DEPENDENCIES
   capistrano (~> 3.0)
   capistrano-bundler
+  capistrano-rbenv!
   capybara
   coffee-script
   dalli
@@ -120,6 +129,7 @@ DEPENDENCIES
   rspec
   sass
   sinatra
+  sinatra-contrib
   sinatra-reloader
   siteseeker_normalizer
   sprockets

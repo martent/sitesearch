@@ -1,4 +1,9 @@
-# set :rbenv_ruby_version, '2.0.0-p353'
+# https://github.com/capistrano/rbenv
+
+set :rbenv_type, :user
+set :rbenv_ruby, '2.0.0-p353'
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 
 set :application, 'sitesearch'
 set :repo_url, "git@github.com:malmostad/#{fetch(:application)}.git"
@@ -14,7 +19,7 @@ set :pty, true
 set :forward_agent, true
 
 # set :linked_files, %w{config/database.yml}
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, %w{log tmp/pids tmp/sockets public/system}
 
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 set :keep_releases, 5
@@ -32,6 +37,9 @@ namespace :deploy do
   task :setup do
     on roles(:app) do
       execute "mkdir -p #{shared_path}/config"
+      execute "mkdir -p #{shared_path}/tmp"
+      execute "mkdir -p #{shared_path}/log"
+      execute "mkdir -p #{shared_path}/system"
       upload! "config/settings.example.yml", "#{shared_path}/config/settings.yml"
       puts "1. Edit the config files in #{shared_path}/config"
       puts "2. Run manually on server:"
@@ -46,7 +54,7 @@ namespace :deploy do
     end
   end
 
-  after :finishing, "deploy:symlink_config"
+  before 'deploy:restart', 'deploy:symlink_config'
 
   desc "Make sure local git is in sync with remote."
   task :check_revision do

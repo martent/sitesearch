@@ -1,3 +1,4 @@
+require "sinatra/base"
 require "sinatra/config_file"
 
 class Sitesearch < Sinatra::Base

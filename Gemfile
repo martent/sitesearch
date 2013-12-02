@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'sinatra'
+gem 'sinatra-contrib'
 gem 'haml'
 gem 'sass'
 gem 'coffee-script'
@@ -13,8 +14,8 @@ gem 'siteseeker_normalizer' #, path: '../siteseeker_normalizer'
 gem 'nokogiri'
 
 gem 'capistrano', '~> 3.0'
-# gem 'capistrano-rbenv'
 gem 'capistrano-bundler'
+gem 'capistrano-rbenv', github: "capistrano/rbenv"
 
 group :development do
   gem 'sinatra-reloader'
