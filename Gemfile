@@ -30,5 +30,5 @@ end
 
 group :production do
   gem 'unicorn'
-  gem 'unicorn-worker-killer'
+#  gem 'unicorn-worker-killer'
 end

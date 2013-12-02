@@ -35,23 +35,22 @@ namespace :deploy do
       upload! "config/settings.example.yml", "#{shared_path}/config/settings.yml"
       puts "1. Edit the config files in #{shared_path}/config"
       puts "2. Run manually on server:"
-      puts "   $ sudo ln -nfs /home/deployer/apps/#{fetch(:application)}/shared/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
-      puts "   $ sudo ln -nfs /home/deployer/apps/#{fetch(:application)}/shared/config/unicorn_init.sh /etc/init.d/unicorn_#{fetch(:application)}"
+      puts "   $ sudo ln -nfs #{release_path}/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
+      puts "   $ sudo ln -nfs #{release_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{fetch(:application)}"
     end
   end
 
   task :symlink_config do
     on roles(:app) do
-      execute "ln -nfs #{shared_path}/config/unicorn_init.sh #{release_path}/config/unicorn_init.sh"
-      execute "ln -nfs #{shared_path}/config/nginx.conf #{release_path}/config/nginx.conf"
       execute "ln -nfs #{shared_path}/config/settings.yml #{release_path}/config/settings.yml"
     end
   end
+
   after :finishing, "deploy:symlink_config"
 
   desc "Make sure local git is in sync with remote."
   task :check_revision do
-    on roles(:web) do
+    on roles(:app) do
       unless `git rev-parse HEAD` == `git rev-parse origin/master`
         puts "WARNING: HEAD is not the same as origin/master"
         puts "Run `git push` to sync changes."
@@ -61,5 +60,5 @@ namespace :deploy do
   end
   before "deploy", "deploy:check_revision"
 
-  # after :finishing, 'deploy:cleanup'
+  after :finishing, 'deploy:cleanup'
 end

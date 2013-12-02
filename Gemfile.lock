@@ -96,8 +96,6 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    unicorn-worker-killer (0.4.2)
-      unicorn (~> 4)
     websocket-driver (0.3.0)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -124,4 +122,3 @@ DEPENDENCIES
   thin
   uglifier
   unicorn
-  unicorn-worker-killer
