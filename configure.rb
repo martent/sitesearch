@@ -2,7 +2,7 @@ require "sinatra/config_file"
 
 class Sitesearch < Sinatra::Base
   register Sinatra::ConfigFile
-  config_file "settings.yml"
+  config_file "config/settings.yml"
 
   before do
     env["rack.logger"] = Logger.new("#{settings.root}/log/#{settings.environment}.log")
@@ -21,7 +21,7 @@ class Sitesearch < Sinatra::Base
     require "sinatra/reloader"
 
     register Sinatra::Reloader
-    also_reload "#{settings.root}/config.rb"
+    also_reload "#{settings.root}/configure.rb"
     also_reload "#{settings.root}/lib/*"
 
     before { logger.level = Logger::DEBUG }

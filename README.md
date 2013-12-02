@@ -8,7 +8,7 @@ A Ruby Sinatra app that is responsible for the user interaction part of the site
 * PhantomJS (for testing)
 
 ## Development Setup
-Copy `settings.example.yml` and add your own settings. The run:
+Copy `config/settings.example.yml` and add your own settings. The run:
 
 ```shell
 $ bundle install

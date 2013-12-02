@@ -15,13 +15,18 @@ gem 'nokogiri'
 gem 'capistrano'
 
 group :development do
-  gem "sinatra-reloader"
+  gem 'sinatra-reloader'
   gem 'thin'
 end
 
 group :test do
   gem 'capybara'
-  gem "rspec"
-  gem "rack-test"
+  gem 'rspec'
+  gem 'rack-test'
   gem 'poltergeist'
+end
+
+group :production do
+  gem 'unicorn'
+  gem 'unicorn-worker-killer'
 end
