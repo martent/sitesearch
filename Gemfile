@@ -12,7 +12,9 @@ gem 'json'
 gem 'siteseeker_normalizer' #, path: '../siteseeker_normalizer'
 gem 'nokogiri'
 
-gem 'capistrano'
+gem 'capistrano', '~> 3.0'
+# gem 'capistrano-rbenv'
+# gem 'capistrano-bundler'
 
 group :development do
   gem 'sinatra-reloader'

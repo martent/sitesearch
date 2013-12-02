@@ -106,7 +106,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  capistrano
+  capistrano (~> 3.0)
   capybara
   coffee-script
   dalli
