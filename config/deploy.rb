@@ -21,7 +21,7 @@ set :forward_agent, true
 # set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{log tmp/pids tmp/sockets public/system}
 
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :default_env, { path: "/opt/ruby/bin:$PATH" }
 set :keep_releases, 5
 
 namespace :deploy do
@@ -61,7 +61,6 @@ namespace :deploy do
     end
   end
 
-
   before 'deploy:restart', 'deploy:symlink_config', 'deploy:precompile_assets'
 
   desc "Make sure local git is in sync with remote."
@@ -75,6 +74,5 @@ namespace :deploy do
     end
   end
   before "deploy", "deploy:check_revision"
-
-  after :deploy, 'deploy:cleanup'
+  after :finishing, 'deploy:cleanup'
 end
