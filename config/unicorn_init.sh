@@ -13,7 +13,7 @@ set -e
 # Feel free to change any of the following variables for your app:
 TIMEOUT=${TIMEOUT-60}
 APP_ROOT=/home/deployer/apps/sitesearch/current
-PID=/home/deployer/apps/sitesearch/shared/tmp/pids/unicorn.pid
+PID=$APP_ROOT/tmp/pids/unicorn.pid
 CMD="cd $APP_ROOT; bundle exec unicorn -D -c $APP_ROOT/config/unicorn.rb -E production"
 AS_USER=deployer
 set -u
@@ -49,12 +49,12 @@ force-stop)
   sig TERM && exit 0
   echo >&2 "Not running"
   ;;
-# restart|reload)
-#   sig HUP && echo reloaded OK && exit 0
-#   echo >&2 "Couldn't reload, starting '$CMD' instead"
-#   run "$CMD"
-#   ;;
-restart|reload|upgrade)
+restart|reload)
+  sig HUP && echo reloaded OK && exit 0
+  echo >&2 "Couldn't reload, starting '$CMD' instead"
+  run "$CMD"
+  ;;
+upgrade)
   if sig USR2 && sleep 2 && sig 0 && oldsig QUIT
   then
     n=$TIMEOUT
