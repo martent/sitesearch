@@ -21,11 +21,11 @@ set :forward_agent, true
 # set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{log tmp/pids tmp/sockets public/system}
 
-set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :default_env, { path: '$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH' }
 set :keep_releases, 5
 
 namespace :deploy do
-  %w[start stop restart].each do |command|
+  %w[start stop restart upgrade].each do |command|
     desc "#{command} unicorn server"
     task command do
       on roles(:app), except: {no_release: true} do
@@ -53,15 +53,17 @@ namespace :deploy do
       execute "ln -nfs #{shared_path}/config/settings.yml #{release_path}/config/settings.yml"
     end
   end
+  after :updated, "deploy:symlink_config"
 
   desc "Precompile assets on server"
   task :precompile_assets do
     on roles(:app), except: {no_release: true} do
-      run "cd #{release_path} && bundle exec rake assets:precompile"
+      within release_path do
+        execute :rake, "assets:precompile"
+      end
     end
   end
-
-  before 'deploy:restart', 'deploy:symlink_config', 'deploy:precompile_assets'
+  after :updated, "deploy:precompile_assets"
 
   desc "Make sure local git is in sync with remote."
   task :check_revision do
@@ -73,6 +75,7 @@ namespace :deploy do
       end
     end
   end
-  before "deploy", "deploy:check_revision"
-  after :finishing, 'deploy:cleanup'
+
+  before :starting, "deploy:check_revision"
+  after :finishing, "deploy:cleanup"
 end

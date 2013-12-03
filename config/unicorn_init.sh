@@ -1,84 +1,92 @@
 #!/bin/sh
-### BEGIN INIT INFO
-# Provides:          unicorn
-# Required-Start:    $remote_fs $syslog
-# Required-Stop:     $remote_fs $syslog
-# Default-Start:     2 3 4 5
-# Default-Stop:      0 1 6
-# Short-Description: Manage unicorn server
-# Description:       Start, stop, restart unicorn server for a specific application.
-### END INIT INFO
+#
+# init.d script for single or multiple unicorn installations. Expects at least one .conf
+# file in /etc/unicorn
+#
+# Modified by jay@gooby.org http://github.com/jaygooby
+# based on http://gist.github.com/308216 by http://github.com/mguterl
+#
+## A sample /etc/unicorn/my_app.conf
+##
+## RAILS_ENV=production
+## RAILS_ROOT=/var/apps/www/my_app/current
+#
+# This configures a unicorn master for your app at /var/apps/www/my_app/current running in
+# production mode. It will read config/unicorn.rb for further set up.
+#
+# You should ensure different ports or sockets are set in each config/unicorn.rb if
+# you are running more than one master concurrently.
+#
+# If you call this script without any config parameters, it will attempt to run the
+# init command for all your unicorn configurations listed in /etc/unicorn/*.conf
+#
+# /etc/init.d/unicorn start # starts all unicorns
+#
+# If you specify a particular config, it will only operate on that one
+#
+# /etc/init.d/unicorn start /etc/unicorn/my_app.conf
+
 set -e
 
-# Feel free to change any of the following variables for your app:
-TIMEOUT=${TIMEOUT-60}
-APP_ROOT=/home/deployer/apps/sitesearch/current
-PID=/home/deployer/apps/sitesearch/shared/tmp/pids/unicorn.pid
-CMD="cd $APP_ROOT; bundle exec unicorn -D -c $APP_ROOT/config/unicorn.rb -E production"
-AS_USER=deployer
-set -u
+cmd () {
 
-OLD_PIN="$PID.oldbin"
-
-sig () {
-  test -s "$PID" && kill -$1 `cat $PID`
-}
-
-oldsig () {
-  test -s $OLD_PIN && kill -$1 `cat $OLD_PIN`
-}
-
-run () {
-  if [ "$(id -un)" = "$AS_USER" ]; then
-    eval $1
-  else
-    su -c "$1" - $AS_USER
-  fi
-}
-
-case "$1" in
-start)
-  sig 0 && echo >&2 "Already running" && exit 0
-  run "$CMD"
-  ;;
-stop)
-  sig QUIT && exit 0
-  echo >&2 "Not running"
-  ;;
-force-stop)
-  sig TERM && exit 0
-  echo >&2 "Not running"
-  ;;
-restart|reload)
-  sig HUP && echo reloaded OK && exit 0
-  echo >&2 "Couldn't reload, starting '$CMD' instead"
-  run "$CMD"
-  ;;
-upgrade)
-  if sig USR2 && sleep 2 && sig 0 && oldsig QUIT
-  then
-    n=$TIMEOUT
-    while test -s $OLD_PIN && test $n -ge 0
-    do
-      printf '.' && sleep 1 && n=$(( $n - 1 ))
-    done
-    echo
-
-    if test $n -lt 0 && test -s $OLD_PIN
-    then
-      echo >&2 "$OLD_PIN still exists after $TIMEOUT seconds"
+  case $1 in
+    start)
+      echo $DAEMON_OPTS
+      start-stop-daemon --start --quiet --pidfile $PID \
+                --exec $DAEMON -- $DAEMON_OPTS || true
+      echo "Starting with config: $RAILS_ROOT/config/unicorn.rb"
+      ;;
+    stop)
+      start-stop-daemon --stop --quiet --pidfile $PID || true
+      echo "Stopping with config: $RAILS_ROOT/config/unicorn.rb"
+      ;;
+    restart|reload)
+      start-stop-daemon --stop --quiet --pidfile $PID || true
+      echo "Stopping with config: $RAILS_ROOT/config/unicorn.rb"
+      sleep 1
+      start-stop-daemon --start --quiet --pidfile $PID \
+                --exec $DAEMON -- $DAEMON_OPTS || true
+      echo "Starting with config: $RAILS_ROOT/config/unicorn.rb"
+      ;;
+    *)
+      echo >&2 "Usage: $0 <start|stop|restart>"
       exit 1
-    fi
-    exit 0
-  fi
-  echo >&2 "Couldn't upgrade, starting '$CMD' instead"
-  run "$CMD"
-  ;;
-reopen-logs)
-  sig USR1
-  ;;
-*)
-  echo >&2 "Usage: $0 <start|stop|restart|upgrade|force-stop|reopen-logs>"
-  exit 1
-  ;;
-esac
+      ;;
+    esac
+}
+
+setup () {
+
+  export PID=$RAILS_ROOT/tmp/pids/unicorn.pid
+  export OLD_PID="$PID.oldbin"
+
+  DAEMON="`which unicorn_rails`"
+  DAEMON_OPTS="-c $RAILS_ROOT/config/unicorn.rb -E $RAILS_ENV -D"
+}
+
+start_stop () {
+
+  # either run the start/stop/reload/etc command for every config under /etc/unicorn
+  # or just do it for a specific one
+
+  # $1 contains the start/stop/etc command
+  # $2 if it exists, should be the specific config we want to act on
+  if [ $2 ]; then
+    . $2
+    setup
+    cmd $1
+  else
+    for CONFIG in /etc/unicorn/*.conf; do
+      # import the variables
+      . $CONFIG
+      setup
+
+      # run the start/stop/etc command
+      cmd $1
+    done
+   fi
+}
+
+ARGS="$1 $2"
+start_stop $ARGS
