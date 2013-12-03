@@ -15,7 +15,7 @@ gem 'nokogiri'
 
 gem 'capistrano', '~> 3.0'
 gem 'capistrano-bundler'
-gem 'capistrano-rbenv', github: "capistrano/rbenv"
+gem 'capistrano-rbenv', git: "https://github.com/capistrano/rbenv.git"
 
 group :development do
   gem 'sinatra-reloader'

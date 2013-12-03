@@ -1,8 +1,8 @@
 GIT
-  remote: git://github.com/capistrano/rbenv.git
-  revision: d2f83117c2d035bc9504ed4550d4ea0d229db87c
+  remote: https://github.com/capistrano/rbenv.git
+  revision: 9576473fc95d9f7539eb01b13574ac03f52a8dcd
   specs:
-    capistrano-rbenv (0.1.0)
+    capistrano-rbenv (2.0.0)
       capistrano (~> 3.0)
       sshkit (~> 1.2.0)
 
