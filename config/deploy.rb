@@ -25,7 +25,7 @@ set :default_env, { path: '$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH' }
 set :keep_releases, 5
 
 namespace :deploy do
-  %w[start stop restart upgrade].each do |command|
+  %w[start stop restart].each do |command|
     desc "#{command} unicorn server"
     task command do
       on roles(:app), except: {no_release: true} do
