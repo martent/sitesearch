@@ -7,11 +7,13 @@ require 'sinatra/base'
 require 'sprockets'
 require 'sitesearch'
 
-map '/assets' do
-  environment = Sprockets::Environment.new
-  environment.append_path 'assets/javascripts'
-  environment.append_path 'assets/stylesheets'
-  run environment
+if ENV['RACK_ENV'] == "development"
+  map '/assets' do
+    environment = Sprockets::Environment.new
+    environment.append_path 'assets/javascripts'
+    environment.append_path 'assets/stylesheets'
+    run environment
+  end
 end
 
 map '/' do
