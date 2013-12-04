@@ -36,7 +36,7 @@ GEM
     haml (4.0.4)
       tilt
     hike (1.2.3)
-    i18n (0.6.5)
+    i18n (0.6.9)
     json (1.8.1)
     kgio (2.8.1)
     mime-types (2.0)
@@ -107,7 +107,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    websocket-driver (0.3.0)
+    websocket-driver (0.3.1)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
