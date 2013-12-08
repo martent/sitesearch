@@ -1,0 +1,21 @@
+section.site-search {
+  form label {
+    font-family: $serif;
+    font-size: emize(24);
+    margin-bottom: .4em;
+  }
+  #q {
+    width: 80%;
+  }
+  .sort {
+    font-family: $sansSerif;
+    font-size: emize(13);
+  }
+  .sort li {
+    display: inline;
+    margin: 0;
+    .current {
+      font-weight: bold;
+    }
+  }
+}

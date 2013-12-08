@@ -1,0 +1,25 @@
+body {
+  padding: 0 .5em;
+  min-width: 56em;
+  margin-top: 0;
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
+section.site-search {
+  max-width: 56em;
+  margin: 2em auto 0;
+  @include clearfix();
+
+  .search-and-results {
+    margin: .1em 0 2em;
+    @include columns(8, false, 4%);
+    h1 {
+      display: none;
+    }
+  }
+
+  section.categories {
+    @include columns(4, true, 4%);
+  }
+}
