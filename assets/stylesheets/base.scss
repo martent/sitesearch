@@ -14,15 +14,15 @@ section.site-search {
   .search-and-results {
     margin: .45em 0 2em;
     @include columns(8, false, 4%);
+    h1 {
+      display: none;
+    }
   }
 
   section.categories {
     @include columns(4, true, 4%);
   }
 
-  h1 {
-    display: none;
-  }
   form label {
     font-family: $serif;
     font-size: emize(24);
@@ -124,17 +124,33 @@ section.site-search {
   }
 
   section.categories {
-    font-size: emize(13);
-    font-family: $sansSerif;
+    h1 {
+      font-size: emize(15);
+      font-weight: bold;
+      line-height: 1;
+      font-family: $sansSerif;
+      border-bottom: $border;
+      margin: 0 0 .4em;
+      padding-bottom: .2em;
+      a {
+        color: black;
+        padding: 0;
+      }
+    }
+
     ul {
+      font-size: emize(13);
+      font-family: $sansSerif;
       list-style: none;
-      margin: 0 0 1em;
+      margin: 0 0 1.6em;
       padding: 0;
     }
     li.group {
       margin: 1.5em 0 .5em;
       padding-bottom: .2em;
       border-bottom: $border;
+      font-weight: bold;
+      font-size: emize(15, 13);
     }
     li:first-child {
       margin-top: 0;
