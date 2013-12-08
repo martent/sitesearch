@@ -124,6 +124,10 @@ section.site-search {
   }
 
   section.categories {
+    a {
+      color: black;
+    }
+
     h1 {
       font-size: emize(15);
       font-weight: bold;
@@ -132,10 +136,6 @@ section.site-search {
       border-bottom: $border;
       margin: 0 0 .4em;
       padding-bottom: .2em;
-      a {
-        color: black;
-        padding: 0;
-      }
     }
 
     ul {
