@@ -13,6 +13,7 @@
     %link{ rel: "stylesheet", href: asset_file("application.css") }
     /[if lte IE 7]
       %link{ rel: "stylesheet", href: "#{settings.assets_url_base}legacy/ie7.css"}
+    %link{ rel: 'icon', type: 'image/x-icon', href: "#{settings.assets_url_base}favicon.ico" }
   %body.malmo-form.site-search{ class: settings.environment}
     .wrapper
       = yield
