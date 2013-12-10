@@ -16,6 +16,7 @@ class Sitesearch < Sinatra::Base
   configure do
     set :cache, Dalli::Client.new("localhost:11211", namespace: "sitesearch_malmo_se", compress: true)
     set :asset_files, {} # don't use a manifest if not in production
+    set :haml, format: :xhtml
   end
 
   configure :development do
