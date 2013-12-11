@@ -81,7 +81,7 @@ GEM
       tilt (~> 1.3)
     sinatra-reloader (1.0)
       sinatra-contrib
-    siteseeker_normalizer (0.0.6)
+    siteseeker_normalizer (0.1.0)
       nokogiri (~> 1.5)
     sprockets (2.10.1)
       hike (~> 1.2)
@@ -116,23 +116,23 @@ PLATFORMS
 
 DEPENDENCIES
   capistrano (~> 3.0.1)
-  capistrano-bundler
-  capistrano-rbenv!
+  capistrano-bundler (~> 1.1.1)
+  capistrano-rbenv (= 2.0.0)!
   capybara
-  coffee-script
-  dalli
-  haml
-  json
-  nokogiri
+  coffee-script (= 2.2.0)
+  dalli (= 2.6.4)
+  haml (= 4.0.4)
+  json (= 1.8.1)
+  nokogiri (= 1.6.0)
   poltergeist
   rack-test
   rspec
-  sass
-  sinatra
-  sinatra-contrib
+  sass (= 3.2.12)
+  sinatra (= 1.4.4)
+  sinatra-contrib (= 1.4.2)
   sinatra-reloader
-  siteseeker_normalizer
-  sprockets
+  siteseeker_normalizer (= 0.1.0)
+  sprockets (= 2.10.1)
   thin
-  uglifier
+  uglifier (= 2.3.2)
   unicorn
