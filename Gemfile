@@ -13,7 +13,7 @@ gem 'json'
 gem 'siteseeker_normalizer' #, path: '../siteseeker_normalizer'
 gem 'nokogiri'
 
-gem 'capistrano', '~> 3.0'
+gem 'capistrano', '~> 3.0.1'
 gem 'capistrano-bundler'
 gem 'capistrano-rbenv', git: "https://github.com/capistrano/rbenv.git"
 
