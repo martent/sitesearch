@@ -36,7 +36,7 @@ describe "Sitesearch", type: :feature do
     end
 
     it "should have hits for the main category in parenthesis" do
-      find(".categories .all.current.group .hits").text.should match(/\(\d+\)/)
+      find(".categories .current .hits").text.should match(/\(\d+\)/)
     end
 
     it "should have results" do
