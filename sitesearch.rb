@@ -40,6 +40,6 @@ class Sitesearch < Sinatra::Base
   error do
     logger.error "Server error for #{request.path}"
     logger.error "#{params['captures'].first.inspect}"
-    render "errors/error_500".to_sym
+    haml "errors/error_500".to_sym
   end
 end
