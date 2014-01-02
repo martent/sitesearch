@@ -10,7 +10,7 @@ gem 'sprockets', '2.10.1'
 gem 'dalli', '2.6.4'
 gem 'json', '1.8.1'
 
-gem 'siteseeker_normalizer', '0.1.0'
+gem 'siteseeker_normalizer', '0.1.1'
 gem 'nokogiri', '1.6.0'
 
 gem 'capistrano', '~> 3.0.1'
