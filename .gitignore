@@ -5,3 +5,4 @@ tmp
 doc
 config/settings.yml
 /public/assets
+/.bundle
