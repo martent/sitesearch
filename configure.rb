@@ -1,6 +1,8 @@
 require "sinatra/base"
 require "sinatra/config_file"
 
+I18n.config.enforce_available_locales = false
+
 class Sitesearch < Sinatra::Base
   register Sinatra::ConfigFile
   config_file "config/settings.yml"
