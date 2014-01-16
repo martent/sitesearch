@@ -3,4 +3,4 @@ $ ->
   if $("#q") && $(document).width() <= 568
     newY = $("#q").offset().top - 6
     $("body").css("min-height", $(document).height() + newY)
-    $('html').scrollTop(newY)
+    $(document).scrollTop(newY)
