@@ -1,5 +1,7 @@
 # https://github.com/capistrano/rbenv
 
+I18n.config.enforce_available_locales = false
+
 set :rbenv_type, :user
 set :rbenv_ruby, '2.1.0'
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
