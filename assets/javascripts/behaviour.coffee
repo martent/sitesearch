@@ -1,6 +1,6 @@
 $ ->
   # Scroll to search box on narrow devices
   if $("#q") && $(document).width() <= 568
-    newY = $("#q").offset().top - 6
+    newY = $("#q").offset().top
     $("body").css("min-height", $(document).height() + newY)
-    $(document).scrollTop(newY)
+    $(document).scrollTop(newY - 6)
