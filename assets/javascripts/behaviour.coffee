@@ -7,9 +7,12 @@ $ ->
       $("body").css("min-height", $(document).height() + newY)
       $q.focus ->
         $q.css("font-size", "16px") # hack to prevent iOS from zooming
-        $("html, body").animate
-          scrollTop: newY - 6
-        , 100
 
+        times = 0
+        i = setInterval ->
+          window.scrollTo(0, $q.offset().top - 6)
+          if times++ > 20
+            clearInterval(i)
+        , 10
     else # set focus on field if not a narrow device and if no search field is empty
       $q.focus() unless $q.val().length
