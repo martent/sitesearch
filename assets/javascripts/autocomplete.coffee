@@ -1,8 +1,6 @@
 $ ->
   $searchField = $('#full-search #q')
   if $searchField.length
-    $searchField.focus() unless $searchField.val().length
-
     $searchField.autocomplete
       source: (request, response) ->
         $.ajax

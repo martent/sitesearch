@@ -1,10 +1,13 @@
 $ ->
   # Scroll to search box on narrow devices
   $q = $("#q")
-  if $q.length && $(document).width() <= 568
-    $q.blur()
-    newY = $("#q").offset().top
-    $("body").css("min-height", $(document).height() + newY)
-    $q.focus ->
-      $q.css("font-size", "16px")
-      $(document).scrollTop(newY - 6)
+  if $q.length
+    if $(document).width() <= 2568
+      newY = $("#q").offset().top
+      $("body").css("min-height", $(document).height() + newY)
+      $q.focus ->
+        $q.css("font-size", "16px") # hack to prevent iOS from zooming
+        $(document).scrollTop(newY - 6)
+
+    else # set focus on field if not a narrow device and if no search field is empty
+      $q.focus() unless $q.val().length
