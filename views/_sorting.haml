@@ -1,5 +1,5 @@
 - if @results.sorting.size > 0
-  .menu.sort
+  %ul.menu.sort
     %li.label Sortera efter
     - @results.sorting.each_with_index do |entry, i|
       %li
@@ -8,3 +8,7 @@
             %a{ href: "#{settings.app_path}?#{entry.query}" }= entry.text.downcase
           - else
             %span.current= entry.text.downcase
+
+- unless @results.entries.empty?
+  %p.filter
+    %a{ href: "#filter"}= "Filtrera"
