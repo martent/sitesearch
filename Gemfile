@@ -1,0 +1,37 @@
+source 'https://rubygems.org'
+
+gem 'rails', '4.1.0.rc1'
+gem 'sass-rails', '~> 4.0.1'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.0.0'
+# gem 'therubyracer',  platforms: :ruby
+gem 'jquery-rails'
+gem 'turbolinks'
+gem 'jbuilder', '~> 2.0'
+gem 'simple_form'
+
+gem 'pg'
+gem 'dalli', '2.7.0'
+gem 'elasticsearch-model', '~> 0.1.0'
+gem 'elasticsearch-rails', '~> 0.1.0'
+
+gem 'siteseeker_normalizer', '0.1.1'
+
+group :development, :test do
+# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+  gem 'quiet_assets'
+  gem 'thin'
+  gem 'capistrano-rails'
+end
+
+group :development do
+  gem 'haml-rails'
+  gem 'pry-rails'
+end
+
+gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'unicorn', group: [ :test, :production ]
+
+# Use debugger
+# gem 'debugger', group: [:development, :test]
