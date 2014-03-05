@@ -1,0 +1,4 @@
+- if @results.entries.size > 0
+  %p.summary
+    = "Din sökning gav "
+    = pluralize(@results.total, "träff", "träffar")

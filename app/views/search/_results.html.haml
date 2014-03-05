@@ -1,0 +1,20 @@
+- @results.entries.each do |entry|
+  %li
+    %h2
+      - unless entry.content_type == "html"
+        %span.file_info= "[#{entry.content_type}]"
+      %a{ href: entry.url }= entry.title
+    %p.extract
+      = entry.summary
+      %span.date= entry.date
+
+    %p.category= entry.category
+    - if entry.breadcrumbs.size > 0
+      %ul.breadcrumb
+        - entry.breadcrumbs.each do |breadcrumb|
+          %li
+            %a{ href: breadcrumb.url }=breadcrumb.text
+
+- if @results.more_query
+  %li#load-more-search-results
+    %a.btn{ href: "#{settings.app_path}?#{@results.more_query}" }= "Visa fler träffar"

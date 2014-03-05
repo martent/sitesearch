@@ -1,0 +1,26 @@
+defaults: &defaults
+  app_path: "/"
+  assets_url_base: "//www.local.malmo.se:3001/assets/"
+  autocomplete_url: "http://malmo.appliance.siteseeker.se/qc/webb/qc"
+  search_account: "malmo"
+  search_index: "webb"
+
+development:
+  <<: *defaults
+  cache_ttl: 1
+  max_age: 0
+  title_suffix: "Malmö stad (utveckling)"
+
+test:
+  <<: *defaults
+  cache_ttl: 43200
+  max_age: 14400
+  title_suffix: "Malmö stad (test)"
+
+production:
+  <<: *defaults
+  assets_url_base: "//assets.malmo.se/internal/3.0/"
+  autocomplete_url: "http://malmo.appliance.siteseeker.se/qc/webb/qc"
+  cache_ttl: 43200
+  max_age: 14400
+  title_suffix: "Malmö stad"
