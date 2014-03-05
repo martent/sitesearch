@@ -27,7 +27,7 @@ class SearchController < ApplicationController
     begin
       # Siteseeker is slow and indexing is only done at night so we cache hard
       results = Rails.cache.fetch(["search-autocomplete", params], expires_in: 12.hours) do
-        open("#{APP_CONFIG['site_search_autocomplete_url']}?q=#{CGI.escape(params[:q])}&ilang=sv&callback=results", read_timeout: 1).first
+        open("#{APP_CONFIG['autocomplete_url']}?q=#{CGI.escape(params[:q])}&ilang=sv&callback=results", read_timeout: 1).first
       end
     rescue Exception => e
       logger.error "Siteseeker autocomplete: #{e}"
