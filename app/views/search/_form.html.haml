@@ -1,7 +1,0 @@
-%form#full-search{ action: root_path, mathod: "get" }
-  %fieldset
-    %label.control-label{ for: "q"}= "Sök på malmo.se"
-    .input-append
-      %input{ name: "utf8", type: "hidden", value: '&#x2713;' }
-      %input#q{ type: "text", name: "q", value: params[:q], placeholder: "Ange ett eller flera sökord", "data-autocomplete-path" => APP_CONFIG["autocomplete_url"] }
-      %input.btn{ type: "submit", value: "Sök", name: nil}

@@ -5,22 +5,20 @@
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
     %meta{ name: 'robots', content: 'noindex, follow' }
     %title= "Malmö stad – Sök"
-
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    = csrf_meta_tags
-
     /[if IE]
       %meta{ "http-equiv" => "X-UA-Compatible", "content" => "IE=edge"}
     /[if lte IE 8]
-      %script{src: "#{settings.assets_url_base}html5shiv-printshiv.js"}
-    %link{ rel: "stylesheet", href: "#{settings.assets_url_base}malmo.css"}
-    %link{ rel: "stylesheet", href: asset_file("application.css") }
-    /[if lte IE 7]
-      %link{ rel: "stylesheet", href: "#{settings.assets_url_base}legacy/ie7.css"}
-    %link{ rel: 'icon', type: 'image/x-icon', href: "#{settings.assets_url_base}favicon.ico" }
-  %body.malmo-form.site-search{ class: settings.environment}
+      = javascript_include_tag "#{APP_CONFIG['assets_url_base']}html5shiv-printshiv.js"
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+
+    = stylesheet_link_tag "#{APP_CONFIG['assets_url_base']}malmo.css", media: 'all'
+    = stylesheet_link_tag "application", media: 'all'
+    %link{ rel: 'icon', type: 'image/x-icon', href: "#{APP_CONFIG['assets_url_base']}favicon.ico" }
+    = csrf_meta_tags
+  %body.malmo-form
     .wrapper
       = yield
-    %script{src: "#{settings.assets_url_base}malmo.js"}
-    %script{src: asset_file("application.js") }
+    = javascript_include_tag "#{APP_CONFIG['assets_url_base']}malmo.js"
+    = javascript_include_tag "application"

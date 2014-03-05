@@ -1,7 +1,0 @@
-- if @results.suggestions.size > 0
-  %ul.suggestions
-    %li Kanske menade du
-    - @results.suggestions.each_with_index do |entry, i|
-      %li
-        = succeed separator(i, @results.suggestions.count, true) do
-          %a{ href: "#{settings.app_path}?#{entry.url}" }= entry.text
