@@ -3,7 +3,7 @@
   %section.site-search.body-copy
     .search-and-results
       %h1= h1
-      = form_tag(root_path, method: "get", id: "full-search") do
+      = form_tag(search_path, method: "get", id: "full-search") do
         %fieldset
           = label_tag "q", "#{h1}: ", class: "control-label"
           .input-append

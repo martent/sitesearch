@@ -2,8 +2,9 @@ defaults: &defaults
   app_path: "/"
   assets_url_base: "//www.local.malmo.se:3001/assets/"
   autocomplete_url: "http://malmo.appliance.siteseeker.se/qc/webb/qc"
-  search_account: "malmo"
-  search_index: "webb"
+  siteseeker:
+    account: "malmo"
+    index: "webb"
 
 development:
   <<: *defaults

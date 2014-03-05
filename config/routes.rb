@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'search#index'
+  get  "/search" => "search#index"
   get  "/search/autocomplete" => "search#autocomplete"
 
   # Example of regular route:

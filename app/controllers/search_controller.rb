@@ -14,6 +14,7 @@ class SearchController < ApplicationController
         logger.error "Siteseeker: #{e}"
         @error = e
       end
+      logger.debug @results
     end
 
     if request.xhr?
