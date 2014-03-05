@@ -1,0 +1,19 @@
+- title "Rekommendationer"
+%section.box.index
+  %h1.box-title= h1
+  .box-content.body-copy
+    %table
+      %thead
+        %tr
+          %th Namn
+          %th
+      %tbody
+        - @recommendations.each do |recommendation|
+          %tr
+            %td= link_to recommendation.name, edit_recommendation_path(recommendation)
+            %td.delete= link_to delete_icon_text, recommendation, data: { confirm: 'Är du säker?', method: :delete }, class: "btn btn-danger btn-mini"
+
+        %tr
+          %td{ colspan: 2 }
+            .actions= link_to add_icon_text, new_recommendation_path, class: "btn btn-primary"
+

@@ -1,0 +1,11 @@
+= simple_form_for @recommendation, html: { class: "form-horizontal" } do |f|
+  = f.error_notification class: "warning"
+
+  .form-inputs
+    = f.input :name
+    = f.input :link
+
+  .control-group
+    .controls
+      = f.button :submit, :class => 'btn-primary'
+      = link_to t('actions.cancel'), recommendations_path, class: "btn"

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get  "/search" => "search#index"
   get  "/search/autocomplete" => "search#autocomplete"
 
+  resources :recommendations
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
