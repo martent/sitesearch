@@ -3,7 +3,8 @@
 A Ruby on Rails app that is responsible for the site search on the City of Malmo’s external web site. It uses the [siteseeker_normalizer](https://github.com/malmostad/siteseeker_normalizer) Gem for the Siteseeker integration. Editors choice is managed in the application itself.
 
 ## Dependencies
-* Ruby 1.9.3, 2.0, 2.1
+* Ruby 2.0, 2.1
+* Rails 4.1
 * PostgreSQL
 * Memcached or other cache store with ttl support
 * PhantomJS (for testing)
