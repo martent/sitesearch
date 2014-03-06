@@ -142,7 +142,4 @@ SimpleForm.setup do |config|
 
   # Default class for inputs
   # config.input_class = nil
-
-  # Default size for text inputs.
-  config.default_input_size = 30
 end
