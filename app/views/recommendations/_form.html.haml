@@ -6,7 +6,10 @@
     = f.input :link, input_html: { class: "input-wide" }
     = f.simple_fields_for :terms do |t|
       = t.input :_destroy, as: :hidden
-      = t.input :name, hint: raw("<a href='#'>Ta bort</a>"), wrapper: :delete_item
+      = f.input :name, wrapper: :append do
+        = f.input_field :name
+        %button.btn.add-on.icon-trash
+
 
 
   .control-group
