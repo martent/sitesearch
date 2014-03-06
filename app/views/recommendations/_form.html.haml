@@ -4,7 +4,12 @@
   .form-inputs
     = f.input :name, input_html: { class: "input-wide" }
     = f.input :link, input_html: { class: "input-wide" }
-    = f.input :term_list, input_html: { "data-load" => @recommendation.terms.map{ |term| { id: term.name, name: term.name }}.to_json, class: "input-wide" }
+    = f.simple_fields_for :terms do |t|
+      .control-group
+        .controls
+        = t.input :name
+        = t.input :_destroy, as: :boolean, label: false, inline_label: true
+
 
   .control-group
     .controls

@@ -1,5 +1,6 @@
 class Recommendation < ActiveRecord::Base
   has_many :terms
+  accepts_nested_attributes_for :terms, allow_destroy: true
 
   validates :name,
     presence: { is: true, message: "Namnet måste fyllas i." },
@@ -14,17 +15,5 @@ class Recommendation < ActiveRecord::Base
   before_save do
     # Add protocol if missing
     self.link = "http://#{link}" unless link.match(/^https?:\/\//)
-  end
-
-  # Term names as tokens
-  def term_list
-    terms.map(&:name).join(", ")
-  end
-
-  def term_list=(names)
-    self.terms.destroy_all
-    self.terms = names.split(",").map do |n|
-      t = Term.where(name: n.downcase.strip, "recommendation_id" => id).first_or_create
-    end.compact
   end
 end
