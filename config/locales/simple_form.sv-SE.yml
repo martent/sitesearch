@@ -5,22 +5,16 @@ sv-SE:
     required:
       text: 'obligatorisk'
       mark: '*'
-      # You can uncomment the line below if you need to overwrite the whole required html.
-      # When using html, text and mark won't be used.
-      # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Vänligen korrigera nedanstående markerade uppgifter."
     labels:
       recommendation:
         name: Namn
         link: Länk
+        term_list: Sökord
 
     placeholders:
       recommendation:
-        name: "Ange ett namn"
+        name: "Ange ett unikt namn"
         link: "Full URL till målsidan"
-
-    hints:
-      recommendation:
-        name: "<p>Hint</p>"
-        link: "<p>Hint</p>"
+        term_list: "Ange de sökord som ska matcha sökningen"

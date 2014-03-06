@@ -2,8 +2,9 @@
   = f.error_notification class: "warning"
 
   .form-inputs
-    = f.input :name
-    = f.input :link
+    = f.input :name, input_html: { class: "input-wide" }
+    = f.input :link, input_html: { class: "input-wide" }
+    = f.input :term_list, input_html: { "data-load" => @recommendation.terms.map{ |term| { id: term.name, name: term.name }}.to_json, class: "input-wide" }
 
   .control-group
     .controls
