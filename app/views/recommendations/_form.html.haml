@@ -5,10 +5,8 @@
     = f.input :name, input_html: { class: "input-wide" }
     = f.input :link, input_html: { class: "input-wide" }
     = f.simple_fields_for :terms do |t|
-      .control-group
-        .controls
-        = t.input :name
-        = t.input :_destroy, as: :boolean, label: false, inline_label: true
+      = t.input :_destroy, as: :hidden
+      = t.input :name, hint: raw("<a href='#'>Ta bort</a>"), wrapper: :delete_item
 
 
   .control-group

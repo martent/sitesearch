@@ -9,11 +9,11 @@ sv-SE:
       default_message: "Vänligen korrigera nedanstående markerade uppgifter."
     labels:
       recommendation:
-        name: Namn
-        link: Länk
-        term_list: Sökord
+        name: "Namn:"
+        link: "Länk:"
+        term_list: "Sökord:"
         terms:
-          name: Sökord
+          name: "Sökord:"
           _destroy: "Ta bort"
 
     placeholders:
