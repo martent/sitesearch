@@ -16,6 +16,6 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     %link{ rel: 'icon', type: 'image/x-icon', href: "#{APP_CONFIG['assets_url_base']}favicon.ico" }
     = csrf_meta_tags
-  %body.malmo-form
+  %body.malmo-form{ class: @body_classes }
     .wrapper
       = yield

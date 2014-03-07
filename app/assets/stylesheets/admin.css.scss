@@ -1,4 +1,9 @@
-.form-horizontal {
+.admin {
+  max-width: 56em;
+  margin: 0 auto;
+  #malmo-masthead {
+    margin-bottom: 2em;
+  }
   .icon-remove {
     color: $dangerColor;
   }
