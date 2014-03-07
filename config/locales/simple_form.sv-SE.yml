@@ -11,7 +11,6 @@ sv-SE:
       recommendation:
         name: "Namn:"
         link: "Länk:"
-        term_list: "Sökord:"
         terms:
           name: "Sökord:"
           _destroy: "Ta bort"

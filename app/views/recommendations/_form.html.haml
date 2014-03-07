@@ -4,13 +4,19 @@
   .form-inputs
     = f.input :name, input_html: { class: "input-wide" }
     = f.input :link, input_html: { class: "input-wide" }
-    = f.simple_fields_for :terms do |t|
-      = t.input :_destroy, as: :hidden
-      = f.input :name, wrapper: :append do
-        = f.input_field :name
-        %button.btn.add-on.icon-trash
 
-
+    %h2.form-group-title Sökord
+    .terms
+      = f.simple_fields_for :terms do |t|
+        = t.input :_destroy, as: :hidden
+        = f.input :term, label: false, wrapper: :append do
+          = f.input_field :name
+          %button.btn
+            %span.icon-remove
+      .control-group
+        .controls
+          %button.btn
+            %span.icon-plus Lägg till
 
   .control-group
     .controls
