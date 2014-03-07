@@ -1,29 +1,23 @@
 class RecommendationsController < ApplicationController
   before_action :set_recommendation, only: [:show, :edit, :update, :destroy]
 
-  # GET /recommendations
-  # GET /recommendations.json
   def index
     @recommendations = Recommendation.all
   end
 
-  # GET /recommendations/new
   def new
     @recommendation = Recommendation.new
   end
 
-  # GET /recommendations/1/edit
   def edit
   end
 
-  # POST /recommendations
-  # POST /recommendations.json
   def create
     @recommendation = Recommendation.new(recommendation_params)
 
     respond_to do |format|
       if @recommendation.save
-        format.html { redirect_to recommendations_path, notice: 'Recommendation was successfully created.' }
+        format.html { redirect_to recommendations_path, notice: 'Rekommendationen sparades' }
         format.json { render action: 'show', status: :created, location: @recommendation }
       else
         format.html { render action: 'new' }
@@ -32,12 +26,10 @@ class RecommendationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /recommendations/1
-  # PATCH/PUT /recommendations/1.json
   def update
     respond_to do |format|
       if @recommendation.update(recommendation_params)
-        format.html { redirect_to recommendations_path, notice: 'Recommendation was successfully updated.' }
+        format.html { redirect_to recommendations_path, notice: 'Rekommendationen sparades' }
         format.json { render action: 'show', status: :ok, location: @recommendation }
       else
         format.html { render action: 'edit' }
@@ -46,8 +38,6 @@ class RecommendationsController < ApplicationController
     end
   end
 
-  # DELETE /recommendations/1
-  # DELETE /recommendations/1.json
   def destroy
     @recommendation.destroy
     respond_to do |format|

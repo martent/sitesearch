@@ -9,8 +9,8 @@
     .terms
       = f.simple_fields_for :terms do |t|
         = t.input :_destroy, as: :hidden
-        = f.input :term, label: false, wrapper: :append do
-          = f.input_field :name
+        = t.input :term, label: false, wrapper: :append do
+          = t.input_field :name
           %button.btn
             %span.icon-remove
       .control-group
