@@ -1,4 +1,4 @@
-= simple_form_for @recommendation, html: { class: "form-horizontal" } do |f|
+= simple_form_for @recommendation, html: { class: "form-horizontal", id: "edit-recommendation" } do |f|
   = f.error_notification class: "warning"
 
   .form-inputs
@@ -8,10 +8,10 @@
     %h2.form-group-title Sökord
     .terms
       = f.simple_fields_for :terms do |t|
-        = t.input :_destroy, as: :hidden
         = t.input :term, label: false, wrapper: :append do
           = t.input_field :name
-          %button.btn
+          = t.input_field :_destroy, as: :hidden
+          %button.btn.remove
             %span.icon-remove
       .control-group
         .controls
