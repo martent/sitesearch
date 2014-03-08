@@ -6,6 +6,7 @@ $ ->
 
   $("#edit-recommendation").on "click", ".add-term", (event) ->
     event.preventDefault()
-    time = new Date().getTime()
     regexp = new RegExp($(@).data('id'), 'g')
-    $(@).closest(".control-group").before($(@).data('fields').replace(regexp, time))
+    $(@).closest(".control-group")
+      .before($(@).data('fields').replace(regexp, new Date().getTime()))
+      .prev().find("input").focus()
