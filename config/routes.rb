@@ -3,6 +3,12 @@ Rails.application.routes.draw do
   get  "/search" => "search#index"
   get  "/search/autocomplete" => "search#autocomplete"
 
+  get 'signup', to: 'users#new', as: 'signup'
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+
+  resources :sessions
+  resources :users
   resources :recommendations
 
   # Example of regular route:

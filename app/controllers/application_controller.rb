@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  private
+
   def init_body_class
     add_body_class(Rails.env)
     add_body_class("user") if current_user
@@ -21,5 +23,17 @@ class ApplicationController < ActionController::Base
 
   def sub_layout(name = "", options = {})
     @sub_layout = name unless options[:except] == params[:action]
+  end
+
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+  helper_method :current_user
+
+  def authorize
+    if current_user.nil? || !current_user.active?
+      flash[:error] = "Not authorized"
+      redirect_to login_url
+    end
   end
 end

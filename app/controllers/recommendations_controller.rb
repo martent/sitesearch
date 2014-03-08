@@ -1,6 +1,7 @@
 class RecommendationsController < ApplicationController
   before_action :set_recommendation, only: [:show, :edit, :update, :destroy]
   before_action { add_body_class('admin') }
+  before_action :authorize
 
   def index
     @recommendations = Recommendation.order(:name)
