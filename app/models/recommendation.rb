@@ -1,5 +1,5 @@
 class Recommendation < ActiveRecord::Base
-  has_many :terms
+  has_many :terms, dependent: :destroy
   accepts_nested_attributes_for :terms, allow_destroy: true
 
   validates :name,
@@ -15,5 +15,6 @@ class Recommendation < ActiveRecord::Base
   before_save do
     # Add protocol if missing
     self.link = "http://#{link}" unless link.match(/^https?:\/\//)
+    self.link.strip!
   end
 end

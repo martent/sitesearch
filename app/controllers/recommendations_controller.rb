@@ -3,7 +3,7 @@ class RecommendationsController < ApplicationController
   before_action { add_body_class('admin') }
 
   def index
-    @recommendations = Recommendation.all
+    @recommendations = Recommendation.order(:name)
   end
 
   def new
