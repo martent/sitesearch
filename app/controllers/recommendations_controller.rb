@@ -8,6 +8,7 @@ class RecommendationsController < ApplicationController
 
   def new
     @recommendation = Recommendation.new
+    @recommendation.terms << Term.new
   end
 
   def edit
