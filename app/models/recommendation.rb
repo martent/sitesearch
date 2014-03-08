@@ -5,11 +5,11 @@ class Recommendation < ActiveRecord::Base
   validates :name,
     presence: { is: true, message: "Namnet måste fyllas i." },
     uniqueness: { is: true, message: "Det finns redan en rekommendation med det namnet." },
-    length: { maximum: 32 }
+    length: { minimum: 2, maximum: 32 }
   validates :link,
     presence: { is: true, message: "Länk måste fyllas i." },
     uniqueness: { is: true, message: "Länken finns redan." },
-    length: { maximum: 255 }
+    length: { minimum: 4, maximum: 255 }
   validates_associated :terms
 
   before_save do
