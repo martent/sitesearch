@@ -8,15 +8,10 @@
     %h2.form-group-title Sökord
     .terms
       = f.simple_fields_for :terms do |t|
-        = t.input :term, label: false, wrapper: :append do
-          = t.input_field :name
-          = t.input_field :_destroy, as: :hidden
-          %button.btn.remove
-            %span.icon-remove
+        = render "fields_for_terms", t: t
       .control-group
         .controls
-          %button.btn
-            %span.icon-plus Lägg till
+          = link_to_add_terms "Lägg till", f
 
   .control-group
     .controls
