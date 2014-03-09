@@ -45,13 +45,17 @@ ActiveRecord::Schema.define(version: 20140308183646) do
   add_index "terms", ["recommendation_id"], name: "index_terms_on_recommendation_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "username"
-    t.string   "password_digest"
-    t.boolean  "active",          default: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "nickname"
+    t.string   "email"
+    t.string   "organizations_url"
+    t.boolean  "active",            default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
+  add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true, using: :btree
 
 end

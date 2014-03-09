@@ -1,26 +1,19 @@
 class SessionsController < ApplicationController
-  def new
-  end
-
   def create
-    user = User.where(username: params[:username]).first
-    if user && user.authenticate(params[:password]) && user.active?
-      session[:user_id] = user.id
-      redirect_to root_url, notice: "Logged in!"
-    else
-      flash.now.alert = "Username or password is invalid"
-      render "new"
-    end
+    user = User.from_omniauth(env["omniauth.auth"])
+    session[:user_id] = user.id
+    redirect_after_login
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, notice: "Logged out!"
+    session[:requested] = nil
+    redirect_to root_url, notice: "Nu är du utloggad"
   end
 
-  private
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def session_params
-      params.require(:user).permit(:username, :password, :password_confirmation)
-    end
+  def failure
+    flash[:error] = "Något gick fel. Inloggningen misslyckades"
+    session[:user_id] = nil
+    redirect_to root_url
+  end
 end

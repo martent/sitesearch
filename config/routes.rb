@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   get  "/search" => "search#index"
   get  "/search/autocomplete" => "search#autocomplete"
 
-  get 'signup', to: 'users#new', as: 'signup'
-  get 'login', to: 'sessions#new', as: 'login'
-  get 'logout', to: 'sessions#destroy', as: 'logout'
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: 'sessions#failure'
+  get 'signin', to: redirect("/auth/github")
+  get 'signout', to: 'sessions#destroy'
 
   resources :sessions
   resources :users

@@ -19,6 +19,7 @@ gem 'dalli', '2.7.0'
 gem 'elasticsearch-model', '~> 0.1.0'
 gem 'elasticsearch-rails', '~> 0.1.0'
 
+gem 'omniauth-github'
 gem 'siteseeker_normalizer', '0.1.1'
 
 group :development, :test do

@@ -31,9 +31,24 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def authorize
-    if current_user.nil? || !current_user.active?
-      flash[:error] = "Not authorized"
-      redirect_to login_url
+    if current_user.nil?
+      if !request.xhr?
+        session[:requested] = { url: request.fullpath, at: Time.now }
+      end
+      redirect_to signin_path
+    elsif !current_user.active?
+      flash[:error] = "Användaren är inte aktiverad i applikationen"
+      redirect_to root_url
+    end
+  end
+
+  def redirect_after_login
+    if session[:requested] && session[:requested][:at] > 10.minutes.ago
+      requested_url = session[:requested][:url]
+      session[:requested] = nil
+      redirect_to requested_url
+    else
+      redirect_to root_path
     end
   end
 end
