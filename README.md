@@ -6,6 +6,7 @@ A Ruby on Rails app that is responsible for the site search on the City of Malmo
 * Ruby 2.0, 2.1
 * Rails 4.1
 * PostgreSQL
+* ElasticSearch 1.0
 * Memcached or other cache store with ttl support
 * PhantomJS (for testing)
 
