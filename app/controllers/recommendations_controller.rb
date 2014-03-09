@@ -4,7 +4,7 @@ class RecommendationsController < ApplicationController
   before_action :authorize
 
   def index
-    @recommendations = Recommendation.order(:name)
+    @recommendations = Recommendation.order("lower(name)").includes(:terms)
   end
 
   def new
