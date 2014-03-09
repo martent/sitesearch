@@ -19,8 +19,8 @@
   %body.malmo-form{ class: @body_classes }
     .wrapper
       - if current_user
-        = "Logged in as #{current_user.nickname}"
-        = link_to "Log Out", signout_path
+        = "Inloggad som #{current_user.provider}/#{current_user.nickname}"
+        = link_to "Logga ut", signout_path
       - flash.each do |key, value|
         %p{ class: "flash #{key}" }= value
       = yield
