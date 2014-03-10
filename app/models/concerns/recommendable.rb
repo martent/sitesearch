@@ -8,8 +8,10 @@ module Recommendable
 
     settings YAML.load_file("#{Rails.root.to_s}/config/elasticsearch.yml")
 
-    __elasticsearch__.client = Elasticsearch::Client.new log: true
-    __elasticsearch__.client.transport.logger.formatter = proc { |s, d, p, m| "\e[32m#{m}\n\e[0m" }
+    if Rails.env.development?
+      __elasticsearch__.client = Elasticsearch::Client.new log: true
+      __elasticsearch__.client.transport.logger.formatter = proc { |s, d, p, m| "\e[32m#{m}\n\e[0m" }
+    end
 
     after_touch do
       __elasticsearch__.index_document
