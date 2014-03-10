@@ -11,7 +11,7 @@
             = submit_tag "Sök", { class: "btn", name: nil }
 
       - if @error.present?
-        .error= "Ett fel inträffade med Euroling Siteseeker (#{@error})"
+        .error= "Ett fel inträffade (#{@error})"
       - elsif @results.present?
         %p.summary
           = "Din sökning gav "
