@@ -36,9 +36,6 @@ class ApplicationController < ActionController::Base
         session[:requested] = { url: request.fullpath, at: Time.now }
       end
       redirect_to login_path
-    elsif !current_user.active?
-      flash[:error] = "Användaren är inte aktiverad i applikationen"
-      redirect_to root_url
     end
   end
 

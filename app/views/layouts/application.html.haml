@@ -18,7 +18,7 @@
     = csrf_meta_tags
   %body.malmo-form{ class: @body_classes }
     .wrapper
-      - if current_user && current_user.active?
+      - if current_user
         .user-info
           = "#{current_user.name} (via #{current_user.provider})"
           = link_to "Logga ut", logout_path

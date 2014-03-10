@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 20140308183646) do
     t.string   "nickname"
     t.string   "email"
     t.string   "organizations_url"
-    t.boolean  "active",            default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

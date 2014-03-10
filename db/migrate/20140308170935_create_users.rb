@@ -7,7 +7,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :nickname
       t.string :email
       t.string :organizations_url
-      t.boolean :active, default: false
 
       t.timestamps
     end
