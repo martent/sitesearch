@@ -18,9 +18,9 @@
     = csrf_meta_tags
   %body.malmo-form{ class: @body_classes }
     .wrapper
-      .user-info
-        - if current_user && current_user.active?
-          = "Inloggad som #{current_user.nickname} (via #{current_user.provider})"
+      - if current_user && current_user.active?
+        .user-info
+          = "#{current_user.name} (via #{current_user.provider})"
           = link_to "Logga ut", logout_path
       - flash.each do |key, value|
         %p{ class: "flash #{key}" }= value
