@@ -1,8 +1,15 @@
 class SessionsController < ApplicationController
   def create
-    user = User.from_omniauth(env["omniauth.auth"])
-    session[:user_id] = user.id
-    redirect_after_login
+    auth = env["omniauth.auth"]
+
+    if authorized?(auth)
+      user = User.from_omniauth(auth)
+      session[:user_id] = user.id
+      redirect_after_login
+    else
+      flash[:error] = "Du är inte auktoriserad för applikationen."
+      redirect_to root_path
+    end
   end
 
   def destroy
@@ -16,4 +23,10 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to root_url
   end
+
+  private
+    def authorized?(auth)
+      octoclient = Octokit::Client.new access_token: auth['credentials']['token']
+      octoclient.team_member?(APP_CONFIG["sitesearch_github_team"], auth["info"]["nickname"])
+    end
 end

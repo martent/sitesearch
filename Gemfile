@@ -20,6 +20,8 @@ gem 'elasticsearch-model', '~> 0.1.0'
 gem 'elasticsearch-rails', '~> 0.1.0'
 
 gem 'omniauth-github'
+gem 'octokit'
+
 gem 'siteseeker_normalizer', '0.1.1'
 
 group :development, :test do

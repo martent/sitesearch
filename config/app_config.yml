@@ -1,6 +1,7 @@
 defaults: &defaults
   app_path: "/"
   assets_url_base: "//www.local.malmo.se:3001/assets/"
+  sitesearch_github_team: <%= ENV["SITESEARCH_GITHUB_TEAM"] %>
   autocomplete_url: "http://malmo.appliance.siteseeker.se/qc/webb/qc"
   siteseeker:
     account: "malmo"
