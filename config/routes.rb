@@ -5,8 +5,8 @@ Rails.application.routes.draw do
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: 'sessions#failure'
-  get 'signin', to: redirect("/auth/github")
-  get 'signout', to: 'sessions#destroy'
+  get 'login', to: redirect("/auth/github")
+  get 'logout', to: 'sessions#destroy'
 
   resources :sessions
   resources :users
