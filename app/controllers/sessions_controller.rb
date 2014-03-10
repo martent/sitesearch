@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
 
     if authorized?(auth)
       user = User.from_omniauth(auth)
+      user.touch
       session[:user_id] = user.id
       redirect_after_login
     else

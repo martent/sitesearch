@@ -1,0 +1,17 @@
+- title "Redaktörer"
+%section.box.index
+  %h1.box-title= h1
+  .box-content.body-copy
+    .table-wrapper
+    %table.full
+      %thead
+        %tr
+          %th Namn
+          %th.auth Autentiserad via
+          %th.last_login Senast inloggad
+      %tbody
+        - @users.each do |user|
+          %tr
+            %td= user.name
+            %td.auth= user.provider
+            %td.last_login= l user.updated_at, format: :short
