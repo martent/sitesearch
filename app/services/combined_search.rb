@@ -37,7 +37,7 @@ class CombinedSearch
     def siteseeker_completion
       begin
         Rails.cache.fetch(["search-autocomplete", @full_query], expires_in: 16.hours) do
-          open("#{APP_CONFIG['autocomplete_url']}?q=#{CGI.escape(@full_query[:q])}&ilang=sv", read_timeout: 1).first
+          JSON.parse open("#{APP_CONFIG['autocomplete_url']}?q=#{CGI.escape(@full_query[:q])}&ilang=sv", read_timeout: 1).first
         end
       rescue Exception => e
         Rails.logger.error "Siteseeker completion: #{e}"
