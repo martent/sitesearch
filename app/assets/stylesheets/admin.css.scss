@@ -1,15 +1,23 @@
-.user-info {
+nav.app, .user-info {
   position: absolute;
-  right: 0em;
-  top: -3em;
+  top: -2.5em;
   z-index: 1000;
   font-family: $sansSerif;
   font-size: emize(13);
-  margin: 0 0 2em;
+}
+.user-info {
+  right: 0em;
   a {
     margin-left: 1em;
   }
 }
+nav.app {
+  left: 0em;
+  a {
+    margin-right: 1em;
+  }
+}
+
 .admin {
   #malmo-masthead {
     margin-bottom: 2em;

@@ -19,6 +19,10 @@
   %body.malmo-form{ class: @body_classes }
     .wrapper
       - if current_user
+        %nav.app
+          = link_to "Recommendationer", recommendations_path
+          = link_to "Sökord", terms_path
+          = link_to "Redaktörer", users_path
         .user-info
           = "#{current_user.name} (via #{current_user.provider})"
           = link_to "Logga ut", logout_path
