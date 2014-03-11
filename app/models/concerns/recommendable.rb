@@ -31,6 +31,7 @@ module Recommendable
 
   module ClassMethods
     def recommend(query)
+      return false if query.blank?
       begin
         __elasticsearch__.search(build_es_query(query, 3)).map(&:_source)
       rescue Exception => e
