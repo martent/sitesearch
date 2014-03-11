@@ -40,4 +40,20 @@
       display: block;
     }
   }
+
+  nav.app, .user-info {
+    top: -2.0em;
+  }
+  .admin {
+    td, th {
+      &.terms, &.auth {
+        display: none;
+      }
+    }
+  }
+}
+@media ( max-width: 32em ) {
+  .user-info .username {
+    display: none;
+  }
 }

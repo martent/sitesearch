@@ -22,10 +22,9 @@
         %nav.app
           = link_to "Recommendationer", recommendations_path
           = link_to "Sökord", terms_path
-          = link_to "Redaktörer", users_path
         .user-info
-          = "#{current_user.name} (via #{current_user.provider})"
-          = link_to "Logga ut", logout_path
+          = link_to "#{current_user.name}", users_path, class: "username"
+          = link_to "Logga ut", logout_path, class: "logout"
       - flash.each do |key, value|
         %p{ class: "flash #{key}" }= value
       = yield
