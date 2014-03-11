@@ -36,4 +36,42 @@ module Recommendable
       }
     )
   end
+
+  module ClassMethods
+    def recommend(query)
+      begin
+        __elasticsearch__.search(build_es_query(query, 3)).map(&:_source)
+      rescue Exception => e
+        Rails.logger.error "Elasticsearch: #{e}"
+        false
+      end
+    end
+
+    private
+      def build_es_query(query, size)
+        query = sanitize_query(query)
+        {
+          size: size,
+          query: {
+            match: {
+              "terms.name" => {
+                query: query,
+                fuzziness: 1,
+                prefix_length: 0
+              }
+            }
+          }
+        }
+      end
+
+      # NOTE: The sanitizer does not allow grouping and operators in the query
+      def sanitize_query(query)
+        # Remove Lucene reserved characters
+        query.gsub!(/([#{Regexp.escape('\\+-&|!(){}[]^~*?:/"\'')}])/, '')
+
+        # Remove Lucene operators
+        query.gsub!(/\s+\b(AND|OR|NOT)\b/i, '')
+        query
+      end
+  end
 end

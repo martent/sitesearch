@@ -7,18 +7,14 @@ class CombinedSearch
   end
 
   def search
-    from_recommendations
-    from_siteseeker
+    Recommendation.recommend(@query)
+    # from_siteseeker
   end
 
   def completion
   end
 
   private
-    def from_recommendations
-      @query[:q]
-    end
-
     def from_siteseeker
       begin
         raw_results = Rails.cache.fetch(["search-raw-results", @query], expires_in: 12.hours) do
