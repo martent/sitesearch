@@ -16,7 +16,7 @@ class SearchController < ApplicationController
   end
 
   def autocomplete
-    render json: @client.completion
+    render json: @client.completion, callback: params[:callback]
   end
 
   private
