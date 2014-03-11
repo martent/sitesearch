@@ -1,12 +1,11 @@
-require 'open-uri'
-
 class SearchController < ApplicationController
+  before_action :search_client
+
   def index
     @terms = params[:q]
     if @terms.present?
-      client = CombinedSearch.new(params.except(:action, :controller))
-      @results = client.search
-      @error = client.error
+      @results = @client.search
+      @error = @client.error
     end
 
     if request.xhr?
@@ -17,7 +16,11 @@ class SearchController < ApplicationController
   end
 
   def autocomplete
-    client = CombinedSearch.new(params.except(:action, :controller))
-    render json: client.completion
+    render json: @client.completion
   end
+
+  private
+    def search_client
+      @client = CombinedSearch.new(params.except(:action, :controller))
+    end
 end
