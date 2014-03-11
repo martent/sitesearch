@@ -1,19 +1,19 @@
 # Site Search
 
-A Ruby on Rails app that is responsible for the site search on the City of Malmo’s external web site. It uses the [siteseeker_normalizer](https://github.com/malmostad/siteseeker_normalizer) Gem for the Siteseeker integration. Editors choice is managed in the application itself.
+A Ruby on Rails app for the site search on the City of Malmo’s external web site. Search recommendations (editors choice) are managed in the application. The [siteseeker_normalizer](https://github.com/malmostad/siteseeker_normalizer) gem is used for the Siteseeker integration part.
 
 ## Dependencies
 * Ruby 2.0, 2.1
 * Rails 4.1
 * PostgreSQL
 * ElasticSearch 1.0
-* Memcached or other cache store with ttl support
+* Memcached
 * PhantomJS (for testing)
 
 ## Development Setup
 
 ## Build and Deployment
-The application is built and deployed using Capistrano. Deployment scripts are included in the source code.
+Build and deployment is made with Capistrano.
 
 Run the deployment script with one of the following command including the environment name:
 
