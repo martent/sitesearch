@@ -4,9 +4,9 @@ class SearchController < ApplicationController
   def index
     @terms = params[:q]
     if @terms.present?
-      cs = CombinedSearch.new(params.except(:action, :controller))
-      @results = cs.search
-      @error = cs.error
+      client = CombinedSearch.new(params.except(:action, :controller))
+      @results = client.search
+      @error = client.error
     end
 
     if request.xhr?
