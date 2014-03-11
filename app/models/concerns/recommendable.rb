@@ -18,19 +18,15 @@ module Recommendable
     mappings dynamic: 'false' do
       indexes :name, analyzer: 'simple'
       indexes :link, analyzer: 'simple'
-      indexes :terms do
-        indexes :name, index_analyzer: 'term_index', search_analyzer: 'term_search'
-      end
+      indexes :terms, index_analyzer: 'term_index', search_analyzer: 'term_search'
     end
   end
 
   def as_indexed_json(options={})
-    self.as_json(
-      only: [:name, :link],
-      include: {
-        terms: { only: :name }
-      }
-    )
+    { name: name,
+      link: link,
+      terms: terms.map(&:name)
+    }.as_json
   end
 
   module ClassMethods
@@ -50,7 +46,7 @@ module Recommendable
           size: size,
           query: {
             match: {
-              "terms.name" => {
+              terms: {
                 query: query,
                 fuzziness: 1,
                 prefix_length: 0

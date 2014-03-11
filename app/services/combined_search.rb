@@ -41,7 +41,7 @@ class CombinedSearch
         end
       rescue Exception => e
         Rails.logger.error "Siteseeker completion: #{e}"
-        {} # Silent error
+        [] # Silent error for autocomplete
       end
     end
 end
