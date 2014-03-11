@@ -41,7 +41,7 @@
     }
   }
 
-  nav.app, .user-info {
+  nav.app {
     top: -2.0em;
   }
   .admin {
@@ -53,7 +53,7 @@
   }
 }
 @media ( max-width: 32em ) {
-  .user-info .username {
+  nav.app .username {
     display: none;
   }
 }

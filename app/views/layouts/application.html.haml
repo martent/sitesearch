@@ -22,7 +22,6 @@
         %nav.app
           = link_to "Recommendationer", recommendations_path
           = link_to "Sökord", terms_path
-        .user-info
           = link_to "#{current_user.name}", users_path, class: "username"
           = link_to "Logga ut", logout_path, class: "logout"
       - flash.each do |key, value|

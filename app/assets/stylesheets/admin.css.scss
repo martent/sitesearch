@@ -1,20 +1,18 @@
-nav.app, .user-info {
+nav.app {
   position: absolute;
   top: -2.5em;
+  right: 0em;
   z-index: 1000;
   font-family: $sansSerif;
   font-size: emize(13);
-}
-.user-info {
-  right: 0em;
-  a.logout {
-    margin-left: 1em;
-  }
-}
-nav.app {
-  left: 0em;
   a {
     margin-right: 1em;
+  }
+  a.username {
+    margin-left: 2em;
+  }
+  a.logout {
+    margin-right: 0;
   }
 }
 
