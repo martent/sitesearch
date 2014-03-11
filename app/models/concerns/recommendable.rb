@@ -4,11 +4,7 @@ module Recommendable
 
   included do
     include Elasticsearch::Model
-    settings YAML.load_file("#{Rails.root.to_s}/config/elasticsearch.yml")
-    if Rails.env.development?
-      __elasticsearch__.client = Elasticsearch::Client.new log: true
-      __elasticsearch__.client.transport.logger.formatter = proc { |s, d, p, m| "\e[32m#{m}\n\e[0m" }
-    end
+    settings ES_ANALYZERS
 
     # Explict callbacks to reindex the full doc with terms on save/update
     after_save do
