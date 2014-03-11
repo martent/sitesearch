@@ -4,7 +4,7 @@ module Recommendable
 
   included do
     include Elasticsearch::Model
-    settings ES_ANALYZERS
+    settings Rails.application.config.elasticsearch
 
     # Explict callbacks to reindex the full doc with terms on save/update
     after_save do
