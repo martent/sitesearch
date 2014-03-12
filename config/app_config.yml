@@ -2,7 +2,7 @@ defaults: &defaults
   app_path: "/"
   assets_url_base: "//www.local.malmo.se:3001/assets/"
   sitesearch_github_team: <%= ENV["SITESEARCH_GITHUB_TEAM"] %>
-  autocomplete_url: "http://malmo.appliance.siteseeker.se/qc/webb/qc"
+  siteseeker_autocomplete_url: "http://malmo.appliance.siteseeker.se/qc/webb/qc"
   siteseeker:
     account: "malmo"
     index: "webb"
@@ -22,7 +22,6 @@ test:
 production:
   <<: *defaults
   assets_url_base: "//assets.malmo.se/internal/3.0/"
-  autocomplete_url: "http://malmo.appliance.siteseeker.se/qc/webb/qc"
   cache_ttl: 43200
   max_age: 14400
   title_suffix: "Malmö stad"
