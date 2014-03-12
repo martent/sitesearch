@@ -13,7 +13,7 @@ class CombinedSearch
 
   def completion
     recommendations = Recommendation.recommend(@full_query[:q])
-    suggestions = siteseeker_completion[0, 10 - recommendations.size]
+    suggestions     = siteseeker_completion[0, 10 - recommendations.size]
     recommendations + suggestions
   end
 
