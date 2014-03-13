@@ -9,7 +9,9 @@
           %th Sökord
           %th.auth Rekommendation
       %tbody
+        - prev_term = ""
         - @terms.each do |term|
           %tr
-            %td= term.name
+            %td{ class: (prev_term == term.name ? "duplicate" : "") }= term.name
+            - prev_term = term.name
             %td= link_to term.recommendation.name, edit_recommendation_path(term.recommendation)
