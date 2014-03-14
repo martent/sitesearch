@@ -1,0 +1,7 @@
+- if @results.suggestions.present?
+  %ul.suggestions
+    %li Kanske menade du
+    - @results.suggestions.each_with_index do |entry, i|
+      %li
+        = succeed separator(i, @results.suggestions.count, true) do
+          = link_to entry.text, "#{search_path}?#{entry.url}"

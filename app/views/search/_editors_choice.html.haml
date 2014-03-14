@@ -1,0 +1,4 @@
+- @results.editors_choice.each_with_index do |entry, i|
+  %li.editors_choice
+    %h2= link_to entry.text, entry.url
+    %p.extract= entry.summary

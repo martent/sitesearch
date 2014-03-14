@@ -1,0 +1,10 @@
+- if @results.sorting.present?
+  %menu.sort
+    %li.label Sortera efter
+    - @results.sorting.each_with_index do |entry, i|
+      %li
+        = succeed separator(i, @results.sorting.count) do
+          - if entry.query
+            = link_to entry.text.downcase, "#{search_path}?#{entry.query}"
+          - else
+            %span.current= entry.text.downcase
