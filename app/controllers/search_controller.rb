@@ -4,7 +4,9 @@ class SearchController < ApplicationController
   def index
     @terms = params[:q]
     if @terms.present?
-      @results = @client.search
+      response = @client.search
+      @results = response[:sitesearch]
+      @recommendations = response[:recommendations]
       @error = @client.error
     end
 
