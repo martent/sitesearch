@@ -1,5 +1,5 @@
 = t.input :name, label: false, wrapper: :append do
   = t.input_field :name
-  %button.btn.remove
+  %button.btn.remove{ type: :button }
     %span.icon-remove
   = t.input_field :_destroy, as: :hidden
