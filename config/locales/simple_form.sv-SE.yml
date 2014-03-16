@@ -12,6 +12,7 @@ sv-SE:
         name: "Namn:"
         link: "Länk:"
         image: "Bild:"
+        remove_image: "Radera bild"
         terms:
           name: "Sökord:"
           _destroy: "Ta bort"

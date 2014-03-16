@@ -37,8 +37,11 @@ nav.app {
   .duplicate {
     color: red;
   }
-  .image_preview img {
+  input.image_preview {
     display: block;
-    margin: 0 0 1em;
+    margin: 1em 0 0;
+  }
+  .control-group.image_preview {
+    margin-bottom: 0;
   }
 }

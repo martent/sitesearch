@@ -10,3 +10,7 @@ $ ->
     $(@).closest(".control-group")
       .before($(@).data('fields').replace(regexp, new Date().getTime()))
       .prev().find("input").focus()
+
+  $("#edit-recommendation").on "change", "#recommendation_remove_image", (event) ->
+    event.preventDefault()
+    $(".control-group.image_preview").toggle(!@.checked)
