@@ -239,7 +239,7 @@ DEPENDENCIES
   pry-rails
   quiet_assets
   rails (= 4.1.0.rc1)
-  sass-rails (~> 4.0.1)
+  sass-rails (~> 4.0.2)
   simple_form
   siteseeker_normalizer (= 0.1.1)
   spring
