@@ -10,5 +10,6 @@ li.recommendation {
   }
   h2 {
     @include columns(10, true, 4%);
+    padding-top: .1em;
   }
 }
