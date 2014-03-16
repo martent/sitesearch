@@ -1,15 +1,17 @@
-li.recommendation {
-  @include clearfix();
-  .img-wrapper {
-    @include columns(2, false, 4%);
-    img {
-      margin: .1em 0 0;
-      width: 100%;
-      height: auto;
+section.site-search .results {
+  li.recommendation {
+    @include clearfix();
+    .img-wrapper {
+      @include columns(2, false, 4%);
+      img {
+        margin: .1em 0 0;
+        width: 100%;
+        height: auto;
+      }
     }
-  }
-  h2 {
-    @include columns(10, true, 4%);
-    padding-top: .1em;
+    h2 {
+      @include columns(10, true, 4%);
+      padding-top: .1em;
+    }
   }
 }
