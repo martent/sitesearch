@@ -1,5 +1,5 @@
 - @recommendations.each do |recommendation|
   %li.recommendation
     %a{href: recommendation.link, alt: recommendation.name }
-      .img-wrapper= image_tag recommendation.image
+      .img-wrapper= image_tag recommendation.images.thumb
       %h2= recommendation.name

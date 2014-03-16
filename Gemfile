@@ -13,6 +13,8 @@ gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
 
 gem 'simple_form'
+gem 'carrierwave'
+gem "mini_magick"
 
 gem 'pg'
 gem 'dalli', '2.7.0'

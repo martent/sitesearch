@@ -4,5 +4,5 @@
     .input-append
       = text_field_tag :q, @terms, { placeholder: "Ange ett eller flera sökord",
         "data-autocomplete-url" => search_autocomplete_path,
-        "data-images-url" => "#{root_path}assets/" }
+        "data-images-url" => root_path[0..-2] }
       = submit_tag "Sök", { class: "btn", name: nil }

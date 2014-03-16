@@ -1,5 +1,6 @@
 class Recommendation < ActiveRecord::Base
   include Recommendable
+  mount_uploader :image, RecommendationImageUploader
 
   has_many :terms, dependent: :destroy
   accepts_nested_attributes_for :terms, allow_destroy: true
