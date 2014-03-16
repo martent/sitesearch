@@ -12,9 +12,9 @@
         - if @results.category_groups.present?
           %p.filter= link_to "Filtrera", "#filter"
         = render "suggestions"
-        = render "recommendations"
         %section.results
           %ul
+            = render "recommendations"
             = render "editors_choice"
             = render "results"
     = render "categories"
