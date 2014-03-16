@@ -1,3 +1,5 @@
+require 'file_size_validator'
+
 class Recommendation < ActiveRecord::Base
   include Recommendable
   mount_uploader :image, RecommendationImageUploader
@@ -14,6 +16,9 @@ class Recommendation < ActiveRecord::Base
     uniqueness: { is: true, message: "Länken finns redan." },
     length: { minimum: 4, maximum: 255 }
   validates_associated :terms
+
+  validates :image,
+    file_size: { maximum: 1.megabytes.to_i }
 
   before_save do
     # Add protocol if missing

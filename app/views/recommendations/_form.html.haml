@@ -4,6 +4,7 @@
   .form-inputs
     = f.input :name, input_html: { class: "input-wide" }
     = f.input :link, input_html: { class: "input-wide" }
+    = f.input :image, as: :image_preview, input_html: { preview_version: :thumb }
 
     %h2.form-group-title Sökord
     .terms

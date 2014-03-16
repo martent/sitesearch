@@ -11,6 +11,7 @@ sv-SE:
       recommendation:
         name: "Namn:"
         link: "Länk:"
+        image: "Bild:"
         terms:
           name: "Sökord:"
           _destroy: "Ta bort"
@@ -20,3 +21,7 @@ sv-SE:
         name: "Ange ett unikt namn"
         link: "Full URL till målsidan"
         term_list: "Ange de sökord som ska matcha sökningen"
+  errors:
+    messages:
+      extension_white_list_error: Fel filformat
+      size_too_big: "för stor fil, max %{file_size}"

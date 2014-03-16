@@ -1,5 +1,4 @@
 class RecommendationImageUploader < CarrierWave::Uploader::Base
-
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -29,10 +28,10 @@ class RecommendationImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :mini do
-    process :resize_to_fit => [32, 32]
+    process resize_to_fit: [32, 32]
   end
   version :thumb do
-    process :resize_to_fit => [100, 100]
+    process resize_to_fit: [100, 100]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -46,5 +45,4 @@ class RecommendationImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
 end
