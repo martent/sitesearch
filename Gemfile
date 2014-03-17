@@ -29,6 +29,7 @@ gem 'siteseeker_normalizer', '0.1.1'
 group :test do
   gem "factory_girl_rails"
   gem "capybara"
+  gem 'poltergeist'
   gem "rb-fsevent"
   gem "guard-rspec"
 end
@@ -43,6 +44,7 @@ end
 
 group :development do
   gem 'pry-rails'
+  gem "spring-commands-rspec"
 end
 
 gem 'bcrypt-ruby', '~> 3.1.2'
