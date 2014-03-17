@@ -27,6 +27,7 @@ class SessionsController < ApplicationController
 
   private
     def authorized?(auth)
+      return true if Rails.env.test? # mock
       octoclient = Octokit::Client.new access_token: auth['credentials']['token']
       octoclient.team_member?(APP_CONFIG["sitesearch_github_team"], auth["info"]["nickname"])
     end
