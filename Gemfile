@@ -29,6 +29,7 @@ gem 'siteseeker_normalizer', '0.1.1'
 group :test do
   gem "factory_girl_rails"
   gem "capybara"
+  gem 'launchy'
   gem 'poltergeist'
   gem "rb-fsevent"
   gem "guard-rspec"
