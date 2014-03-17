@@ -9,6 +9,8 @@ module Recommendable
     after_commit -> { __elasticsearch__.index_document  },  on: [:create, :update]
     after_commit -> { __elasticsearch__.delete_document },  on: :destroy
 
+    index_name "recommendations_test" if Rails.env.test?
+
     mappings dynamic: 'false' do
       indexes :name, analyzer: 'simple'
       indexes :link, analyzer: 'simple'
