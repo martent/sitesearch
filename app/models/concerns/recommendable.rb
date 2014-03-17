@@ -6,14 +6,8 @@ module Recommendable
     include Elasticsearch::Model
     settings Rails.application.config.elasticsearch
 
-    # Explict callbacks to reindex the full doc with terms on save/update
-    after_save do
-      __elasticsearch__.index_document
-    end
-
-    after_destroy do
-      __elasticsearch__.delete_document
-    end
+    after_commit -> { __elasticsearch__.index_document  },  on: [:create, :update]
+    after_commit -> { __elasticsearch__.delete_document },  on: :destroy
 
     mappings dynamic: 'false' do
       indexes :name, analyzer: 'simple'
