@@ -7,6 +7,7 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rails'
 require 'capybara/poltergeist'
+require 'carrierwave/test/matchers'
 
 Capybara.javascript_driver = :poltergeist
 
