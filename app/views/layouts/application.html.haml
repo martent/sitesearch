@@ -10,7 +10,7 @@
     /[if lte IE 8]
       = javascript_include_tag "#{APP_CONFIG['assets_url_base']}html5shiv-printshiv.js"
     = stylesheet_link_tag "#{APP_CONFIG['assets_url_base']}malmo.css", media: 'all'
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => false
+    = stylesheet_link_tag 'application', media: 'all'
     %link{ rel: 'icon', type: 'image/x-icon', href: "#{APP_CONFIG['assets_url_base']}favicon.ico" }
     = csrf_meta_tags
   %body.malmo-form{ class: @body_classes }
@@ -25,4 +25,4 @@
         %p{ class: "flash #{key}" }= value
       = yield
     = javascript_include_tag "#{APP_CONFIG['assets_url_base']}malmo.js"
-    = javascript_include_tag 'application', 'data-turbolinks-track' => false
+    = javascript_include_tag 'application'
