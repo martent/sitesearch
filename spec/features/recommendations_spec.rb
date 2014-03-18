@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe "Recommendations" do
-  before :each do
+  before do
+    create(:recommendation)
     mock_auth_hash
   end
 
@@ -48,12 +49,20 @@ describe "Recommendations" do
       page.should have_selector 'h1.box-title', text: "Redigera"
     end
 
-    it "should add term" do
+    it "should validate term", js: true do
       first('section.box table tbody tr td a').click
-      # click_on "Lägg till"
-      fill_in 'recommendation_terms_attributes_0_name', with: 'Box'
-      save_and_open_page
-      page.should have_selector('h1.box-title', text: "Rekommendationen sparades")
+      click_on "Lägg till"
+      click_on "Spara"
+      page.should have_selector '.warning', text: "Vänligen korrigera"
+    end
+
+    it "should add term", js: true do
+      visit recommendations_path
+      first('section.box table tbody tr td a').click
+      click_on "Lägg till"
+      all(".recommendation_terms_name input.string").last.set "Boom"
+      click_on "Spara"
+      page.should have_selector('.notice', text: "Rekommendationen sparades")
     end
   end
 end

@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :recommendation do
     sequence(:name) { |n| "Recommendation-#{n}" }
-    link 'http://rspec.info/'
+    sequence(:link) { |n| "http://rspec.info/#{n}" }
   end
 end
