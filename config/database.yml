@@ -17,13 +17,13 @@
 default: &default
   adapter: postgresql
   encoding: utf8
-  collation: sv_SE.UTF8
-  ctype: sv_SE.UTF8
+  collation: sv_SE.UTF-8
+  ctype: sv_SE.UTF-8
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
   username: postgres
-  password: postgres
+  password:
 
 development:
   <<: *default
