@@ -6,6 +6,10 @@ describe "Recommendations" do
     mock_auth_hash
   end
 
+  after do
+    Recommendation.destroy_all
+  end
+
   it "should require authentication" do
     OmniAuth.config.mock_auth[:github] = :invalid_credentials
     visit recommendations_path

@@ -33,7 +33,6 @@ group :test do
   gem 'poltergeist'
   gem "rb-fsevent"
   gem "guard-rspec"
-  gem 'database_cleaner'
 end
 
 group :development, :test do
