@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
       user.name = auth["info"]["name"]
       user.nickname = auth["info"]["nickname"]
       user.email = auth["info"]["email"]
-      user.organizations_url = auth["extra"]["raw_info"]["organizations_url"]
     end
   end
 end
