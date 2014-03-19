@@ -73,8 +73,8 @@ test:
 production: &production
   <<: *default
   database: sitesearch
-  username: postgres
-  password: <%= ENV["POSTGRES_PW"] %>
+  username: deployer
+  password: <%= ENV["DB_PW"] %>
   host: localhost
   port: 5432
 
