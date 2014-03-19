@@ -5,7 +5,7 @@
 
 set :output,  "#{path}/log/cron.log"
 
-if environment == "production"
+if environment == "production" || environment == "staging"
   every :day, at: '3:00am' do
     command "cd #{path} && ./lib/jobs/backup.sh"
   end
