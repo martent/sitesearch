@@ -69,12 +69,14 @@ test:
 # Example:
 #   postgres://myuser:mypass@localhost/somedatabase
 #
+
 production: &production
-  adapter: postgresql
-  encoding: utf8
-  collation: sv_SE.UTF8
-  ctype: sv_SE.UTF8
-  url: <%= ENV["DATABASE_URL"] %>
+  <<: *default
+  database: sitesearch
+  username: postgres
+  password: <%= ENV["POSTGRES_PW"] %>
+  host: localhost
+  port: 5432
 
 staging:
   <<: *production
