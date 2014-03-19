@@ -22,7 +22,7 @@ set :pty, true
 set :forward_agent, true
 
 set :linked_files, %w{config/database.yml config/app_config.yml config/secrets.yml }
-set :linked_dirs, %w{log tmp/pids tmp/sockets public/system public/uploads}
+set :linked_dirs, %w{log tmp/pids tmp/sockets public/uploads}
 
 set :default_env, { path: '$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH' }
 set :keep_releases, 5
@@ -42,8 +42,7 @@ namespace :deploy do
       execute "mkdir -p #{shared_path}/config"
       execute "mkdir -p #{shared_path}/tmp"
       execute "mkdir -p #{shared_path}/log"
-      execute "mkdir -p #{shared_path}/system"
-      execute "mkdir -p #{shared_path}/uploads"
+      execute "mkdir -p #{shared_path}/public/uploads"
       upload! "config/app_config.example.yml", "#{shared_path}/config/app_config.yml"
       upload! "config/database.example.yml", "#{shared_path}/config/database.yml"
       upload! "config/secrets.example.yml", "#{shared_path}/config/secrets.yml"
