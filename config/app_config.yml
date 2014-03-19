@@ -19,9 +19,13 @@ test:
   max_age: 14400
   title_suffix: "Malmö stad (test)"
 
-production:
+production: &production
   <<: *defaults
-  assets_url_base: "//assets.malmo.se/internal/3.0/"
+  assets_url_base: "//assets.malmo.se/external/3.0-staging/"
   cache_ttl: 43200
   max_age: 14400
   title_suffix: "Malmö stad"
+
+staging:
+  <<: *production
+  title_suffix: "Malmö stad (staging)"
