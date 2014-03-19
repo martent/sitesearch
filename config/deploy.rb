@@ -9,7 +9,8 @@ set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 
 set :application, 'sitesearch'
 set :repo_url, "git@github.com:malmostad/#{fetch(:application)}.git"
-set :branch, "master"
+# set :branch, "master"
+set :branch, "v2-oauth"
 set :user, "deployer"
 set :deploy_to, "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
 set :scm, :git
