@@ -44,7 +44,7 @@ namespace :deploy do
       execute "mkdir -p #{shared_path}/log"
       execute "mkdir -p #{shared_path}/system"
       execute "mkdir -p #{shared_path}/uploads"
-      upload! "config/app_settings.example.yml", "#{shared_path}/config/app_settings.yml"
+      upload! "config/app_config.example.yml", "#{shared_path}/config/app_config.yml"
       upload! "config/database.example.yml", "#{shared_path}/config/database.yml"
       upload! "config/secrets.example.yml", "#{shared_path}/config/secrets.yml"
       puts "1. Edit the config files in #{shared_path}/config"
