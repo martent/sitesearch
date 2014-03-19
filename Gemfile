@@ -27,7 +27,7 @@ gem 'octokit'
 gem 'siteseeker_normalizer', '0.1.1'
 
 gem 'capistrano', '~> 3.1.0'
-gem 'capistrano-bundler', '~> 1.1.2'
+gem 'capistrano-rails'
 gem 'capistrano-rbenv', '2.0.2'
 gem 'whenever', require: false
 
@@ -45,7 +45,6 @@ group :development, :test do
   gem 'spring'
   gem 'quiet_assets'
   gem 'thin'
-  gem 'capistrano-rails'
 end
 
 group :development do
