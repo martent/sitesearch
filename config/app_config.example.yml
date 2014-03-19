@@ -1,7 +1,10 @@
 defaults: &defaults
   app_path: "/"
   assets_url_base: "//www.local.malmo.se:3001/assets/"
-  sitesearch_github_team: 123
+  omniauth:
+    github_team: 123
+    github_key: abc
+    github_secret: def
   siteseeker_autocomplete_url: "http://account_name.appliance.siteseeker.se/qc/index_name/qc"
   siteseeker:
     account: account_name

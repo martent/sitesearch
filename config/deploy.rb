@@ -21,7 +21,7 @@ set :deploy_via, :remote_cache
 set :pty, true
 set :forward_agent, true
 
-# set :linked_files, %w{config/database.yml config/app_config.yml }
+set :linked_files, %w{config/database.yml config/app_config.yml config/secrets.yml }
 set :linked_dirs, %w{log tmp/pids tmp/sockets public/system public/uploads}
 
 set :default_env, { path: '$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH' }
@@ -44,7 +44,9 @@ namespace :deploy do
       execute "mkdir -p #{shared_path}/log"
       execute "mkdir -p #{shared_path}/system"
       execute "mkdir -p #{shared_path}/uploads"
-      upload! "config/settings.example.yml", "#{shared_path}/config/settings.yml"
+      upload! "config/app_settings.example.yml", "#{shared_path}/config/app_settings.yml"
+      upload! "config/database.example.yml", "#{shared_path}/config/database.yml"
+      upload! "config/secrets.example.yml", "#{shared_path}/config/secrets.yml"
       puts "1. Edit the config files in #{shared_path}/config"
       puts "2. Run manually on server:"
       puts "   $ sudo ln -nfs #{release_path}/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
