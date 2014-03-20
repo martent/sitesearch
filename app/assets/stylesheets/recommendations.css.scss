@@ -1,5 +1,5 @@
-section.site-search .results {
-  li.recommendation {
+section.site-search .recommendations {
+  li {
     @include clearfix();
     .img-wrapper {
       @include columns(2);
