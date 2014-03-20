@@ -1,33 +1,21 @@
 analysis:
   analyzer:
     term_index:
-      tokenizer: edge_ngram_2
+      tokenizer: ngram_2
       filter:
       - lowercase
-      char_filter:
-      - hyphen
+      - asciifolding
     term_search:
       tokenizer: keyword
       filter:
+      - asciifolding
       - lowercase
-      char_filter:
-      - hyphen_space
   tokenizer:
-    edge_ngram_2:
-      type: edgeNGram
+    ngram_2:
+      type: nGram
       min_gram: 2
       max_gram: 50
       token_chars:
       - letter
       - digit
-      - symbol
-      - punctuation
-  char_filter:
-    hyphen_space:
-      type: pattern_replace
-      pattern: "[-,\\s]"
-      replacement: ''
-    hyphen:
-      type: pattern_replace
-      pattern: "[-]"
-      replacement: ''
+      - whitespace

@@ -48,12 +48,28 @@ module Recommendable
         {
           size: size,
           query: {
-            match: {
-              terms: {
-                query: query,
-                fuzziness: 1,
-                prefix_length: 0
-              }
+            bool: {
+              should: [
+                {
+                  match: {
+                    terms: {
+                      query: query,
+                      fuzziness: 1,
+                      prefix_length: 0
+                    }
+                  }
+                },
+                {
+                  match: {
+                    terms: {
+                      boost: 10,
+                      query: query,
+                      fuzziness: 0,
+                      prefix_length: 0
+                    }
+                  }
+                }
+              ]
             }
           }
         }
