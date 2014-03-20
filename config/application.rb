@@ -26,6 +26,7 @@ module Sitesearch
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    config.i18n.available_locales = [:en, "sv-SE".to_sym, :sv]
     config.i18n.default_locale = "sv-SE"
     config.encoding = "utf-8"
     config.filter_parameters += [:password]
