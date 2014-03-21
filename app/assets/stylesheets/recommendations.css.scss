@@ -2,7 +2,7 @@ section.site-search .recommendations {
   li {
     @include clearfix();
     .img-wrapper {
-      @include columns(2);
+      @include columns(1.5);
       img {
         margin: .1em 0 0;
         width: 100%;
@@ -10,7 +10,7 @@ section.site-search .recommendations {
       }
     }
     h2 {
-      @include columns(10, true);
+      @include columns(10.5, true);
       padding-top: .1em;
     }
   }
