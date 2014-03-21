@@ -37,6 +37,13 @@ namespace :deploy do
     end
   end
 
+  desc "Full restart of unicorn server"
+  task :full_restart do
+    on roles(:app), except: {no_release: true} do
+      execute "/etc/init.d/unicorn_#{fetch(:application)} stop && sleep 2 && /etc/init.d/unicorn_#{fetch(:application)} start"
+    end
+  end
+
   task :setup do
     on roles(:app) do
       execute "mkdir -p #{shared_path}/config"
@@ -65,6 +72,6 @@ namespace :deploy do
   end
 
   before :starting, "deploy:check_revision"
-  after :published, "deploy:upgrade"
+  after :published, "deploy:full_restart"
   after :finishing, "deploy:cleanup"
 end
