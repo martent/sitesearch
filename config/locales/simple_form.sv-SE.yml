@@ -11,6 +11,7 @@ sv-SE:
       recommendation:
         name: "Namn:"
         link: "Länk:"
+        description: "Beskrivning:"
         image: "Bild:"
         remove_image: "Ingen bild"
         terms:

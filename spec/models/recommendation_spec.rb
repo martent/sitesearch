@@ -21,13 +21,17 @@ describe Recommendation do
     build(:recommendation, link: "").should_not be_valid
   end
 
-  it "should validate the length" do
+  it "should validate the name length" do
     build(:recommendation, name: "fox barx" * 10).should_not be_valid
   end
 
   it "should validate the name uniqueness" do
     create(:recommendation, name: "fox")
     build(:recommendation, name: "fox").should_not be_valid
+  end
+
+  it "should validate the description length" do
+    build(:recommendation, description: "123456789 " * 13).should_not be_valid
   end
 
   it "should validate the link uniqueness" do

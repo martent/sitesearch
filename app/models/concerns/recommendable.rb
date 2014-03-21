@@ -14,6 +14,7 @@ module Recommendable
     mappings dynamic: 'false' do
       indexes :name, analyzer: 'simple'
       indexes :link, analyzer: 'simple'
+      indexes :description, analyzer: 'simple'
       indexes :images do
         indexes :original, index: 'not_analyzed'
         indexes :mini, index: 'not_analyzed'
@@ -26,6 +27,7 @@ module Recommendable
   def as_indexed_json(options={})
     { name: name,
       link: link,
+      description: description,
       images: { original: image.url, mini: image.mini.url, thumb: image.thumb.url },
       terms: terms.map(&:name)
     }.as_json

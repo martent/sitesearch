@@ -15,6 +15,8 @@ class Recommendation < ActiveRecord::Base
     presence: { is: true, message: "Länk måste fyllas i." },
     uniqueness: { is: true, message: "Länken finns redan." },
     length: { minimum: 4, maximum: 255 }
+  validates :description,
+    length: { maximum: 125 }
   validates_associated :terms
 
   validates :image,
