@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SAVEDIR=/var/www/dump
+SAVEDIR=/home/deployer/backup
 
 if [ ! -d $SAVEDIR ]; then
   mkdir -p $SAVEDIR
