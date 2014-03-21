@@ -9,8 +9,4 @@ if environment == "production" || environment == "staging"
   every :day, at: '3:05am' do
     command "cd #{path} && ./lib/jobs/backup.sh"
   end
-
-  every 10.minutes do
-    command "cd #{path} && ./lib/jobs/backup.sh"
-  end
 end
