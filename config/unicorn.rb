@@ -7,4 +7,4 @@ stdout_path "#{root}/log/unicorn.log"
 listen "/tmp/unicorn.sitesearch.sock"
 worker_processes 5
 timeout 15
-preload_app true
+preload_app false
