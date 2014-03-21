@@ -28,7 +28,7 @@ recommendations = [
   ["Blanketter", "http://www.malmo.se/Blanketter--tjanster.html", "blanketter"],
   ["Värnhemsskolan", "http://www.malmo.se/Medborgare/Forskola--utbildning/Gymnasieskola/Kommunala-gymnasieskolor/Varnhemsskolan.html", "värnhemsskolan"],
   ["Vägledningscentrum", "http://www.malmo.se/vagledningscentrum", "vägledningscentrum"],
-  ["Bbliotek", "http://www.malmo.se/Medborgare/Biblioteken/Vara-bibliotek.html", "stadsbiblioteket, huvudbiblioteket, bibliotek"],
+  ["Bbliotek", "http://www.malmo.se/Medborgare/Biblioteken/Vara-bibliotek.html", "stadsbiblioteket, huvudbiblioteket, bibliotek, bibblan"],
   ["Cykelkarta", "http://www.malmo.se/Medborgare/Stadsplanering--trafik/Trafik--hallbart-resande/Nar-du-cyklar/Rundturer--kartor.html", "cykelkarta"],
   ["Uphandling", "http://www.malmo.se/Foretagare/Offentliga-upphandlingar/Aktuella-upphandlingar.html", "upphandling"],
   ["Temalekplatser", "http://www.malmo.se/Medborgare/Idrott--fritid/Ung-Fritid/Lekplatser.html", "temalekplatser, lekplatser"],
