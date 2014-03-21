@@ -17,7 +17,7 @@
     .wrapper
       - if current_user
         %nav.app
-          = link_to "Recommendationer", recommendations_path
+          = link_to "Rekommendationer", recommendations_path
           = link_to "Sökord", terms_path
           = link_to "#{current_user.name}", users_path, class: "username"
           = link_to "Logga ut", logout_path, class: "logout"
