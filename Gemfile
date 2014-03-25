@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.0.rc1'
+gem 'rails', '4.1.0.rc2'
 gem 'activerecord-session_store', '~> 0.1.0'
 gem 'haml-rails'
 gem 'sass-rails', '~> 4.0.2'
@@ -17,7 +17,7 @@ gem 'carrierwave'
 gem "mini_magick"
 
 gem 'pg'
-gem 'dalli', '2.7.0'
+gem 'dalli', '~> 2.7.0'
 gem 'elasticsearch-model', '~> 0.1.0'
 gem 'elasticsearch-rails', '~> 0.1.0'
 
