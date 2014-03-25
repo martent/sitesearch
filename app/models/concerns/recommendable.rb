@@ -21,6 +21,7 @@ module Recommendable
         indexes :thumb, index: 'not_analyzed'
       end
       indexes :terms, index_analyzer: 'term_index', search_analyzer: 'term_search'
+      indexes :terms_edge, index_analyzer: 'term_index_edge', search_analyzer: 'term_search'
     end
   end
 
@@ -29,7 +30,8 @@ module Recommendable
       link: link,
       description: description,
       images: { original: image.url, mini: image.mini.url, thumb: image.thumb.url },
-      terms: terms.map(&:name)
+      terms: terms.map(&:name),
+      terms_edge: terms.map(&:name)
     }.as_json
   end
 
