@@ -65,11 +65,9 @@ module Recommendable
                 },
                 {
                   match: {
-                    terms: {
+                    terms_edge: {
                       boost: 10,
-                      query: query,
-                      fuzziness: 0,
-                      prefix_length: 0
+                      query: query
                     }
                   }
                 }
