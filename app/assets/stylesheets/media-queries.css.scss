@@ -52,6 +52,16 @@
     }
   }
 }
+@media ( max-width: 34em ) {
+  section.site-search .recommendations li {
+    .img-wrapper {
+      @include columns(2, false, 3%);
+    }
+    .text {
+      @include columns(10, true, 3%);
+    }
+  }
+}
 @media ( max-width: 32em ) {
   nav.app .username {
     display: none;
