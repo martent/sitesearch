@@ -1,5 +1,6 @@
 class SearchController < ApplicationController
   before_action :search_client
+  before_action :ie_utf_fix, only: :index
 
   def index
     @terms = params[:q]
