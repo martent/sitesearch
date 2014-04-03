@@ -1,11 +1,6 @@
 analysis:
   analyzer:
     term_index:
-      tokenizer: ngram_2
-      filter:
-      - lowercase
-      - asciifolding
-    term_index_edge:
       tokenizer: edge_ngram_2
       filter:
       - lowercase
@@ -16,14 +11,6 @@ analysis:
       - asciifolding
       - lowercase
   tokenizer:
-    ngram_2:
-      type: nGram
-      min_gram: 2
-      max_gram: 50
-      token_chars:
-      - letter
-      - digit
-      - whitespace
     edge_ngram_2:
       type: edgeNGram
       min_gram: 2

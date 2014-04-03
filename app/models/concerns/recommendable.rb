@@ -21,7 +21,6 @@ module Recommendable
         indexes :thumb, index: 'not_analyzed'
       end
       indexes :terms, index_analyzer: 'term_index', search_analyzer: 'term_search'
-      indexes :terms_edge, index_analyzer: 'term_index_edge', search_analyzer: 'term_search'
     end
   end
 
@@ -30,8 +29,7 @@ module Recommendable
       link: link,
       description: description,
       images: { original: image.url, mini: image.mini.url, thumb: image.thumb.url },
-      terms: terms.map(&:name),
-      terms_edge: terms.map(&:name)
+      terms: terms.map(&:name)
     }.as_json
   end
 
@@ -52,26 +50,12 @@ module Recommendable
         {
           size: size,
           query: {
-            bool: {
-              should: [
-                {
-                  match: {
-                    terms: {
-                      query: query,
-                      fuzziness: 1,
-                      prefix_length: 0
-                    }
-                  }
-                },
-                {
-                  match: {
-                    terms_edge: {
-                      boost: 10,
-                      query: query
-                    }
-                  }
-                }
-              ]
+            match: {
+              terms: {
+                query: query,
+                fuzziness: 1,
+                prefix_length: 4
+              }
             }
           }
         }
