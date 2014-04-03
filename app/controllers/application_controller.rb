@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_after_login
-    if session[:requested] && session[:requested][:at] > 10.minutes.ago
+    if session[:requested] && session[:requested][:at] && session[:requested][:at] > 10.minutes.ago
       requested_url = session[:requested][:url]
       session[:requested] = nil
       redirect_to requested_url
