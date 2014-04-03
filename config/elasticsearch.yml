@@ -5,11 +5,17 @@ analysis:
       filter:
       - lowercase
       - asciifolding
+      char_filter:
+      - hyphen
+      - phonetic_mappings
     term_search:
       tokenizer: keyword
       filter:
       - asciifolding
       - lowercase
+      char_filter:
+      - hyphen
+      - phonetic_mappings
   tokenizer:
     edge_ngram_2:
       type: edgeNGram
@@ -19,3 +25,14 @@ analysis:
       - letter
       - digit
       - whitespace
+  char_filter:
+    hyphen:
+      type: pattern_replace
+      pattern: "[-]"
+      replacement: ''
+    phonetic_mappings:
+      type: mapping
+      mappings:
+      - "û => y"
+      - "ph => f"
+      - "w => v"
