@@ -29,3 +29,7 @@ section.site-search {
     @include columns(4, true, 4%);
   }
 }
+
+section.not-found, section.server-error {
+  margin-top: 2em;
+}
