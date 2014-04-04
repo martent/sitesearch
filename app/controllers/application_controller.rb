@@ -4,57 +4,72 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :init_body_class
 
-  private
-
-  def init_body_class
-    add_body_class(Rails.env)
-    add_body_class("user") if current_user
-  end
-
-  # Adds classnames to the body tag
-  def add_body_class(name)
-    @body_classes ||= ""
-    @body_classes << "#{name} "
-  end
-
-  def reset_body_classes
-    @body_classes = nil
-    init_body_class
-  end
-
-  def sub_layout(name = "", options = {})
-    @sub_layout = name unless options[:except] == params[:action]
-  end
-
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-  end
-  helper_method :current_user
-
-  def authorize
-    if current_user.nil?
-      if !request.xhr?
-        session[:requested] = { url: request.fullpath, at: Time.now }
-      end
-      redirect_to login_path
-    end
-  end
-
-  def redirect_after_login
-    if session[:requested] && session[:requested][:at] && session[:requested][:at] > 10.minutes.ago
-      requested_url = session[:requested][:url]
-      session[:requested] = nil
-      redirect_to requested_url
+  rescue_from ArgumentError do |exception|
+    if exception.message == "invalid byte sequence in UTF-8"
+      # Silent rescue from IE9 UTF-8 url hacking bug, strip query and redirect to requested resource
+      logger.warn "<=IE9 UTF-8 bug rescued"
+      redirect_to controller: params[:controller], action: params[:action]
     else
-      redirect_to root_path
+      server_error
     end
   end
 
-  # IE bug fix: redirect to same action and add utf8="✓" if its not present but other query params are
-  def ie_utf_fix
-    if !request.xhr? && params[:action].present? &&
-          params.except(:action, :controller).present? && params[:utf8].blank?
-      return redirect_to({ action: params[:action], utf8: "✓"}.merge(params.except(:action, :controller)))
+  def page_not_found
+    respond_to do |format|
+      format.html { render template: 'errors/not_found_error', status: 404 }
+      format.all  { render nothing: true, status: 404 }
     end
   end
+
+  def server_error
+    respond_to do |format|
+      format.html { render template: 'errors/server_error', status: 500 }
+      format.all  { render nothing: true, status: 500}
+    end
+  end
+
+  private
+    def init_body_class
+      add_body_class(Rails.env)
+      add_body_class("user") if current_user
+    end
+
+    # Adds classnames to the body tag
+    def add_body_class(name)
+      @body_classes ||= ""
+      @body_classes << "#{name} "
+    end
+
+    def reset_body_classes
+      @body_classes = nil
+      init_body_class
+    end
+
+    def sub_layout(name = "", options = {})
+      @sub_layout = name unless options[:except] == params[:action]
+    end
+
+    def current_user
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    end
+    helper_method :current_user
+
+    def authorize
+      if current_user.nil?
+        if !request.xhr?
+          session[:requested] = { url: request.fullpath, at: Time.now }
+        end
+        redirect_to login_path
+      end
+    end
+
+    def redirect_after_login
+      if session[:requested] && session[:requested][:at] && session[:requested][:at] > 10.minutes.ago
+        requested_url = session[:requested][:url]
+        session[:requested] = nil
+        redirect_to requested_url
+      else
+        redirect_to root_path
+      end
+    end
 end

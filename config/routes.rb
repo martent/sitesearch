@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   resources :recommendations
   resources :terms
 
+  match '404', to: 'application#page_not_found', via: :all
+  match ':status', to: 'application#server_error', constraints: { status: /\d{3}/ }, via: :all
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
