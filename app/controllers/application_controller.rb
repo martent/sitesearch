@@ -14,11 +14,11 @@ class ApplicationController < ActionController::Base
     end
   end
   rescue_from ActionController::RoutingError,
-      ActionController::UnknownController,
-      ::AbstractController::ActionNotFound,
-      ActiveRecord::RecordNotFound, with: lambda { |exception| not_found(exception.message) }
+    ActionController::UnknownController,
+    ::AbstractController::ActionNotFound,
+    ActiveRecord::RecordNotFound, with: lambda { |exception| not_found(exception.message) }
 
-  def not_found(msg)
+  def not_found(msg = "Sidan kunde inte hittas")
     logger.info msg
     respond_to do |format|
       format.html { render template: 'errors/not_found_error', status: 404 }
@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def server_error(msg)
+  def server_error(msg = "Ett fel inträffade")
     logger.error msg
     respond_to do |format|
       format.html { render template: 'errors/server_error', status: 500 }
