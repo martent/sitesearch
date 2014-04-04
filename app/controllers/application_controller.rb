@@ -4,24 +4,30 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :init_body_class
 
-  rescue_from ArgumentError do |exception|
-    if exception.message == "invalid byte sequence in UTF-8"
+  rescue_from Exception do |exception|
+    if exception.is_a?(ArgumentError) && exception.message == "invalid byte sequence in UTF-8"
       # Silent rescue from IE9 UTF-8 url hacking bug, strip query and redirect to requested resource
       logger.warn "<=IE9 UTF-8 bug rescued"
       redirect_to controller: params[:controller], action: params[:action]
     else
-      server_error
+      server_error(exception.message)
     end
   end
+  rescue_from ActionController::RoutingError,
+      ActionController::UnknownController,
+      ::AbstractController::ActionNotFound,
+      ActiveRecord::RecordNotFound, with: lambda { |exception| not_found(exception.message) }
 
-  def page_not_found
+  def not_found(msg)
+    logger.info msg
     respond_to do |format|
       format.html { render template: 'errors/not_found_error', status: 404 }
       format.all  { render nothing: true, status: 404 }
     end
   end
 
-  def server_error
+  def server_error(msg)
+    logger.error msg
     respond_to do |format|
       format.html { render template: 'errors/server_error', status: 500 }
       format.all  { render nothing: true, status: 500}
