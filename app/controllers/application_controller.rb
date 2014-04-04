@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     ActiveRecord::RecordNotFound, with: lambda { |exception| not_found(exception.message) }
 
   def not_found(msg = "Sidan kunde inte hittas")
-    logger.info msg
+    logger.warn msg
     respond_to do |format|
       format.html { render template: 'errors/not_found_error', status: 404 }
       format.all  { render nothing: true, status: 404 }
