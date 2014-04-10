@@ -1,4 +1,5 @@
 class SearchController < ApplicationController
+  protect_from_forgery except: :autocomplete
   before_action :search_client
 
   def index
