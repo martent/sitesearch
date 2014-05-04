@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/plataformatec/simple_form.git
+  revision: d7306558665d38fe3a0c277ce263e99f635958de
+  specs:
+    simple_form (3.1.0.rc1)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -237,9 +245,6 @@ GEM
     sawyer (0.5.4)
       addressable (~> 2.3.5)
       faraday (~> 0.8, < 0.10)
-    simple_form (3.0.2)
-      actionpack (~> 4.0)
-      activemodel (~> 4.0)
     siteseeker_normalizer (0.1.1)
       nokogiri (~> 1.5)
     slop (3.5.0)
@@ -321,7 +326,7 @@ DEPENDENCIES
   rb-fsevent
   rspec-rails
   sass-rails (~> 4.0.2)
-  simple_form (~> 3.0.1)
+  simple_form (~> 3.1.0.rc1)!
   siteseeker_normalizer (= 0.1.1)
   spring
   spring-commands-rspec
