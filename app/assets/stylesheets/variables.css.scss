@@ -25,7 +25,7 @@ $backgroundDark: #888;
 $backgroundDarker: darken($backgroundDark, 34%);
 
 // Title bars for boxes
-$boxTitleBackground: $backgroundDarker;
+$boxTitleBackground: darken($backgroundDark, 18%);
 $boxTitleColor: white;
 $boxTriggersHightligt: lighten(#666, 14%);
 
