@@ -1,7 +1,7 @@
-= simple_form_for @recommendation, html: { class: "form-horizontal", id: "edit-recommendation" } do |f|
+= simple_form_for @recommendation, html: { class: "basic", id: "edit-recommendation" } do |f|
   = f.error_notification class: "warning"
 
-  .form-inputs
+  .form-group
     = f.input :name, input_html: { class: "input-wide" }
     = f.input :link, input_html: { class: "input-wide" }
     = f.input :description, input_html: { class: "input-wide" }
