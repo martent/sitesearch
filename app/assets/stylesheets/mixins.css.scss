@@ -71,7 +71,7 @@
 
 // Use with a media query to disable the hz mode below a breakpoint
 @mixin form-force-vertical() {
-  .form-horizontal {
+  .mf-v2 form.basic .form-group {
     .control-label {
       display: block;
       width: 100%;
@@ -85,11 +85,11 @@
 }
 
 @mixin rotate($deg) {
-  -webkit-transform: rotate(#{$deg}deg);
-  -moz-transform: rotate(#{$deg}deg);
-  -ms-transform: rotate(#{$deg}deg);
-  -o-transform: rotate(#{$deg}deg);
-  transform: rotate(#{$deg}deg);
+  -webkit-transform: rotate($deg);
+  -moz-transform: rotate($deg);
+  -ms-transform: rotate($deg);
+  -o-transform: rotate($deg);
+  transform: rotate($deg);
 }
 
 @mixin clearfix() {
