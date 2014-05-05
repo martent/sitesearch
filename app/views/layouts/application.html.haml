@@ -16,14 +16,14 @@
     %link{ rel: 'icon', type: 'image/x-icon', href: "#{APP_CONFIG['assets_url_base']}favicon.ico" }
     = csrf_meta_tags
   %body.mf-v2{ class: @body_classes }
+    - if current_user
+      %nav.app
+        = link_to "Rekommendationer", recommendations_path
+        = link_to "Sökord", terms_path
+        = link_to "#{current_user.name}", users_path, class: "username"
+        = link_to "Logga ut", logout_path, class: "logout"
     .wrapper
       = render "layouts/breadcrumbs"
-      - if current_user
-        %nav.app
-          = link_to "Rekommendationer", recommendations_path
-          = link_to "Sökord", terms_path
-          = link_to "#{current_user.name}", users_path, class: "username"
-          = link_to "Logga ut", logout_path, class: "logout"
       - flash.each do |key, value|
         %p{ class: "flash #{key}" }= value
       = yield

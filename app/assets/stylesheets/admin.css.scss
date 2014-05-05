@@ -1,18 +1,12 @@
 nav.app {
-  position: absolute;
-  top: 3.5em;
-  right: 1em;
-  z-index: 1000;
+  text-align: right;
   font-family: $sansSerif;
   font-size: emize(14);
   a {
     margin-right: 1em;
   }
   a.username {
-    margin-left: 2em;
-  }
-  a.logout {
-    margin-right: 0;
+    margin-left: 1.5em;
   }
 }
 
@@ -40,5 +34,10 @@ nav.app {
   }
   .control-group.image_preview {
     margin-bottom: 0;
+  }
+}
+.user {
+  .wrapper {
+    margin-top: 0;
   }
 }
