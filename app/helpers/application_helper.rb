@@ -39,10 +39,10 @@ module ApplicationHelper
   end
 
   def delete_icon_text
-    raw "#{content_tag(:span, nil, class: 'icon-trash icon-large')} Radera"
+    raw "#{content_tag(:span, nil, class: 'fa fa-trash-o')} Radera"
   end
 
   def add_icon_text
-    raw "#{content_tag(:span, nil, class: 'icon-plus')} Lägg till"
+    raw "#{content_tag(:span, nil, class: 'fa fa-plus')} Lägg till"
   end
 end
