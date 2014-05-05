@@ -2,9 +2,9 @@
   = f.error_notification class: "warning"
 
   .form-group
-    = f.input :name, input_html: { class: "input-wide" }
-    = f.input :link, input_html: { class: "input-wide" }
-    = f.input :description, input_html: { class: "input-wide" }
+    = f.input :name
+    = f.input :link
+    = f.input :description
     = f.input :image, as: :image_preview, input_html: { preview_version: :thumb }
     - if @recommendation.image.present?
       = f.input :remove_image, as: :boolean, label: false, inline_label: true
@@ -13,12 +13,13 @@
     .terms
       = f.simple_fields_for :terms do |t|
         = render "fields_for_terms", t: t
-      .control-group
+      .form-group
+        %span.control-label
         .controls
           = add_terms_button "Lägg till", f
 
-  .control-group
-    .form-group= " "
+  .form-group
+    %span.control-label
     .controls
       = f.button :submit, class: 'btn btn-primary'
       = link_to t('actions.cancel'), recommendations_path, class: "btn btn-default"

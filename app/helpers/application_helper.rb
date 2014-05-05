@@ -21,7 +21,7 @@ module ApplicationHelper
     fields = form.simple_fields_for(:terms, new_term, child_index: id) do |t|
       render("fields_for_terms", t: t)
     end
-    form.button :button, type: :button, name: nil, class: "add-term", data: {id: id, fields: fields.gsub("\n", "")} do
+    form.button :button, type: :button, name: nil, class: "btn btn-default add-term", data: {id: id, fields: fields.gsub("\n", "")} do
       "Lägg till"
     end
   end
