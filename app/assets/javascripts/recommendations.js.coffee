@@ -1,2 +1,2 @@
 $ ->
-  $("#q").focus() unless $("#q").val().length
+  $("#q").focus() unless !$("#q").length or $("#q").val().length

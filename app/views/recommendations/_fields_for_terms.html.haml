@@ -1,7 +1,6 @@
-%span.control-label
-= t.input :name, label: false, wrapper: :addon_after do
+= t.input :name, label: false, wrapper: :addon do
+  = t.input_field :_destroy, as: :hidden
   = t.input_field :name, class: "form-control"
   %span.input-group-btn
     %button.btn.btn-default.remove{ type: :button }
       %span.fa.fa-times
-= t.input_field :_destroy, as: :hidden
