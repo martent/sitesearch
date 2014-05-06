@@ -1,4 +1,4 @@
-- cache ["search-results", params], expires_in: 12.hour do
+- cache ["search-results", params], expires_in: (@error.present? ? 0 : 12.hour) do
   - title "Sök på malmo.se"
   %main{ role: "main"}
     .search-and-results
