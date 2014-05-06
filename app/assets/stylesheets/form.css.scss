@@ -1,7 +1,7 @@
 main {
   form {
     label {
-      display: none;
+      display: none !important;
     }
     .q {
       border-top-left-radius: 3px !important;

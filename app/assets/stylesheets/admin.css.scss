@@ -7,6 +7,9 @@ nav.app {
   }
   a.username {
     margin-left: 1.5em;
+    @media (max-width: 32em) {
+      display: none;
+    }
   }
 }
 
@@ -34,6 +37,13 @@ nav.app {
   }
   .control-group.image_preview {
     margin-bottom: 0;
+  }
+  @media (max-width: 48em) {
+    td, th {
+      &.terms, &.auth {
+        display: none;
+      }
+    }
   }
 }
 .user {

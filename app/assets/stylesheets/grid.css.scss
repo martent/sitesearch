@@ -3,6 +3,9 @@
   margin: 0 auto;
   max-width: 55em;
   padding: 0 1em;
+  @media (max-width: 48em) {
+    max-width: 34em;
+  }
 }
 
 main {
@@ -12,10 +15,27 @@ main {
   .search-and-results {
     margin-bottom: 2em;
     @include columns(8, false, 4%);
+    @media (max-width: 48em) {
+      @include columns(12);
+    }
   }
 
   nav.basic {
     @include columns(4, true, 4%);
+    @media (max-width: 48em) {
+      @include columns(12);
+      li {
+        margin-bottom: .5em;
+      }
+      li.group {
+        margin-top: 2em;
+      }
+    }
+  }
+  @media (max-width: 48em) {
+    .filter {
+      display: block !important;
+    }
   }
 }
 

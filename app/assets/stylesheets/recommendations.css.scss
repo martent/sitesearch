@@ -3,6 +3,9 @@ main .recommendations {
     @include clearfix();
     .img-wrapper {
       @include columns(1.6);
+      @media (max-width: 34em) {
+        @include columns(2, false, 3%);
+      }
       img {
         margin: .1em 0 0;
         width: 100%;
@@ -11,6 +14,9 @@ main .recommendations {
     }
     .text {
       @include columns(10.4, true);
+      @media (max-width: 34em) {
+        @include columns(10, true, 3%);
+      }
       h2 {
         padding-top: 0;
       }
