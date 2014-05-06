@@ -1,6 +1,6 @@
 - cache ["search-results", params], expires_in: 12.hour do
   - title "Sök på malmo.se"
-  %section.site-search.body-copy
+  %section.site-search
     .search-and-results
       %h1= h1
       = render "form"
@@ -12,10 +12,10 @@
         - if @results.category_groups.present?
           %p.filter= link_to "Filtrera", "#filter"
         = render "suggestions"
-        %section.recommendations
+        %section.recommendations.body-copy
           %ul
             = render "recommendations"
-        %section.results
+        %section.results.body-copy
           %ul
             = render "editors_choice"
             = render "results"

@@ -17,7 +17,7 @@ section.site-search {
     }
   }
 
-  section.categories {
+  nav.basic {
     @include columns(4, true, 4%);
   }
 }
