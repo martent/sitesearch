@@ -1,9 +1,15 @@
 section.site-search {
   min-height: 10em;
-  form label {
-    font-family: $serif;
-    font-size: emize(24);
-    margin-bottom: .6em;
+  form {
+    label {
+      font-family: $serif;
+      font-size: emize(24);
+      margin-bottom: .6em;
+    }
+    .q {
+      border-top-left-radius: 3px !important;
+      border-bottom-left-radius: 3px !important;
+    }
   }
   .sort {
     margin: 0 0 .5em;
