@@ -6,10 +6,10 @@
     .search-and-results {
       @include columns(12);
     }
-    section.categories {
+    nav.categories {
       @include columns(12);
       li {
-        margin: 1em 0;
+        margin-bottom: .5em;
       }
       li.group {
         margin-top: 2em;

@@ -1,16 +1,23 @@
 section.site-search {
-  min-height: 10em;
   form {
     label {
       font-family: $serif;
-      font-size: emize(24);
-      margin-bottom: .6em;
+      font-size: emize(24, 14);
+      line-height: emize(29, 24);
+      margin-bottom: .3em;
     }
     .q {
       border-top-left-radius: 3px !important;
       border-bottom-left-radius: 3px !important;
     }
   }
+  .summary {
+    margin: .5em 0 1em;
+    font-family: $sansSerif;
+    font-size: emize(14);
+    line-height: 1.3;
+  }
+
   .sort {
     margin: 0 0 .5em;
     padding: 0;
