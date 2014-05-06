@@ -1,7 +1,7 @@
 section.site-search {
   .results, .recommendations {
     margin-top: 1.5em;
-    ul {
+    ul, ol {
       margin: 0;
     }
     h2 {
@@ -10,14 +10,14 @@ section.site-search {
     li {
       margin: 0 0 2em;
     }
-    ul, li {
+    ul, ol, li {
       list-style: none;
       margin-left: 0;
       padding-left: 0;
     }
     .file_info {
       font-family: $sansSerif;
-      font-size: emize(16, 22);
+      font-size: emize(16, 25);
     }
     .extract {
       margin-bottom: .3em;
