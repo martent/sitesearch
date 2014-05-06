@@ -10,7 +10,7 @@ gem 'jquery-rails', '~> 3.1.0'
 gem 'jbuilder', '~> 2.0'
 
 # gem 'simple_form', '~> 3.0.1'
-gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form'
+gem 'simple_form', '~> 3.1.0.rc1', :git => 'https://github.com/plataformatec/simple_form'
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 3.7.0'
 
