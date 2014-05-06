@@ -2,7 +2,7 @@
   .wrapper {
     max-width: 34em;
   }
-  section.site-search {
+  main {
     .search-and-results {
       @include columns(12);
     }
@@ -28,7 +28,7 @@
   }
 }
 @media ( max-width: 34em ) {
-  section.site-search .recommendations li {
+  main .recommendations li {
     .img-wrapper {
       @include columns(2, false, 3%);
     }

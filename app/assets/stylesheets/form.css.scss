@@ -1,10 +1,7 @@
-section.site-search {
+main {
   form {
     label {
-      font-family: $serif;
-      font-size: emize(36, 14);
-      line-height: emize(40, 36);
-      margin: .1em 0 .3em;
+      display: none;
     }
     .q {
       border-top-left-radius: 3px !important;

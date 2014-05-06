@@ -1,6 +1,6 @@
 $ ->
   # Event tracking of details for selected link in the search results
-  $('body').on "click", "section.site-search h2 a, section.site-search .recommendations a, section.site-search .ess-bestbets a, section.site-search ul.breadcrumb a, section.site-search .categories a", (event) ->
+  $('body').on "click", "main h2 a, main .recommendations a, main .ess-bestbets a, main ul.breadcrumb a, main .categories a", (event) ->
     $a = $(@)
     if typeof gaDelayEvent is "function" then gaDelayEvent($a, event)
     link = $a.attr('href')

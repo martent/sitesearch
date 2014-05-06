@@ -5,16 +5,13 @@
   padding: 0 1em;
 }
 
-section.site-search {
+main {
   margin: 0 auto 0;
   @include clearfix();
 
   .search-and-results {
-    margin: .1em 0 2em;
+    margin-bottom: 2em;
     @include columns(8, false, 4%);
-    h1 {
-      display: none;
-    }
   }
 
   nav.basic {

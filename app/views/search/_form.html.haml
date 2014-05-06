@@ -1,6 +1,6 @@
 = form_tag(search_path, method: "get", id: "full-search") do
   %fieldset
-    = label_tag "q", "#{h1} ", class: "control-label"
+    = label_tag "q", "#{h1} "
     .input-group
       = text_field_tag :q, @terms, { placeholder: "Ange ett eller flera sökord", class: "q form-control",
         data: { "autocomplete-url" => search_autocomplete_path,
