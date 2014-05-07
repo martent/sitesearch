@@ -71,7 +71,7 @@
 
 // Use with a media query to disable the hz mode below a breakpoint
 @mixin form-force-vertical() {
-  .mf-v2 form.basic .form-group {
+  .mf-v3 form.basic .form-group {
     .control-label {
       display: block;
       width: 100%;
