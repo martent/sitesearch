@@ -14,9 +14,6 @@ nav.app {
 }
 
 .admin {
-  .fa-times {
-    color: $danger-color;
-  }
   div.terms {
     border-bottom: $border;
     padding-bottom: 1em;
@@ -24,12 +21,20 @@ nav.app {
     .control-group {
       margin: .2em 0;
     }
+    .remove {
+      .m-icon-close-0 {
+        display: inline-block;
+        background-position: 50%;
+        width: 1em;
+        height: 1em;
+      }
+    }
   }
   button.btn {
     margin-left: 0;
   }
   .duplicate {
-    color: red;
+    color: #c00;
   }
   input.image_preview {
     display: block;
