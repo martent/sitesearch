@@ -1,4 +1,3 @@
-@import
-  'variables', 'mixins', 'functions',
-  'grid', 'form', 'results', 'recommendations', 'categories',
-  'admin';
+@import 'malmo_external',
+        'grid', 'form', 'results', 'recommendations', 'categories',
+        'admin';

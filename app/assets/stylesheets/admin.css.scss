@@ -1,6 +1,6 @@
 nav.app {
   text-align: right;
-  font-family: $sansSerif;
+  font-family: $sans-serif;
   font-size: emize(14);
   a {
     margin-right: 1em;
@@ -15,7 +15,7 @@ nav.app {
 
 .admin {
   .fa-times {
-    color: $dangerColor;
+    color: $danger-color;
   }
   div.terms {
     border-bottom: $border;
