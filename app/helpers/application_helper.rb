@@ -37,12 +37,4 @@ module ApplicationHelper
     words = alt ? I18n.t("number_words_alt") : I18n.t("number_words")
     words[number] ? words[number] : number.to_s
   end
-
-  def delete_icon_text
-    raw "#{content_tag(:span, nil, class: 'fa fa-trash-o')} Radera"
-  end
-
-  def add_icon_text
-    raw "#{content_tag(:span, nil, class: 'fa fa-plus')} Lägg till"
-  end
 end
