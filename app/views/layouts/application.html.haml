@@ -15,7 +15,7 @@
       = stylesheet_link_tag "#{APP_CONFIG['assets_url_base']}legacy/ie8.css", media: 'all'
     %link{ rel: 'icon', type: 'image/x-icon', href: "#{APP_CONFIG['assets_url_base']}favicon.ico" }
     = csrf_meta_tags
-  %body.mf-v3{ class: @body_classes }
+  %body.mf-v4{ class: @body_classes }
     - if current_user
       %nav.app
         = link_to "Rekommendationer", recommendations_path
