@@ -11,6 +11,7 @@
 main {
   margin: 0 auto 0;
   @include clearfix();
+  clear: left;
 
   .search-and-results {
     margin-bottom: 2em;

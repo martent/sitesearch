@@ -2,10 +2,15 @@ main {
   form {
     label {
       display: none !important;
+      // IE7 hack
+      *display: inline !important;
+      *visibility: hidden;
     }
     .q {
       border-top-left-radius: 3px !important;
       border-bottom-left-radius: 3px !important;
+      *height: 25px !important;
+      *width: 30em !important;
     }
   }
   .summary {
