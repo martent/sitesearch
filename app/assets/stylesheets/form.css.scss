@@ -9,6 +9,7 @@ main {
     .q {
       border-top-left-radius: 3px !important;
       border-bottom-left-radius: 3px !important;
+      // IE7 hack
       *height: 25px !important;
       *width: 30em !important;
     }
