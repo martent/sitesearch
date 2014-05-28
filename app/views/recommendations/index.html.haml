@@ -1,7 +1,7 @@
 - title "Rekommendationer"
 %section.box.index
   %h1.box-title= h1
-  .box-content.body-copy
+  .box-content
     .table-wrapper
     %table.full
       %thead
@@ -16,7 +16,6 @@
             %td.terms= recommendation.terms.map(&:name).join(", ")
             %td.delete
               %a.btn.btn-danger.btn-xs{ href: recommendation, data: { confirm: 'Är du säker?', method: :delete }}
-                %span.m-icon-remove-0
                 = "Radera"
 
         %tr
