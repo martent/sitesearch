@@ -1,16 +1,15 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.0.rc2'
-gem 'activerecord-session_store', '~> 0.1.0'
+gem 'rails', '4.1.1'
 gem 'haml-rails', '~> 0.5.3'
 gem 'sass-rails', '~> 4.0.2'
 gem 'uglifier', '~> 2.5.0'
 gem 'coffee-rails', '~> 4.0.1'
 # gem 'therubyracer',  platforms: :ruby
 gem 'jquery-rails', '~> 3.1.0'
-gem 'jbuilder', '~> 2.0'
+# gem 'jbuilder', '~> 2.0'
 
-gem 'simple_form', '~> 3.0.1'
+gem 'simple_form', '~> 3.1.0.rc1', :git => 'https://github.com/plataformatec/simple_form'
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 3.7.0'
 

@@ -1,14 +1,16 @@
 - if @results.present? && @results.category_groups.present?
-  %section.categories#filter
+  %nav.basic.categories#filter
     %h1= "Hela webbplatsen"
     %ul
       %li{ class: (@results.category_all.current? ? "current" : nil)}
-        = link_to "Totalt", "#{search_path}?#{@results.category_all.query}"
-        %span.hits= "(#{@results.category_all.hits})"
+        %a{ href: "#{search_path}?#{@results.category_all.query}" }
+          = "Totalt"
+          %span.hits= "(#{@results.category_all.hits})"
     - @results.category_groups.each do |category_group|
       %h1= category_group.title
       %ul
         - category_group.categories.each do |category|
           %li{ class: (category.current? ? "current" : nil)}
-            = link_to category.title, "#{search_path}?#{category.query}"
-            %span.hits= "(#{category.hits})"
+            %a{ href: "#{search_path}?#{category.query}" }
+              = category.title
+              %span.hits= "(#{category.hits})"

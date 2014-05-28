@@ -1,10 +1,10 @@
 - @results.entries.each do |entry|
   %li
-    %h2
+    %h2.body-copy
       - unless entry.content_type == "html"
         %span.file_info= "[#{entry.content_type}]"
       = link_to entry.title, entry.url
-    %p.extract
+    %p.extract.body-copy
       = entry.summary
       %span.date= entry.date
 
@@ -15,4 +15,6 @@
           %li= link_to breadcrumb.text, breadcrumb.url
 
 - if @results.more_query.present?
-  %li#load-more-search-results= link_to "Visa fler träffar", "#{search_path}?#{@results.more_query}", class: "btn"
+  %li#load-more-search-results
+    %ul.pagination
+      %li= link_to "Visa fler träffar", "#{search_path}?#{@results.more_query}"

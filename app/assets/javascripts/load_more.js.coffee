@@ -4,4 +4,4 @@ $ ->
     event.preventDefault()
     $.get $('#load-more-search-results a').attr("href"), (data) ->
       $('#load-more-search-results').replaceWith(data)
-    $(this).text("Laddar fler...").addClass('disabled')
+    $(this).text("Laddar fler...").closest("li").addClass('disabled')

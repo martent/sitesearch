@@ -1,23 +1,25 @@
-= simple_form_for @recommendation, html: { class: "form-horizontal", id: "edit-recommendation" } do |f|
+= simple_form_for @recommendation, html: { class: "basic", id: "edit-recommendation" } do |f|
   = f.error_notification class: "warning"
 
-  .form-inputs
-    = f.input :name, input_html: { class: "input-wide" }
-    = f.input :link, input_html: { class: "input-wide" }
-    = f.input :description, input_html: { class: "input-wide" }
+  .form-group
+    = f.input :name
+    = f.input :link
+    = f.input :description
     = f.input :image, as: :image_preview, input_html: { preview_version: :thumb }
     - if @recommendation.image.present?
       = f.input :remove_image, as: :boolean, label: false, inline_label: true
 
-    %h2.form-group-title Sökord
+    %h2.group-title Sökord
     .terms
       = f.simple_fields_for :terms do |t|
         = render "fields_for_terms", t: t
-      .control-group
+      .form-group
+        %span.control-label
         .controls
           = add_terms_button "Lägg till", f
 
-  .control-group
+  .form-group
+    %span.control-label
     .controls
-      = f.button :submit, :class => 'btn-primary'
-      = link_to t('actions.cancel'), recommendations_path, class: "btn"
+      = f.button :submit, class: 'btn btn-primary'
+      = link_to t('actions.cancel'), recommendations_path, class: "btn btn-default"

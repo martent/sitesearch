@@ -11,18 +11,19 @@
       = javascript_include_tag "#{APP_CONFIG['assets_url_base']}html5shiv-printshiv.js"
     = stylesheet_link_tag "#{APP_CONFIG['assets_url_base']}malmo.css", media: 'all'
     = stylesheet_link_tag 'application', media: 'all'
-    /[if lte IE 7]
-      = stylesheet_link_tag "#{APP_CONFIG['assets_url_base']}legacy/ie7.css", media: 'all'
+    /[if lte IE 8]
+      = stylesheet_link_tag "#{APP_CONFIG['assets_url_base']}legacy/ie8.css", media: 'all'
     %link{ rel: 'icon', type: 'image/x-icon', href: "#{APP_CONFIG['assets_url_base']}favicon.ico" }
     = csrf_meta_tags
-  %body.malmo-form{ class: @body_classes }
+  %body.mf-v4{ class: @body_classes }
+    - if current_user
+      %nav.app
+        = link_to "Rekommendationer", recommendations_path
+        = link_to "Sökord", terms_path
+        = link_to "#{current_user.name}", users_path, class: "username"
+        = link_to "Logga ut", logout_path, class: "logout"
     .wrapper
-      - if current_user
-        %nav.app
-          = link_to "Rekommendationer", recommendations_path
-          = link_to "Sökord", terms_path
-          = link_to "#{current_user.name}", users_path, class: "username"
-          = link_to "Logga ut", logout_path, class: "logout"
+      = render "layouts/breadcrumbs"
       - flash.each do |key, value|
         %p{ class: "flash #{key}" }= value
       = yield

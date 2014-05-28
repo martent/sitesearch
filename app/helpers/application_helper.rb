@@ -21,7 +21,7 @@ module ApplicationHelper
     fields = form.simple_fields_for(:terms, new_term, child_index: id) do |t|
       render("fields_for_terms", t: t)
     end
-    form.button :button, type: :button, name: nil, class: "add-term", data: {id: id, fields: fields.gsub("\n", "")} do
+    form.button :button, type: :button, name: nil, class: "btn btn-default add-term", data: {id: id, fields: fields.gsub("\n", "")} do
       "Lägg till"
     end
   end
@@ -36,13 +36,5 @@ module ApplicationHelper
   def number_to_words(number, alt = false)
     words = alt ? I18n.t("number_words_alt") : I18n.t("number_words")
     words[number] ? words[number] : number.to_s
-  end
-
-  def delete_icon_text
-    raw "#{content_tag(:span, nil, class: 'icon-trash icon-large')} Radera"
-  end
-
-  def add_icon_text
-    raw "#{content_tag(:span, nil, class: 'icon-plus')} Lägg till"
   end
 end

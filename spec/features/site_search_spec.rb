@@ -13,7 +13,7 @@ describe "SiteSearch" do
 
   describe "results" do
     before(:each) do
-      @query = "semester lön"
+      @query = "felanmälan"
       visit "/search?#{ {q: @query}.to_query}"
     end
 
@@ -42,19 +42,19 @@ describe "SiteSearch" do
     end
 
     it "should have results with linked headings" do
-      page.should have_selector(".results > ul > li:first-child  h2 a")
+      page.should have_selector(".results > ol > li:first-child  h2 a")
     end
 
     it "should have a results entry with extracts" do
-      page.should have_selector(".results > ul > li:first-child .extract")
+      page.should have_selector(".results > ol > li:first-child .extract")
     end
 
     it "should have a results entry with a category" do
-      page.should have_selector(".results > ul > li:first-child .category")
+      page.should have_selector(".results > ol > li:first-child .category")
     end
 
     it "should have a results entry a breadcrumb" do
-      page.should have_selector(".results ul li .breadcrumb")
+      page.should have_selector(".results ol li .breadcrumb")
     end
 
     it "should have a load more link" do

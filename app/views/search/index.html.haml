@@ -1,8 +1,8 @@
-- cache ["search-results", params], expires_in: 12.hour do
+- cache ["search-results", params], expires_in: (@error.present? ? 0 : 12.hour) do
   - title "Sök på malmo.se"
-  %section.site-search.body-copy
+  %main{ role: "main"}
     .search-and-results
-      %h1= h1
+      %h1.body-copy= h1
       = render "form"
       - if @error.present?
         .error= "Ett fel inträffade (#{@error})"
@@ -16,7 +16,7 @@
           %ul
             = render "recommendations"
         %section.results
-          %ul
+          %ol
             = render "editors_choice"
             = render "results"
     = render "categories"

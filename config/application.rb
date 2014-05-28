@@ -33,6 +33,12 @@ module Sitesearch
 
     config.exceptions_app = self.routes
 
+    config.assets.paths += [
+      Rails.root.join("vendor", "malmo_shared_assets", "stylesheets").to_s,
+      Rails.root.join("vendor", "malmo_shared_assets", "stylesheets", "shared").to_s,
+      Rails.root.join("vendor", "malmo_shared_assets", "stylesheets", "external").to_s
+    ]
+
     # config.generators do |g|
     #   g.template_engine :haml
     #   g.test_framework :rspec

@@ -1,41 +1,47 @@
 nav.app {
-  position: absolute;
-  top: -2.5em;
-  right: 0em;
-  z-index: 1000;
-  font-family: $sansSerif;
-  font-size: emize(13);
+  text-align: right;
+  font-family: $sans-serif;
+  font-size: emize(14);
   a {
     margin-right: 1em;
   }
   a.username {
-    margin-left: 2em;
-  }
-  a.logout {
-    margin-right: 0;
+    margin-left: 1.5em;
+    @media (max-width: 32em) {
+      display: none;
+    }
   }
 }
 
 .admin {
-  #malmo-masthead {
-    margin-bottom: 2em;
-  }
-  .icon-remove {
-    color: $dangerColor;
-  }
-  .terms {
+  div.terms {
     border-bottom: $border;
     padding-bottom: 1em;
     margin-bottom: 1em;
     .control-group {
       margin: .2em 0;
     }
+    .remove {
+      .m-icon-close-0 {
+        display: inline-block;
+        background-position: 50%;
+        width: 1em;
+        height: 1em;
+      }
+    }
   }
   button.btn {
     margin-left: 0;
   }
+  .delete .m-icon-remove-0 {
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    background-size: 12px;
+    background-position: bottom;
+  }
   .duplicate {
-    color: red;
+    color: #c00;
   }
   input.image_preview {
     display: block;
@@ -43,5 +49,17 @@ nav.app {
   }
   .control-group.image_preview {
     margin-bottom: 0;
+  }
+  @media (max-width: 48em) {
+    td, th {
+      &.terms, &.auth {
+        display: none;
+      }
+    }
+  }
+}
+.user {
+  .wrapper {
+    margin-top: 0;
   }
 }

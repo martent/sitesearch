@@ -1,5 +1,6 @@
-= t.input :name, label: false, wrapper: :append do
-  = t.input_field :name
-  %button.btn.remove{ type: :button }
-    %span.icon-remove
+= t.input :name, label: false, wrapper: :addon do
   = t.input_field :_destroy, as: :hidden
+  = t.input_field :name, class: "form-control"
+  %span.input-group-btn
+    %button.btn.btn-default.remove{ type: :button }
+      %span.m-icon-close-0
