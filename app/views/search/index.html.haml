@@ -5,8 +5,8 @@
       %h1.body-copy= h1
       = render "form"
       - if @error.present?
-        .error= "Ett fel inträffade (#{@error})"
-      - if @results.present?
+        .error= "Ett fel inträffade med SiteSeeker"
+      - elsif @results.present?
         = render "summary"
         = render "sort"
         - if @results.category_groups.present?
@@ -19,4 +19,5 @@
           %ol
             = render "editors_choice"
             = render "results"
-    = render "categories"
+    - unless @error.present?
+      = render "categories"
