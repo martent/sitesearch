@@ -54,7 +54,7 @@ describe "SiteSearch" do
     end
 
     it "should have a results entry a breadcrumb" do
-      page.should have_selector(".results ol li .breadcrumb")
+      page.should have_selector(".results ol li .breadcrumbs")
     end
 
     it "should have a load more link" do
