@@ -39,7 +39,7 @@ group :test do
 end
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '2.14.2'
   gem 'spring'
   gem 'quiet_assets'
   gem 'thin'
