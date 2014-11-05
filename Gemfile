@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.6'
+gem 'rails', '~> 4.1.7'
 gem 'haml-rails', '~> 0.5.3'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '~> 2.5.3'
@@ -22,7 +22,7 @@ gem 'bcrypt-ruby', '~> 3.1.5'
 
 gem 'omniauth-github', '~> 1.1.2'
 gem 'octokit', '~> 3.3.1'
-gem 'siteseeker_normalizer', '0.1.3'
+gem 'siteseeker_normalizer', '~> 0.1.3'
 
 gem 'capistrano', '~> 3.2.1'
 gem 'capistrano-rails', '~> 1.1.2'
@@ -39,15 +39,13 @@ group :test do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '2.14.2'
-  gem 'spring'
+  gem 'rspec-rails', '~> 2.99.0'
   gem 'quiet_assets'
   gem 'thin'
 end
 
 group :development do
   gem 'pry-rails'
-  gem 'spring-commands-rspec'
 end
 
 gem 'unicorn', group: [ :test, :production ]
