@@ -3,13 +3,12 @@
 I18n.config.enforce_available_locales = false
 
 set :rbenv_type, :user
-set :rbenv_ruby, '2.1.2'
+set :rbenv_ruby, '2.1.3'
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 
 set :application, 'sitesearch'
 set :repo_url, "git@github.com:malmostad/#{fetch(:application)}.git"
-set :branch, "master"
 set :user, "deployer"
 set :deploy_to, "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
 set :scm, :git

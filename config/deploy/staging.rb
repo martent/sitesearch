@@ -1,13 +1,13 @@
-set :stage, :staging
+# set :stage, :staging
 
-# Simple Role Syntax
-# ==================
-# Supports bulk-adding hosts to roles, the primary
-# server in each group is considered to be the first
-# unless any hosts have the primary property set.
-role :app, %w{deployer@188.226.135.161}
-role :web, %w{deployer@188.226.135.161}
-role :db,  %w{deployer@188.226.135.161}
+# # Simple Role Syntax
+# # ==================
+# # Supports bulk-adding hosts to roles, the primary
+# # server in each group is considered to be the first
+# # unless any hosts have the primary property set.
+# role :app, %w{deployer@188.226.135.161}
+# role :web, %w{deployer@188.226.135.161}
+# role :db,  %w{deployer@188.226.135.161}
 
 # Extended Server Syntax
 # ======================

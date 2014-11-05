@@ -306,7 +306,7 @@ DEPENDENCIES
   poltergeist
   pry-rails
   quiet_assets
-  rails (= 4.1.7)
+  rails (~> 4.1.7)
   rb-fsevent
   rspec-rails (~> 2.99.0)
   sass-rails (~> 4.0.3)
