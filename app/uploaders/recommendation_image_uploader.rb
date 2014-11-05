@@ -10,7 +10,7 @@ class RecommendationImageUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    ActionController::Base.helpers.asset_path("info.png")
+    "info.png"
   end
 
   version :mini do
