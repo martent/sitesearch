@@ -1,5 +1,5 @@
 set :rails_env, 'staging'
-set :branch, "2.1-internal"
+set :branch, "2.1-duo"
 set :stage, :staging_internal
 
 role :app, %w{deployer@}

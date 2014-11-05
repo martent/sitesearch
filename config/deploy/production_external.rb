@@ -1,5 +1,5 @@
 set :rails_env, 'production'
-set :branch, "2.1-external"
+set :branch, "2.1-duo"
 set :stage, :production_external
 
 role :app, %w{deployer@95.85.4.216}
