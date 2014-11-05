@@ -53,10 +53,6 @@ describe "SiteSearch" do
       page.should have_selector(".results > ol > li:first-child .category")
     end
 
-    it "should have a results entry a breadcrumb" do
-      page.should have_selector(".results ol li .breadcrumbs")
-    end
-
     it "should have a load more link" do
       page.should have_selector("#load-more-search-results", text: "Visa fler")
     end
