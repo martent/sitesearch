@@ -1,7 +1,12 @@
-set :rails_env, 'production'
-set :branch, "2.1-duo"
+set :rails_env, :production
 set :stage, :production_internal
+set :branch, "2.1-duo"
 
-role :app, %w{deployer@188.226.144.234}
-role :web, %w{deployer@188.226.144.234}
-role :db,  %w{deployer@188.226.144.234}
+server_address = "188.226.144.234"
+error_page_title = "Komin – Sök: Underhåll pågår"
+error_page_go_to_text = "Till Komins startsida"
+error_page_go_to = "https://komin.malmo.se/"
+
+role :app, ["deployer@#{server_address}"]
+role :web, ["deployer@#{server_address}"]
+role :db,  ["deployer@#{server_address}"]

@@ -3,8 +3,13 @@ upstream unicorn {
 }
 
 server {
+  server_name <%= server_address %>;
+
   listen 80 default deferred;
-  server_name s1.malmo.se;
+  listen 443 ssl;
+  ssl_certificate /etc/nginx/ssl/nginx.crt;
+  ssl_certificate_key /etc/nginx/ssl/nginx.key;
+
   root /home/deployer/apps/sitesearch/current/public;
 
   location ^~ /assets/ {

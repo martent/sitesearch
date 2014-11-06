@@ -1,4 +1,5 @@
 # https://github.com/capistrano/rbenv
+require 'erb'
 
 I18n.config.enforce_available_locales = false
 
@@ -69,7 +70,18 @@ namespace :deploy do
     end
   end
 
+  desc "Put audience specific files to server ('external' or 'internal')"
+  task :audience_specifics do
+    on roles(:app) do
+      nginx_config = ERB.new(File.read("config/nginx.conf.erb")).result(binding)
+      put nginx_config, "#{release_path}/config/nginx.conf"
+
+      error_page = ERB.new(File.read("public/500.html.erb")).result(binding)
+      put error_page, "#{release_path}/public/500.html"
+    end
+  end
+
   before :starting, "deploy:check_revision"
-  after :published, "deploy:full_restart"
+  after :published, "deploy:audience_specifics", "deploy:full_restart"
   after :finishing, "deploy:cleanup"
 end
