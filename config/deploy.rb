@@ -74,10 +74,10 @@ namespace :deploy do
   task :audience_specifics do
     on roles(:app) do
       nginx_config = ERB.new(File.read("config/nginx.conf.erb")).result(binding)
-      put nginx_config, "#{release_path}/config/nginx.conf"
+      upload! nginx_config, "#{release_path}/config/nginx.conf"
 
       error_page = ERB.new(File.read("public/500.html.erb")).result(binding)
-      put error_page, "#{release_path}/public/500.html"
+      upload! error_page, "#{release_path}/public/500.html"
     end
   end
 
