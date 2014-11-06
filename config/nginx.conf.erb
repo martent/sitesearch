@@ -3,7 +3,7 @@ upstream unicorn {
 }
 
 server {
-  server_name <%= server_address %>;
+  server_name <%= fetch(:server_address) %>;
 
   listen 80 default deferred;
   listen 443 ssl;

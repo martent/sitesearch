@@ -82,6 +82,7 @@ namespace :deploy do
   end
 
   before :starting, "deploy:check_revision"
-  after :published, "deploy:audience_specifics", "deploy:full_restart"
+  after :updated, "deploy:audience_specifics"
+  after :published, "deploy:full_restart"
   after :finishing, "deploy:cleanup"
 end
