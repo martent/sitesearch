@@ -14,9 +14,7 @@
           %tr
             %td= link_to recommendation.name, edit_recommendation_path(recommendation)
             %td.terms= recommendation.terms.map(&:name).join(", ")
-            %td.delete
-              %a.btn.btn-danger.btn-xs{ href: recommendation, data: { confirm: 'Är du säker?', method: :delete }}
-                = "Radera"
+            %td.delete= link_to "Radera", recommendation, class: "btn btn-danger btn-xs", data: { confirm: 'Är du säker?', method: :delete }
 
         %tr
           %td{ colspan: 3 }
