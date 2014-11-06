@@ -78,7 +78,27 @@ namespace :deploy do
     end
   end
 
-  before :starting, "deploy:check_revision"
+  desc "Are you sure?"
+  task :are_you_sure do
+    on roles(:app) do |server|
+      puts ""
+      puts "Audience:      \033[0;32m#{fetch(:audience)}\033[0m"
+      puts "Environment:   \033[0;32m#{fetch(:rails_env)}\033[0m"
+      puts "Remote branch: \033[0;32m#{fetch(:branch)}\033[0m"
+      puts "Server:        \033[0;32m#{server.hostname}\033[0m"
+      puts ""
+      puts "Do you want to deploy?"
+      set :continue, ask("[y/n]:", "n")
+      if fetch(:continue).downcase != 'y' && fetch(:continue).downcase != 'yes'
+        puts "Deployment stopped"
+        exit
+      else
+        puts "Deployment starting"
+      end
+    end
+  end
+
+  before :starting, "deploy:are_you_sure", "deploy:check_revision"
   after :updated, "deploy:audience_specifics"
   after :published, "deploy:full_restart"
   after :finishing, "deploy:cleanup"
