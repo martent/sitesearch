@@ -70,14 +70,11 @@ namespace :deploy do
     end
   end
 
-  desc "Put audience specific files to server ('external' or 'internal')"
+  desc "Upload audience specific files to server ('external' or 'internal')"
   task :audience_specifics do
     on roles(:app) do
-      nginx_config = ERB.new(File.read("config/nginx.conf.erb")).result(binding)
-      upload! nginx_config, "#{release_path}/config/nginx.conf"
-
-      error_page = ERB.new(File.read("public/500.html.erb")).result(binding)
-      upload! error_page, "#{release_path}/public/500.html"
+      upload! "config/nginx_#{fetch(:audience)}.conf", "#{release_path}/config/nginx.conf"
+      upload! "public/500_#{fetch(:audience)}.html", "#{release_path}/public/500.html"
     end
   end
 
