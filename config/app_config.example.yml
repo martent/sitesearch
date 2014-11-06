@@ -1,6 +1,7 @@
 defaults: &defaults
-  app_path: "/"
+  base_url: "http://malmo.se/"
   assets_url_base: "//www.local.malmo.se:3001/assets/"
+  search_title: "Sök på malmo.se"
   omniauth:
     github_team: 123
     github_key: abc
