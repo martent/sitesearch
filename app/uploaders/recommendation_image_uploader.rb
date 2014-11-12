@@ -10,7 +10,7 @@ class RecommendationImageUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    "/assets/info.png"
+    "/info.png"
   end
 
   version :mini do
