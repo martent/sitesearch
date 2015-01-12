@@ -17,17 +17,17 @@ describe "RecommendationImageUploader" do
 
   context 'the thumb version' do
     it "should scale down a landscape image to be exactly 64 by 64 pixels" do
-      @uploader.mini.should be_no_wider_than(100)
+      expect(@uploader.mini).to be_no_wider_than(100)
     end
   end
 
   context 'the mini version' do
     it "should scale down a landscape image to fit within 200 by 200 pixels" do
-      @uploader.mini.should be_no_wider_than(32)
+      expect(@uploader.mini).to be_no_wider_than(32)
     end
   end
 
   it "should make the image readable only to the owner and not executable" do
-    @uploader.should have_permissions(0644)
+    expect(@uploader).to have_permissions(0644)
   end
 end

@@ -10,43 +10,43 @@ describe Recommendation do
   end
 
   it "should be valid" do
-    build(:recommendation).should be_valid
+    expect(build(:recommendation)).to be_valid
   end
 
   it "should require a name" do
-    build(:recommendation, name: "").should_not be_valid
+    expect(build(:recommendation, name: "")).not_to be_valid
   end
 
   it "should require a link" do
-    build(:recommendation, link: "").should_not be_valid
+    expect(build(:recommendation, link: "")).not_to be_valid
   end
 
   it "should validate the name length" do
-    build(:recommendation, name: "fox barx" * 10).should_not be_valid
+    expect(build(:recommendation, name: "fox barx" * 10)).not_to be_valid
   end
 
   it "should validate the name uniqueness" do
     create(:recommendation, name: "fox")
-    build(:recommendation, name: "fox").should_not be_valid
+    expect(build(:recommendation, name: "fox")).not_to be_valid
   end
 
   it "should validate the description length" do
-    build(:recommendation, description: "123456789 " * 13).should_not be_valid
+    expect(build(:recommendation, description: "123456789 " * 13)).not_to be_valid
   end
 
   it "should validate the link uniqueness" do
     create(:recommendation, name: "example.org")
-    build(:recommendation, name: "example.org").should_not be_valid
+    expect(build(:recommendation, name: "example.org")).not_to be_valid
   end
 
   it "should add protocol to link" do
-    create(:recommendation, link: "example2.org").link.should include("http://")
+    expect(create(:recommendation, link: "example2.org").link).to include("http://")
   end
 
   it "should have a term" do
     recommendation = build(:recommendation)
     recommendation.terms << build(:term)
-    recommendation.terms.should be_present
+    expect(recommendation.terms).to be_present
   end
 
   it "should be destroyed" do

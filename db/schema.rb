@@ -16,19 +16,19 @@ ActiveRecord::Schema.define(version: 20140403202248) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "recommendations", force: true do |t|
-    t.string   "name"
-    t.string   "link"
+  create_table "recommendations", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "link",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image"
+    t.string   "image",       limit: 255
     t.text     "description"
   end
 
   add_index "recommendations", ["name"], name: "index_recommendations_on_name", unique: true, using: :btree
 
-  create_table "terms", force: true do |t|
-    t.string   "name"
+  create_table "terms", force: :cascade do |t|
+    t.string   "name",              limit: 255
     t.integer  "recommendation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -36,12 +36,12 @@ ActiveRecord::Schema.define(version: 20140403202248) do
 
   add_index "terms", ["recommendation_id"], name: "index_terms_on_recommendation_id", using: :btree
 
-  create_table "users", force: true do |t|
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "name"
-    t.string   "nickname"
-    t.string   "email"
+  create_table "users", force: :cascade do |t|
+    t.string   "provider",   limit: 255
+    t.string   "uid",        limit: 255
+    t.string   "name",       limit: 255
+    t.string   "nickname",   limit: 255
+    t.string   "email",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end

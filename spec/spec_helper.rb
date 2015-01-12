@@ -1,10 +1,8 @@
-require 'capybara/rspec'
-
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
+require 'capybara/rspec'
 require 'capybara/rails'
 require 'capybara/poltergeist'
 require 'carrierwave/test/matchers'
@@ -22,6 +20,9 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 OmniAuth.config.test_mode = true
 
 RSpec.configure do |config|
+  config.raise_errors_for_deprecations!
+  config.infer_spec_type_from_file_location!
+
   config.mock_with :rspec
   config.include Capybara::DSL
   config.include FactoryGirl::Syntax::Methods
