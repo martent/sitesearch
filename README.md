@@ -1,10 +1,9 @@
 # Site Search
 
-A Ruby on Rails app for the site search on the City of Malmo. Search recommendations (editors choice) are managed in the application. The [siteseeker_normalizer](https://github.com/malmostad/siteseeker_normalizer) gem is used for the Siteseeker integration part.
+A Ruby on Rails app for the site search on the City of Malmo. Search recommendations (editors choice) are managed in the application. The [siteseeker_normalizer](https://github.com/malmostad/siteseeker_normalizer) Ruby Gem is used for the Siteseeker integration part.
 
 ## Dependencies
-* Ruby 2.1
-* Rails
+* Ruby 2
 * PostgreSQL
 * ElasticSearch 1.x
 * Memcached
@@ -28,7 +27,7 @@ $ bundle exec cap production_internal deploy
 Run tests before pushing to the repository and performing deployments. The application contains high level integration/feature tests and unit tests using RSpec, Capybara and PhantomJS. To run all test cases:
 
 ```shell
-$ rspec
+$ bundle exec rspec
 ```
 Or during development:
 
