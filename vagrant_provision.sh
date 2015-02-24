@@ -45,7 +45,5 @@ sudo -u postgres createdb -O vagrant sitesearch_test --encoding=UTF8 --locale=sv
 
 install nodejs nodejs
 install npm npm
-# npm install -g bower
-# npm install -g grunt --save-dev
-# npm install -g grunt-cli --save-dev
-# npm install grunt-grunticon --save-dev
+
+install "rbenv requirements" libffi-dev

@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
 echo User `whoami` is provisioning
+echo $HOME
+export PATH="$HOME/.rbenv/bin:$PATH"
+echo $PATH
+rbenv -v
+rbenv versions
 
 function install {
     echo installing $1
@@ -12,7 +17,7 @@ echo Installing rbenv
 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
+export PATH="$HOME/.rbenv/bin:$PATH"
 
 # echo Installing Ruby version as specified in project
 RUBY_VERSION=`cat /vagrant/.ruby-version`
