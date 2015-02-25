@@ -32,9 +32,8 @@ install memcached memcached
 locale-gen sv_SE.UTF-8
 install PostgreSQL postgresql postgresql-client postgresql-contrib libpq-dev
 
-/etc/init.d/postgresql stop
-
 # Remove default postgres db and create new with sv_SE.UTF-8
+/etc/init.d/postgresql stop
 rm -rf /var/lib/postgresql/9.3/main
 sudo -u postgres /usr/lib/postgresql/9.3/bin/initdb -D /var/lib/postgresql/9.3/main --encoding=UTF8 --lc-collate=sv_SE.UTF-8 --lc-ctype=sv_SE.UTF-8
 
@@ -45,5 +44,6 @@ sudo -u postgres createdb -O vagrant sitesearch_test --encoding=UTF8 --locale=sv
 
 install nodejs nodejs
 install npm npm
-
-install "rbenv requirements" libffi-dev
+install "phantomjs, for specs" phantomjs
+install "Ruby dependencies" libreadline-dev
+install "rbenv requirement for Ruby 2.2.0" libffi-dev

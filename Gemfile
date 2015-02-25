@@ -41,6 +41,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.2.0'
   gem 'quiet_assets'
   gem 'thin'
+  gem 'rb-readline'
 end
 
 group :development do
