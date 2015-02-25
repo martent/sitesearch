@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-update-locale LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8
 echo User `whoami` is provisioning
 
 function install {
@@ -9,41 +8,39 @@ function install {
     apt-get -y install "$@"
 }
 
-echo Adding elasticsearch repo
-wget -qO - https://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add -
-add-apt-repository -y "deb http://packages.elasticsearch.org/elasticsearch/1.4/debian stable main"
+echo "Adding Postgres repo"
+add-apt-repository -y "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main"
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 
-echo Upgrading packages
+echo "Adding ElasticSearch repo"
+add-apt-repository -y "deb http://packages.elasticsearch.org/elasticsearch/1.4/debian stable main"
+wget --quiet -O - https://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add -
+
+echo "Upgrading packages"
 apt-get -y update >/dev/null 2>&1
 apt-get -y upgrade >/dev/null 2>&1
 
-install JDK default-jdk
-
 install 'development tools' build-essential
-install ElasticSearch elasticsearch
-
-echo Setting ElasticSearch to boot on startup
-update-rc.d elasticsearch defaults 95 10
-/etc/init.d/elasticsearch start
-
 install Git git
 install memcached memcached
+install "JDK" default-jdk
+install ElasticSearch elasticsearch
 
-locale-gen sv_SE.UTF-8
-install PostgreSQL postgresql postgresql-client postgresql-contrib libpq-dev
+echo "Set locale for Postgres"
+update-locale LANG=sv_SE.UTF-8 LANGUAGE=sv_SE.UTF-8 LC_ALL=sv_SE.UTF-8
 
-# Remove default postgres db and create new with sv_SE.UTF-8
-/etc/init.d/postgresql stop
-rm -rf /var/lib/postgresql/9.3/main
-sudo -u postgres /usr/lib/postgresql/9.3/bin/initdb -D /var/lib/postgresql/9.3/main --encoding=UTF8 --lc-collate=sv_SE.UTF-8 --lc-ctype=sv_SE.UTF-8
-
-sudo -u postgres /etc/init.d/postgresql start
+install "PostgreSQL" postgresql postgresql-client postgresql-contrib libpq-dev
 sudo -u postgres createuser --superuser vagrant
 sudo -u postgres createdb -O vagrant sitesearch_development --encoding=UTF8 --locale=sv_SE.UTF-8
 sudo -u postgres createdb -O vagrant sitesearch_test --encoding=UTF8 --locale=sv_SE.UTF-8
 
-install nodejs nodejs
-install npm npm
+echo "Reset locale"
+update-locale LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8
+
+install "nodejs" nodejs npm
 install "phantomjs, for specs" phantomjs
-install "Ruby dependencies" libreadline-dev
-install "rbenv requirement for Ruby 2.2.0" libffi-dev
+install "Ruby dependencies" libreadline-dev libffi-dev
+
+echo "Setting ElasticSearch to boot on startup"
+update-rc.d elasticsearch defaults 95 10
+/etc/init.d/elasticsearch start

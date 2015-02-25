@@ -41,6 +41,10 @@ echo 'Creating ElasticSearch indices (404 is expected)'
 RAILS_ENV=development bundle exec rake environment elasticsearch:reindex CLASS='Recommendation' ALIAS='recommendations'
 RAILS_ENV=test bundle exec rake environment elasticsearch:reindex CLASS='Recommendation' ALIAS='recommendations_test'
 
+echo "Running application test cases"
+bundle exec rspec
+
+echo "Done"
 echo
 echo "Log in to Vagrant from the host:"
 echo "  $ vagrant ssh"
