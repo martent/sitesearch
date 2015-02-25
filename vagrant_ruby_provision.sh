@@ -40,3 +40,15 @@ RAILS_ENV=test bundle exec rake db:migrate
 echo 'Creating ElasticSearch indices (404 is expected)'
 RAILS_ENV=development bundle exec rake environment elasticsearch:reindex CLASS='Recommendation' ALIAS='recommendations'
 RAILS_ENV=test bundle exec rake environment elasticsearch:reindex CLASS='Recommendation' ALIAS='recommendations_test'
+
+echo
+echo "Log in to Vagrant from the host:"
+echo "  $ vagrant ssh"
+
+echo
+echo "To start the Rails dev server in the Vagrant guest:"
+echo "  $ cd /vagrant"
+echo "  $ rails s -b 0.0.0.0"
+echo
+echo "Use http://localhost:3000/ on the host to access the dev server"
+echo
