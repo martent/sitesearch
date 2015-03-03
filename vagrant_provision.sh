@@ -37,6 +37,16 @@ sudo -u postgres createdb -O vagrant sitesearch_test --encoding=UTF8 --locale=sv
 echo "Reset locale"
 update-locale LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8
 
+echo "Adding MySQL"
+debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
+debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
+install MySQL mysql-server libmysqlclient-dev
+mysql -uroot -proot <<SQL
+CREATE USER 'sitesearch'@'localhost';
+CREATE DATABASE sitesearch  DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_swedish_ci;
+GRANT ALL PRIVILEGES ON sitesearch.* to 'sitesearch'@'localhost';
+SQL
+
 install "nodejs" nodejs npm
 install "phantomjs, for specs" phantomjs
 install "Ruby dependencies" libreadline-dev libffi-dev
