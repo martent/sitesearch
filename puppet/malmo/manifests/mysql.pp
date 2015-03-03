@@ -6,9 +6,9 @@ class malmo::mysql {
     service_manage  => true,
   }
 
-  ::mysql::db { $::db[name]:
-    user     => $::db[user],
-    password => $::db[password],
+  ::mysql::db { $db[name]:
+    user     => $db[user],
+    password => $db[password],
     host     => 'localhost',
     grant    => ['ALL'],
     charset  => 'utf8',
