@@ -11,7 +11,7 @@ $app_dir = "/home/${::runner['name']}/webapp"
 $db = {
   name        => 'sitesearch',
   user        => 'search',
-  # password    => <ADD>,
+  password    => template('malmo/pw_generator.erb'),
   backup_time => ['3', '45'],
   backup_dir  => "/home/${::runner['name']}/backups",
 }

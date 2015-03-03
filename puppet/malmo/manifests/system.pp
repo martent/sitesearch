@@ -9,8 +9,10 @@ class malmo::system {
   }
 
   package {[
-    'build-essential',
-    'htop',
+      'autoconf', 'bison', 'build-essential', 'libssl-dev', 'libyaml-dev',
+      'libreadline-dev', 'zlib1g-dev', 'libncurses-dev', 'libffi-dev',
+      'libgdbm3', 'libgdbm-dev',
+      'htop',
     ]:
     ensure  => installed,
     require => Exec['apt-get-update'],
