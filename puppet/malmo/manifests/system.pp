@@ -12,7 +12,6 @@ class malmo::system {
 
   package {[
       'autoconf', 'bison', 'build-essential', 'libssl-dev',
-      'libgdbm3', 'libgdbm-dev',
       'htop',
     ]:
     ensure  => installed,

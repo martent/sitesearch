@@ -7,6 +7,8 @@ $runner = {
   home  => '/home/search'
 }
 
+$runners_path = "${::runner[home]}/.rbenv/shims:${::runner[home]}/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin"
+
 $app_dir = "/${::runner[home]}/webapp"
 
 $db = {
@@ -30,9 +32,11 @@ $ruby_version    = '2.2.1'
 
 include malmo::system
 include malmo::rbenv
+include malmo::rbenv::bundle_install
+include malmo::nginx
 include malmo::mysql
 include malmo::mysql::backup
-include malmo::elastic
+include malmo::mysql::migrate
+include malmo::elasticsearch
 include malmo::memcached
-include malmo::nginx
 include malmo::post_install

@@ -1,4 +1,10 @@
 class malmo::mysql {
+  package { 'libmysqlclient-dev':}
+
+  class { '::mysql::bindings':
+    ruby_enable => true
+  }
+
   class { '::mysql::server':
     root_password   => $::db[root_password],
     # remove_default_accounts => true,
@@ -7,6 +13,7 @@ class malmo::mysql {
   }
 
   ::mysql::db { $::db[name]:
+    ensure   => present,
     user     => $::db[user],
     password => $::db[password],
     host     => 'localhost',
