@@ -3,19 +3,20 @@
 
 $runner = {
   name  => 'search',
-  group => 'users'
+  group => 'users',
   home  => '/home/search'
 }
 
 $app_dir = "/${::runner[home]}/webapp"
 
 $db = {
-  name          => 'sitesearch',
-  user          => 'search',
-  password      => template('malmo/pw_generator.erb'),
-  root_password => template('malmo/pw_generator.erb'),
-  backup_time   => ['3', '45'],
-  backup_dir    => "/home/${::runner['name']}/backups",
+  name            => 'sitesearch',
+  user            => 'search',
+  password        => template('malmo/pw_generator.erb'),
+  root_password   => template('malmo/pw_generator.erb'),
+  backup_password => template('malmo/pw_generator.erb'),
+  backup_time     => ['3', '45'],
+  backup_dir      => "/home/${::runner['name']}/backups",
 }
 
 $elasticsearch = {
@@ -34,3 +35,4 @@ include malmo::mysql::backup
 include malmo::elastic
 include malmo::memcached
 include malmo::nginx
+include malmo::post_install

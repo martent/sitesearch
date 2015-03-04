@@ -30,8 +30,10 @@ $ruby_version    = '2.2.1'
 include malmo::system
 include malmo::rbenv
 include malmo::mysql
+include malmo::mysql::backup
 include malmo::elasticsearch
 include malmo::memcached
+include malmo::post_install
 
 # # exec { 'migrate_database':
 # #   command => 'bundle exec rake db:migrate',
