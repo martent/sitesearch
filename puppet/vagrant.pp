@@ -1,5 +1,3 @@
-# puppet parser validate puppet/vagrant.pp
-
 # cd /vagrant
 # sudo puppet apply --modulepath /etc/puppet/modules:/vagrant/puppet puppet/vagrant.pp
 
@@ -12,11 +10,12 @@ $runner = {
 $app_dir = '/vagrant'
 
 $db = {
-  name        => 'sitesearch',
-  user        => 'vagrant',
-  password    => '',
-  backup_time => ['3', '45'],
-  backup_dir  => "${::runner[home]}/backups",
+  name          => 'sitesearch',
+  user          => 'vagrant',
+  password      => '',
+  root_password => '',
+  backup_time   => ['3', '45'],
+  backup_dir    => "${::runner[home]}/backups",
 }
 
 $elasticsearch = {
@@ -24,7 +23,7 @@ $elasticsearch = {
   size    => '96',
 }
 
-$memcached_size = '512'
+$memcached_size = '24'
 
 $ruby_version    = '2.2.1'
 

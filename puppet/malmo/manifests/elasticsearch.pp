@@ -1,7 +1,7 @@
 class malmo::elasticsearch {
   class { '::elasticsearch':
     manage_repo  => true,
-    repo_version => $elasticsearch[version],
+    repo_version => $::elasticsearch[version],
     java_install => true
   }
   ::elasticsearch::instance { 'es-01': }
