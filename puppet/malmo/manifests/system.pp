@@ -8,9 +8,10 @@ class malmo::system {
     command => '/usr/bin/apt-get update'
   }
 
+  include git
+
   package {[
-      'autoconf', 'bison', 'build-essential', 'libssl-dev', 'libyaml-dev',
-      'libreadline-dev', 'zlib1g-dev', 'libncurses-dev', 'libffi-dev',
+      'autoconf', 'bison', 'build-essential', 'libssl-dev',
       'libgdbm3', 'libgdbm-dev',
       'htop',
     ]:

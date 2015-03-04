@@ -5,7 +5,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = 'sitesearch'
 
   config.vm.provider 'virtualbox' do |v|
-    v.memory = 2048
+    v.memory = 1024
     v.cpus = 2
   end
 
@@ -15,11 +15,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = 'puppet'
-    puppet.manifest_file = 'vagrant.pp'  # i.e. puppet/vagrant.pp in project
-    puppet.module_path = 'puppet' # i.e. puppet/ in project
+    puppet.manifest_file = 'vagrant.pp'
+    puppet.module_path = 'puppet'
     puppet.facter = {
-      'fqdn' => 'example.com',
-      'fox'  => 'barx'
+      'fqdn' => 'example.com'
     }
   end
 end
