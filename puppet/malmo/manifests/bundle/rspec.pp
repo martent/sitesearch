@@ -7,6 +7,6 @@ class malmo::bundle::rspec {
     user    => $::runner[name],
     path    => $::runners_path,
     cwd     => $::app_dir,
-    require => Class['::malmo::bundle::migrate_database']
+    require => Class['::malmo::bundle::db_migrate']
   }
 }

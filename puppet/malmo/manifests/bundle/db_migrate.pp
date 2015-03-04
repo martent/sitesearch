@@ -1,4 +1,4 @@
-class malmo::mysql::migrate {
+class malmo::bundle::db_migrate {
   exec { 'migrate database':
     command => 'bundle exec rake db:migrate',
     user    => $::runner[name],
