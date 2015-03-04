@@ -1,4 +1,4 @@
-class malmo::run_specs {
+class malmo::bundle::rspec {
 
   package { 'phantomjs':}
 
@@ -7,6 +7,6 @@ class malmo::run_specs {
     user    => $::runner[name],
     path    => $::runners_path,
     cwd     => $::app_dir,
-    require => Class['::malmo::migrate_database']
+    require => Class['::malmo::bundle::migrate_database']
   }
 }

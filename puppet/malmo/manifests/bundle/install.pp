@@ -1,4 +1,4 @@
-class malmo::rbenv::bundle_install {
+class malmo::bundle::install {
   exec { 'bundle install':
     command => 'bundle install',
     user    => $::runner[name],

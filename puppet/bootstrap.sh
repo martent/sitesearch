@@ -31,7 +31,7 @@ dpkg -i "${repo_deb_path}" >/dev/null
 apt-get update >/dev/null
 
 # Install Puppet
-echo -e "\nNotice: Deprecation warnings from Puppet is expected\n"
+echo -e "\nNotice: Warnings from Puppet are expected\n"
 echo "Installing Puppet..."
 DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install puppet >/dev/null
 
