@@ -9,7 +9,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.cpus = 2
   end
 
-  config.vm.network 'forwarded_port', guest: 3000, host: 3000
+  config.vm.network 'forwarded_port', guest: 3000, host: 3030
 
   config.vm.provision :shell, path: 'puppet/bootstrap.sh'
 

@@ -33,7 +33,7 @@ include malmo::rbenv
 include malmo::mysql
 include malmo::elasticsearch
 include malmo::memcached
-#
+
 # # exec { 'migrate_database':
 # #   command => 'bundle exec rake db:migrate',
 # #   user    => $runner[name]

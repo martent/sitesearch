@@ -1,6 +1,6 @@
 class malmo::rbenv {
   class { '::rbenv':
-    install_dir => "/user/${::runner[name]}/.rbenv",
+    install_dir => "/home/${::runner[name]}/.rbenv",
     owner       => $runner[name],
     group       => $runner[group],
   }
