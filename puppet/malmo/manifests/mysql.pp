@@ -15,4 +15,10 @@ class malmo::mysql {
   ::malmo::mysql::db { 'main_db':
     db_name => $::db[name]
   }
+
+  if $::db[create_test]
+    ::malmo::mysql::db { 'test_db':
+      db_name => "${::db[name]}_test"
+    }
+  }
 }

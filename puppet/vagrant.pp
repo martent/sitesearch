@@ -19,6 +19,7 @@ $db = {
   backup_password => '',
   backup_time     => ['3', '45'],
   backup_dir      => "${::runner[home]}/backups",
+  create_test     => "true"
 }
 
 $elasticsearch = {
@@ -33,9 +34,6 @@ $ruby_version    = '2.2.1'
 include malmo::system
 include malmo::rbenv
 include malmo::mysql
-malmo::mysql::db { 'test_db':
-  db_name => "${::db[name]}_test"
-}
 include malmo::mysql::backup
 include malmo::elasticsearch
 include malmo::memcached
