@@ -33,6 +33,9 @@ $ruby_version    = '2.2.1'
 include malmo::system
 include malmo::rbenv
 include malmo::mysql
+malmo::mysql::db { 'test_db':
+  db_name => "${::db[name]}_test"
+}
 include malmo::mysql::backup
 include malmo::elasticsearch
 include malmo::memcached

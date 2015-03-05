@@ -1,6 +1,4 @@
-class malmo::mysql::backup {
-  require ::malmo::mysql
-
+define malmo::mysql::backup() {
   class { '::mysql::server::backup':
     ensure          => present,
     backupdatabases => [$::db[name]],

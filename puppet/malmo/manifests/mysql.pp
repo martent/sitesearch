@@ -12,13 +12,7 @@ class malmo::mysql {
     service_manage  => true,
   }
 
-  ::mysql::db { $::db[name]:
-    ensure   => present,
-    user     => $::db[user],
-    password => $::db[password],
-    host     => 'localhost',
-    grant    => ['ALL'],
-    charset  => 'utf8',
-    collate  => 'utf8_swedish_ci',
+  ::malmo::mysql::db { 'main_db':
+    db_name => $::db[name]
   }
 }
