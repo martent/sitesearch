@@ -5,8 +5,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = 'sitesearch'
 
   config.vm.provider 'virtualbox' do |v|
-    v.memory = 4096
-    v.cpus = 4
+    v.memory = 1024
+    v.cpus = 2
   end
 
   config.vm.network 'forwarded_port', guest: 3000, host: 3030
