@@ -12,13 +12,19 @@ class malmo::mysql {
     service_manage  => true,
   }
 
-  ::malmo::mysql::db { 'main_db':
+  ::malmo::mysql::db { 'create_db':
     db_name => $::db[name]
   }
 
   if $::db[create_test] {
-    ::malmo::mysql::db { 'test_db':
+    ::malmo::mysql::db { 'create_test_db':
       db_name => "${::db[name]}_test"
+    }
+  }
+
+  if $::db[daily_backup] {
+    ::malmo::mysql::backup { 'backup_main_db':
+      db_name => "${::db[name]}"
     }
   }
 }

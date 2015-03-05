@@ -1,6 +1,3 @@
-# sudo apt-get install svn
-# svn export https://github.com/malmostad/sitesearch/trunk/puppet setup_puppet
-
 # cd /vagrant
 # sudo puppet apply --modulepath /etc/puppet/modules:/vagrant/puppet puppet/server.pp
 
@@ -19,6 +16,7 @@ $db = {
   user            => 'search',
   password        => template('malmo/pw_generator.erb'),
   root_password   => template('malmo/pw_generator.erb'),
+  daily_backup    => "true"
   backup_password => template('malmo/pw_generator.erb'),
   backup_time     => ['3', '45'],
   backup_dir      => "/home/${::runner['name']}/backups",
@@ -28,9 +26,7 @@ $elasticsearch = {
   version => '1.4', # major.minor
   size    => '1024',
 }
-
 $memcached_size = '512'
-
 $ruby_version    = '2.2.1'
 
 include malmo::system

@@ -1,7 +1,7 @@
-define malmo::mysql::backup() {
+define malmo::mysql::backup($db_name) {
   class { '::mysql::server::backup':
     ensure          => present,
-    backupdatabases => [$::db[name]],
+    backupdatabases => [$db_name]],
     backupuser      => 'backup_runner',
     backuppassword  => $::db[backup_password],
     backupdir       => $::db[backup_dir],

@@ -16,6 +16,7 @@ $db = {
   user            => 'vagrant',
   password        => '',
   root_password   => '',
+  daily_backup    => "true"
   backup_password => '',
   backup_time     => ['3', '45'],
   backup_dir      => "${::runner[home]}/backups",
@@ -34,7 +35,6 @@ $ruby_version    = '2.2.1'
 include malmo::system
 include malmo::rbenv
 include malmo::mysql
-include malmo::mysql::backup
 include malmo::elasticsearch
 include malmo::memcached
 include malmo::bundle::install
