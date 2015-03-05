@@ -1,3 +1,6 @@
+# sudo apt-get install svn
+# svn export https://github.com/malmostad/sitesearch/trunk/puppet setup_puppet
+
 # cd /vagrant
 # sudo puppet apply --modulepath /etc/puppet/modules:/vagrant/puppet puppet/server.pp
 

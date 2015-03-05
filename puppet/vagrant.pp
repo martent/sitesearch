@@ -38,5 +38,5 @@ include malmo::elasticsearch
 include malmo::memcached
 include malmo::bundle::install
 include malmo::bundle::db_migrate
-include malmo::bundle::rspec
+include malmo::bundle::rspec_deps
 include malmo::post_install
