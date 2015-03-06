@@ -32,7 +32,6 @@ $ruby_version    = '2.2.1'
 include malmo::system
 include malmo::rbenv
 include malmo::mysql
-include malmo::mysql::backup
 include malmo::elasticsearch
 include malmo::memcached
 include malmo::nginx

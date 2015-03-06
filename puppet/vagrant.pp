@@ -37,6 +37,7 @@ include malmo::rbenv
 include malmo::mysql
 include malmo::elasticsearch
 include malmo::memcached
+include malmo::nginx
 include malmo::bundle::install
 include malmo::bundle::db_migrate
 include malmo::bundle::rspec_deps
