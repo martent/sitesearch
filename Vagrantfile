@@ -2,7 +2,7 @@ VAGRANTFILE_API_VERSION = '2'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = 'ubuntu/trusty64'
-  config.vm.hostname = 'sitesearch'
+  config.vm.hostname = 'www.local.malmo.se'
 
   config.vm.provider 'virtualbox' do |v|
     v.memory = 1024
@@ -10,6 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.network 'forwarded_port', guest: 3000, host: 3030
+  config.vm.network 'forwarded_port', guest: 443, host: 4443
 
   config.vm.provision :shell, path: 'puppet/bootstrap.sh'
 
@@ -18,7 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     puppet.manifest_file = 'vagrant.pp'
     puppet.module_path = 'puppet'
     puppet.facter = {
-      'fqdn' => 'example.com'
+      'fqdn' => 'www.local.malmo.se'
     }
   end
 end

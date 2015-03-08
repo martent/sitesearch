@@ -2,24 +2,24 @@
 # sudo puppet apply --modulepath /etc/puppet/modules:/vagrant/puppet puppet/server.pp
 
 $runner = {
-  name  => 'search',
+  name  => 'app_runner',
   group => 'users',
-  home  => '/home/search'
+  home  => '/home/app_runner'
+  path  => '/home/app_runner/.rbenv/shims:/home/app_runner/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin'
 }
 
-$runners_path = "${::runner[home]}/.rbenv/shims:${::runner[home]}/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin"
-
-$app_dir = "/${::runner[home]}/webapp"
+$app[name] = 'sitesearch'
+$app[home] = "/${::runner[home]}/${::app[name]}/current"
 
 $db = {
-  name            => 'sitesearch',
-  user            => 'search',
+  name            => $::app[name],
+  user            => $::app[name],
   password        => template('malmo/pw_generator.erb'),
   root_password   => template('malmo/pw_generator.erb'),
   daily_backup    => "true",
   backup_password => template('malmo/pw_generator.erb'),
   backup_time     => ['3', '45'],
-  backup_dir      => "/home/${::runner['name']}/backups",
+  backup_dir      => "${::runner['home']}/backups",
 }
 
 $elasticsearch = {

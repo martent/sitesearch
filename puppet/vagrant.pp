@@ -5,31 +5,26 @@ $runner = {
   name  => 'vagrant',
   group => 'vagrant',
   home  => '/home/vagrant',
+  path  => '/home/vagrant/.rbenv/shims:/home/vagrant/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin',
 }
 
-$runners_path = "${::runner[home]}/.rbenv/shims:${::runner[home]}/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin"
-
-$app_dir = '/vagrant'
+$app = {
+  name => 'sitesearch',
+  home => '/vagrant',
+}
 
 $db = {
-  name            => 'sitesearch',
+  name            => $::app[name],
   user            => 'vagrant',
   password        => '',
   root_password   => '',
-  daily_backup    => "true",
-  backup_password => '',
-  backup_time     => ['3', '45'],
-  backup_dir      => "${::runner[home]}/backups",
-  create_test     => "true"
 }
 
 $elasticsearch = {
   version => '1.4', # major.minor
   size    => '96',
 }
-
 $memcached_size = '24'
-
 $ruby_version    = '2.2.1'
 
 include malmo::system
