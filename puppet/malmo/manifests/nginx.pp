@@ -13,16 +13,19 @@ class malmo::nginx {
     group   => 'root',
     mode    => '0644',
     content => template('malmo/nginx.erb'),
+    require => Exec['nginx-install'],
   }
 
   # Symlink to the conf file
   file { "/etc/nginx/sites-enabled/${::app[name]}":
     ensure => 'link',
     target => "/etc/nginx/sites-available/${::app[name]}",
+    require => Exec['nginx-install'],
   }
 
   # Remove default conf
   file { "/etc/nginx/sites-enabled/default":
     ensure => 'absent',
+    require => Exec['nginx-install'],
   }
 }
