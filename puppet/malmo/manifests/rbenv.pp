@@ -14,4 +14,5 @@ class malmo::rbenv {
   }
   ::rbenv::plugin { 'sstephenson/ruby-build': }
   ::rbenv::build { $::ruby_version: global => true }
+  ::rbenv::gem { 'bundler': ruby_version => $::ruby_version }
 }
