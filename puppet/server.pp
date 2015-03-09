@@ -17,12 +17,12 @@ $db = {
   daily_backup    => true,
   backup_password => template('malmo/pw_generator.erb'),
   backup_time     => ['3', '45'],
-  backup_dir      => "${::runner_home}/backups",
+  backup_dir      => "/var/www/db_backups",
 }
 
 $elasticsearch = {
   version => '1.4', # major.minor
-  size    => '1024',
+  size    => '1g',  # unit as m or g
 }
 $memcached_size = '512'
 $ruby_version    = '2.2.1'
@@ -37,4 +37,3 @@ include malmo::ruby::gems
 include malmo::ruby::unicorn
 include malmo::ruby::db_migrate
 include malmo::ruby::rails
-include malmo::post_install

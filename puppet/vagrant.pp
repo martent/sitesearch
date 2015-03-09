@@ -9,17 +9,19 @@ $runner_path  = "${::runner_home}/.rbenv/shims:${::runner_home}/.rbenv/bin:/usr/
 $app_name = 'sitesearch'
 $app_home = '/vagrant'
 
+$install_info = "${::runner_home}/install_info.txt"
+
 $db = {
   name            => $::app_name,
   user            => $::app_user,
   password        => '',
   root_password   => '',
-  create_test     => 'true',
+  create_test     => true,
 }
 
 $elasticsearch = {
   version   => '1.4', # major.minor
-  size      => '96',
+  size      => '96m',
 }
 $memcached_size = '24'
 $ruby_version    = '2.2.1'
@@ -35,4 +37,3 @@ include malmo::ruby::gems
 include malmo::ruby::db_migrate
 include malmo::ruby::rails
 include malmo::ruby::rspec_deps
-include malmo::post_install

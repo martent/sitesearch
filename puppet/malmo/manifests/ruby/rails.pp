@@ -23,4 +23,9 @@ class malmo::ruby::rails {
   #   # mode    => '0755',
   #   content => template('malmo/rails/app_config.erb'),
   # }
+
+  file_line { 'Please edit the apps config file':
+    path => $::install_info,
+    line => "Please edit the apps config file: ${::app_home}/config/app_config.yml",
+  }
 }
