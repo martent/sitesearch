@@ -24,15 +24,15 @@ $elasticsearch = {
 $memcached_size = '24'
 $ruby_version    = '2.2.1'
 
-# include malmo::system
-# include malmo::mysql
-# include malmo::elasticsearch
-# include malmo::memcached
-# include malmo::nginx
-# include malmo::ruby
-# include malmo::ruby::unicorn
-# include malmo::ruby::gems
-# include malmo::ruby::db_migrate
-# include malmo::ruby::rails
-# include malmo::ruby::rspec_deps
+include malmo::system
+include malmo::mysql
+include malmo::elasticsearch
+include malmo::memcached
+include malmo::nginx
+include malmo::ruby
+include malmo::ruby::unicorn
+include malmo::ruby::gems
+include malmo::ruby::db_migrate
+include malmo::ruby::rails
+include malmo::ruby::rspec_deps
 include malmo::post_install
