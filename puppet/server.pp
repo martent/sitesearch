@@ -17,7 +17,7 @@ $db = {
   daily_backup    => true,
   backup_password => template('malmo/pw_generator.erb'),
   backup_time     => ['3', '45'],
-  backup_dir      => "/var/www/db_backups",
+  backup_dir      => '/var/www/db_backups',
 }
 
 $elasticsearch = {
