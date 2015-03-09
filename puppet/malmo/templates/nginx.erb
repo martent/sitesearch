@@ -1,5 +1,5 @@
 upstream unicorn {
-  server unix:/tmp/unicorn.<%= @app['name'] %>.sock fail_timeout=0;
+  server unix:/tmp/unicorn.<%= @app_name %>.sock fail_timeout=0;
 }
 
 server {
@@ -15,7 +15,7 @@ server {
   ssl_certificate /etc/ssl/certs/<%= @fqdn %>.crt;
   ssl_certificate_key /etc/ssl/private/<%= @fqdn %>.key;
 
-  root <%= @app['home'] %>;
+  root <%= @app_home %>;
 
   location ^~ /assets/ {
     gzip_static on;

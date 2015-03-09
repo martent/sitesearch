@@ -3,9 +3,9 @@ class malmo::bundle::install {
 
   exec { 'bundle install':
     command => 'bundle install',
-    user    => $::runner[name],
-    path    => $::runner[path],
-    cwd     => $::app[home],
+    user    => $::runner_name,
+    path    => $::runner_path,
+    cwd     => $::app_home,
     timeout => 1000,
   }
 }

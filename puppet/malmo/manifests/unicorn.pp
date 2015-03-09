@@ -1,7 +1,7 @@
 class malmo::unicorn {
   # Parse and copy init.d script
   file { "unicorn-init":
-    path    => "/etc/init.d/${::app[name]}",
+    path    => "/etc/init.d/${::app_name}",
     owner   => 'root',
     group   => 'root',
     mode    => '0755',

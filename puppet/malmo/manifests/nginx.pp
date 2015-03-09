@@ -8,7 +8,7 @@ class malmo::nginx {
 
   # Parse and copy the conf file
   file { "nginx_conf":
-    path    => "/etc/nginx/sites-available/${::app[name]}",
+    path    => "/etc/nginx/sites-available/${::app_name}",
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
@@ -17,9 +17,9 @@ class malmo::nginx {
   }
 
   # Symlink to the conf file
-  file { "/etc/nginx/sites-enabled/${::app[name]}":
+  file { "/etc/nginx/sites-enabled/${::app_name}":
     ensure => 'link',
-    target => "/etc/nginx/sites-available/${::app[name]}",
+    target => "/etc/nginx/sites-available/${::app_name}",
     require => Exec['nginx-install'],
   }
 

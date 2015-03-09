@@ -1,19 +1,17 @@
 # cd /vagrant
 # sudo puppet apply --modulepath /etc/puppet/modules:/vagrant/puppet puppet/vagrant.pp
 
-$runner = {
-  name  => 'vagrant',
-  group => 'vagrant',
-  home  => '/home/vagrant',
-  path  => '/home/vagrant/.rbenv/shims:/home/vagrant/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin',
-}
+$runner_name  = 'vagrant'
+$runner_group = 'vagrant'
+$runner_home  = '/home/vagrant'
+$runner_path  = '${::runner[home]}/.rbenv/shims:${::runner[home]}/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin'
 
-$app[name] = 'sitesearch'
-$app[home] = '/vagrant'
+$app_name = 'sitesearch'
+$app_home = '/vagrant'
 
 $db = {
-  name            => $::app[name],
-  user            => 'vagrant',
+  name            => $::app_name,
+  user            => $::app_user,
   password        => '',
   root_password   => '',
   create_test     => 'true',

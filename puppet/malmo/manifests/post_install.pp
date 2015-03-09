@@ -1,6 +1,6 @@
 class malmo::post_install {
 
-  file { "${::runner['home']}/puppet_post_install_info.txt":
+  file { "${::runner_home}/puppet_post_install_info.txt":
     mode    => '0600',
     content => "
 Database created: '${::db[name]}'
