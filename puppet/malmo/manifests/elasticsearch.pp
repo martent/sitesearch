@@ -2,8 +2,12 @@ class malmo::elasticsearch {
   class { '::elasticsearch':
     manage_repo  => true,
     repo_version => $::elasticsearch[version],
-    java_install => true
+    java_install => true,
+    config       => {
+      'network.host' => '127.0.0.1',
+    },
   }
+
   ::elasticsearch::instance { 'es-01': }
 
   ::logrotate::rule { 'elasticsearch':
