@@ -6,9 +6,15 @@ class malmo::elasticsearch {
     config       => {
       'network.host' => '127.0.0.1',
     },
-  }
+  } ->
 
-  ::elasticsearch::instance { 'es-01': }
+  ::elasticsearch::instance { 'es-01': } ->
+
+  file_line { 'Set heap size for ElasticSearch':
+    path  => '/etc/init.d/elasticsearch-es-01',
+    line  => "ES_HEAP_SIZE=${::elasticsearch[size]}",
+    match => 'ES_HEAP_SIZE\s*=',
+  }
 
   ::logrotate::rule { 'elasticsearch':
     path         => '/var/log/elasticsearch/es-01',
