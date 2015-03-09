@@ -4,20 +4,20 @@ default: &default
   collation: utf8_swedish_ci
   host: localhost
   pool: 20
-  username: <%= @$db['user'] %>
-  password: <%= @$db['password'] %>
+  username: <%= @db['user'] %>
+  password: <%= @db['password'] %>
 
-<% if @$db['create_test'] -%>
+<% if @db['create_test'] -%>
 development:
   <<: *default
-  database: <%= @$app['name'] %>
+  database: <%= @app_name %>
 
 test:
   <<: *default
-  database: <%= @$app['name'] %>_test
+  database: <%= @app_name %>_test
 <% else -%>
 
 production:
   <<: *default
-  database: <%= @$app['name'] %>
+  database: <%= @app_name %>
 <% end -%>

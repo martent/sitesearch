@@ -1,7 +1,7 @@
 class malmo::ruby::gems {
   require ::malmo::ruby
 
-  exec { 'bundle install':
+  exec { 'bundle-install-gems':
     command => 'bundle install',
     user    => $::runner_name,
     path    => $::runner_path,

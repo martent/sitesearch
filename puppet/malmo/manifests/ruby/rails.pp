@@ -5,7 +5,7 @@ class malmo::ruby::rails {
     # owner   => 'root',
     # group   => 'root',
     # mode    => '0755',
-    content => template('malmo/rails_database.erb'),
+    content => template('malmo/rails_database.yml.erb'),
   }
 
   file { "secrets":
@@ -13,7 +13,7 @@ class malmo::ruby::rails {
     # owner   => 'root',
     # group   => 'root',
     # mode    => '0755',
-    content => template('malmo/rails_secrets.erb'),
+    content => template('malmo/rails_secrets.yml.erb'),
   }
 
   # file { "app":
