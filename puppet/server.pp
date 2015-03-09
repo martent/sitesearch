@@ -2,14 +2,14 @@
 # sudo puppet apply --modulepath /etc/puppet/modules:/vagrant/puppet puppet/server.pp
 
 $runner = {
-  name  => 'app_runner',
+  name  => 'app-runner',
   group => 'users',
-  home  => '/home/app_runner'
-  path  => '/home/app_runner/.rbenv/shims:/home/app_runner/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin'
+  home  => '/home/app-runner',
+  path  => '/home/app-runner/.rbenv/shims:/home/app-runner/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin',
 }
 
 $app[name] = 'sitesearch'
-$app[home] = "/${::runner[home]}/${::app[name]}/current"
+$app[home] = "${::runner[home]}/${::app[name]}/current"
 
 $db = {
   name            => $::app[name],
@@ -35,6 +35,7 @@ include malmo::mysql
 include malmo::elasticsearch
 include malmo::memcached
 include malmo::nginx
+include malmo::unicorn
 include malmo::bundle::install
 include malmo::bundle::db_migrate
 include malmo::post_install

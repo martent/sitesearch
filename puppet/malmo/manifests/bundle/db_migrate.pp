@@ -9,11 +9,12 @@ class malmo::bundle::db_migrate {
     cwd     => $::app[home],
   }
 
-  exec { 'migrate test database':
-    command => 'bundle exec rake db:migrate RAILS_ENV=test',
-    user    => $::runner[name],
-    path    => $::runner[path],
-    cwd     => $::app[home],
-    onlyif  => $::db[create_test]
+  if $::db[create_test] {
+    exec { 'migrate test database':
+      command => 'bundle exec rake db:migrate RAILS_ENV=test',
+      user    => $::runner[name],
+      path    => $::runner[path],
+      cwd     => $::app[home],
+    }
   }
 }
