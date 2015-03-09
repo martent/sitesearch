@@ -1,4 +1,4 @@
-class malmo::rbenv {
+class malmo::ruby {
   require ::malmo::system
 
   package {[

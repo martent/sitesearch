@@ -28,12 +28,13 @@ $memcached_size = '512'
 $ruby_version    = '2.2.1'
 
 include malmo::system
-include malmo::rbenv
 include malmo::mysql
 include malmo::elasticsearch
 include malmo::memcached
 include malmo::nginx
-include malmo::unicorn
-include malmo::bundle::install
-include malmo::bundle::db_migrate
+include malmo::ruby
+include malmo::ruby::gems
+include malmo::ruby::unicorn
+include malmo::ruby::db_migrate
+include malmo::ruby::rails
 include malmo::post_install

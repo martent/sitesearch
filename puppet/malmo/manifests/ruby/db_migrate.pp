@@ -1,5 +1,5 @@
-class malmo::bundle::db_migrate {
-  require ::malmo::rbenv
+class malmo::ruby::db_migrate {
+  require ::malmo::ruby
   require ::malmo::mysql
 
   exec { 'migrate database':
