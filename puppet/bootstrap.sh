@@ -58,3 +58,4 @@ pupmod rodjek-logrotate
 pupmod puppetlabs-apache
 pupmod jfryman-nginx
 pupmod puppetlabs-ntp
+pupmod librarian-puppet
