@@ -38,10 +38,8 @@ DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -
 # Adapt Puppet to it's own requirements ...
 touch /etc/puppet/hiera.yaml >/dev/null
 
-echo "Puppet installed!"
-
-echo "Installing Librarian Puppet ..."
-puppet module install librarian-puppet >/dev/null
+echo "Installing Librarian Puppet gem ..."
+gem install librarian-puppet >/dev/null
 
 echo "Installing Puppet modules ..."
 librarian-puppet install >/dev/null
