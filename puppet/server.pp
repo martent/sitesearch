@@ -1,3 +1,9 @@
+# sudo apt-get update && sudo apt-get install git
+# git clone https://github.com/malmostad/sitesearch.git tmp-install
+# cd tmp-install/puppet
+# sudo ./bootstrap.sh
+# puppet apply server.pp
+
 # cd /vagrant
 # sudo puppet apply --modulepath /etc/puppet/modules:/vagrant/puppet puppet/server.pp
 
