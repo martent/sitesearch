@@ -7,6 +7,7 @@
 
 # cd /vagrant
 # sudo puppet apply --modulepath /etc/puppet/modules:/vagrant/puppet puppet/server.pp
+# sudo puppet apply --modulepath modules server.pp
 
 $runner_name  = 'app-runner'
 $runner_group = 'users'
@@ -34,13 +35,4 @@ $elasticsearch = {
 $memcached_size = '512'
 $ruby_version    = '2.2.1'
 
-include mcommons::system
-include mcommons::mysql
-include mcommons::elasticsearch
-include mcommons::memcached
-include mcommons::nginx
-include mcommons::ruby
-include mcommons::ruby::gems
-include mcommons::ruby::unicorn
-include mcommons::ruby::db_migrate
-include mcommons::ruby::rails
+include mcommons
