@@ -35,4 +35,13 @@ $elasticsearch = {
 $memcached_size = '512'
 $ruby_version    = '2.2.1'
 
-include mcommons
+::mcommons::mysql { 'Setting up MySQL': }
+::mcommons::elasticsearch { 'Setting up ElasticSearch': }
+::mcommons::memcached { 'Setting up memcached': }
+::mcommons::nginx { 'Setting up nginx': }
+::mcommons::ruby { 'Setting up rbenv and Ruby': } ->
+::mcommons::ruby::unicorn { 'Setting up Unicorn': } ->
+::mcommons::ruby::gems { 'Bundle installing gems': } ->
+::mcommons::ruby::db_migrate { 'Migrating database': } ->
+::mcommons::ruby::rails { 'Configuring Rails environment': } ->
+::mcommons::ruby::rspec_deps { 'Installing RSpec dependencies': }

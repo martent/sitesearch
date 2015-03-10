@@ -1,14 +1,9 @@
 #!/usr/bin/env ruby
-
-# $ librarian-puppet install
-
 forge 'https://forgeapi.puppetlabs.com'
 
-# use dependencies defined in metadata.json
 metadata
 
 mod 'malmo-mcommons', git: 'https://github.com/malmostad/puppet-malmo.git'
-
 mod 'attachmentgenie-locales'
 mod 'jdowning-rbenv'
 mod 'saz-memcached'
