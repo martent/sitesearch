@@ -40,22 +40,8 @@ touch /etc/puppet/hiera.yaml >/dev/null
 
 echo "Puppet installed!"
 
-echo "Installing Puppet modules ..."
-function pupmod {
-  puppet module install "$@" >/dev/null
-}
+echo "Installing Librarian Puppet ..."
+puppet module install librarian-puppet >/dev/null
 
-# Install all possible modules for simplicity
-# Not space and time is required
-pupmod attachmentgenie-locales
-pupmod jdowning-rbenv
-pupmod saz-memcached
-pupmod puppetlabs-mysql
-pupmod puppetlabs-java
-pupmod puppetlabs-apt
-pupmod elasticsearch-elasticsearch
-pupmod rodjek-logrotate
-pupmod puppetlabs-apache
-pupmod jfryman-nginx
-pupmod puppetlabs-ntp
-pupmod librarian-puppet
+echo "Installing Puppet modules ..."
+librarian-puppet install >/dev/null
