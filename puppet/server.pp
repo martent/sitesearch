@@ -1,5 +1,6 @@
 # sudo apt-get update && sudo apt-get install git
 # git clone https://github.com/malmostad/sitesearch.git tmp-install
+# git checkout extract
 # cd tmp-install/puppet
 # sudo ./bootstrap.sh
 # puppet apply server.pp

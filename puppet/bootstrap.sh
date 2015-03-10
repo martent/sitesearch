@@ -39,10 +39,10 @@ DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -
 touch /etc/puppet/hiera.yaml >/dev/null
 
 # Required by the librarian gem in default Ruby
-apt-get install build-essential ruby-dev
+apt-get install -qq build-essential ruby-dev >/dev/null
 
 echo "Installing librarian puppet gem ..."
-gem install librarian-puppet >/dev/null
+gem install librarian-puppet
 
 echo "Installing Puppet modules ..."
-librarian-puppet install >/dev/null
+librarian-puppet install
