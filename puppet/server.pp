@@ -3,7 +3,7 @@
 # git checkout extract
 # cd tmp-install/puppet
 # sudo ./bootstrap.sh
-# puppet apply server.pp
+# sudo puppet apply server.pp
 
 # cd /vagrant
 # sudo puppet apply --modulepath /etc/puppet/modules:/vagrant/puppet puppet/server.pp
