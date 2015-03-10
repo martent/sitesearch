@@ -8,7 +8,7 @@ set -e
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-locale-gen en_US.UTF-8
+locale-gen en_US.UTF-8 >/dev/null
 
 # Load up the release information
 . /etc/lsb-release
@@ -38,7 +38,10 @@ DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -
 # Adapt Puppet to it's own requirements ...
 touch /etc/puppet/hiera.yaml >/dev/null
 
-echo "Installing Librarian Puppet gem ..."
+# Required by the librarian gem in default Ruby
+apt-get install build-essential ruby-dev
+
+echo "Installing librarian puppet gem ..."
 gem install librarian-puppet >/dev/null
 
 echo "Installing Puppet modules ..."
