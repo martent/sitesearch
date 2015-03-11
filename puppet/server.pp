@@ -1,14 +1,3 @@
-# sudo apt-get update && sudo apt-get install git
-# git clone https://github.com/malmostad/sitesearch.git tmp-install
-# cd tmp-install/puppet
-# git checkout extract
-# sudo ./bootstrap.sh
-# sudo puppet apply server.pp
-
-# cd /vagrant
-# sudo puppet apply --modulepath /etc/puppet/modules:/vagrant/puppet puppet/server.pp
-# sudo puppet apply --modulepath modules server.pp
-
 $runner_name  = 'app-runner'
 $runner_group = 'users'
 $runner_home  = '/home/app-runner'

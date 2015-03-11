@@ -38,11 +38,10 @@ DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -
 # Adapt Puppet to it's own requirements ...
 touch /etc/puppet/hiera.yaml >/dev/null
 
-# Required by the librarian gem in default Ruby
-apt-get install -qq build-essential ruby-dev >/dev/null
+echo "Installing Puppet modules"
+wget https://github.com/malmostad/puppet-mcommons/archive/master.tar.gz -O malmo-mcommons.tar.gz >/dev/null
+puppet module install malmo-mcommons.tar.gz
+rm malmo-mcommons.tar.gz >/dev/null
 
-echo "Installing librarian puppet gem ..."
-gem install librarian-puppet
-
-echo "Installing Puppet modules ..."
-librarian-puppet install
+echo "Starting Puppet provisioning defined in server.pp"
+puppet apply server.pp
