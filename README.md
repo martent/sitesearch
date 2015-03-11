@@ -4,7 +4,7 @@ A Ruby on Rails app for the external site search on the City of Malmo and the in
 
 ## Dependencies
 * nginx (for production)
-* Ruby 2
+* Ruby 2.x
 * MySQL or PostgreSQL
 * ElasticSearch 1.4
 * Memcached
@@ -12,10 +12,11 @@ A Ruby on Rails app for the external site search on the City of Malmo and the in
 ## Development Setup
 
 Dependencies:
+
 * Vagrant
 * A Vagrant compatible virtual machine such as VirtualBox or VMWare
 
-To provision the Vagrant box, run the following command in the root of the project on the host:
+To provision the Vagrant box, run the following command in the root of the project on the host (compiling Ruby will take time):
 
     $ vagrant up
 
@@ -30,24 +31,25 @@ Start the application in the Vagrant box:
     $ cd /vagrant
     $ rails s -b 0.0.0.0
 
-You should now be able to access the server in your host system at http://127.0.0.1:3030
+You should now be able to access the server on your host system at http://127.0.0.1:3030
 
 
 ## Server Setup
 
 To provision an Ubuntu 14.04 server:
 
-2. 1. Add `app_runner` as a sudo user on the server
+1. Add `app_runner` as a sudo user on the server
 2. Download the provisioning files:
 
-     $ wget https://github.com/malmostad/sitesearch/blob/master/puppet/bootstrap.sh
-     $ wget https://github.com/malmostad/sitesearch/blob/master/puppet/server.pp
+     $ wget https://raw.githubusercontent.com/malmostad/sitesearch/master/puppet/bootstrap.sh
+     $ wget https://raw.githubusercontent.com/malmostad/sitesearch/master/puppet/server.pp
 
-4. Check that server.pp looks OK and start the provisioning:
+3. Check that the files are OK and start the provisioning (compiling Ruby will take time):
 
+    $ chmod +x ./bootstrap.sh
     $ sudo ./bootstrap.sh
 
-5. Check `install_info.txt` in `app_runner`'s home directory when the provisioning has finished
+4. Check `install_info.txt` in `app_runner`'s home directory when the provisioning has finished
 
 ## Build and Deployment
 Build and deployment is made with Capistrano.
