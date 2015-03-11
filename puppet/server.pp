@@ -1,6 +1,3 @@
-# cd /app_runner
-# sudo puppet apply puppet/app_runner.pp
-
 $runner_name  = 'app_runner'
 $runner_group = 'app_runner'
 $runner_home  = '/home/app_runner'

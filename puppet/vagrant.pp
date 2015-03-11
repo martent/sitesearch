@@ -1,6 +1,3 @@
-# cd /vagrant
-# sudo puppet apply puppet/vagrant.pp
-
 $runner_name  = 'vagrant'
 $runner_group = 'vagrant'
 $runner_home  = '/home/vagrant'
