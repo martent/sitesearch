@@ -40,7 +40,7 @@ touch /etc/puppet/hiera.yaml >/dev/null
 
 echo "Installing Puppet modules"
 wget https://github.com/malmostad/puppet-mcommons/archive/master.tar.gz -O malmo-mcommons.tar.gz >/dev/null
-puppet module install malmo-mcommons.tar.gz
+puppet module install --force malmo-mcommons.tar.gz
 rm malmo-mcommons.tar.gz >/dev/null
 
 # Vagrant use vagrant.pp for Puppet provisioning

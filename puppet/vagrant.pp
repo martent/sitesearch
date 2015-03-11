@@ -36,8 +36,9 @@ class { '::mcommons::nginx': }
 class { '::mcommons::ruby':
   version => '2.2.1',
 }
-# ::mcommons::ruby::unicorn { 'Setting up Unicorn': } ->
-# ::mcommons::ruby::gems { 'Bundle installing gems': } ->
-# ::mcommons::ruby::db_migrate { 'Migrating database': } ->
-# ::mcommons::ruby::rails { 'Configuring Rails environment': } ->
-# ::mcommons::ruby::rspec_deps { 'Installing RSpec dependencies': }
+
+class { 'mcommons::ruby::unicorn': }
+class { 'mcommons::ruby::bundle_install': }
+class { 'mcommons::ruby::rails': }
+class { 'mcommons::ruby::rspec_deps': }
+mcommons::ruby::db_migrate { ['development', 'test']: }
