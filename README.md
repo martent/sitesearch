@@ -55,7 +55,7 @@ A bootstrap script and a standalone Puppet (no master) are used to provision a f
         $ chmod +x ./bootstrap.sh
         $ sudo ./bootstrap.sh
 
-4. When finished, read the generated `install_info.txt` file—just a couple of lines long—in `app_runner`'s home directory.
+4. When finished, read the generated `install_info.txt` file (it's short) in `app_runner`'s home directory.
 
 
 ## Build and Deployment
