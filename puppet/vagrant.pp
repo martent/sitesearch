@@ -1,5 +1,5 @@
 # cd /vagrant
-# sudo puppet apply --modulepath /etc/puppet/modules:/vagrant/puppet puppet/vagrant.pp
+# sudo puppet apply puppet/vagrant.pp
 
 $runner_name  = 'vagrant'
 $runner_group = 'vagrant'
@@ -9,30 +9,35 @@ $runner_path  = "${::runner_home}/.rbenv/shims:${::runner_home}/.rbenv/bin:/usr/
 $app_name = 'sitesearch'
 $app_home = '/vagrant'
 
-$install_info = "${::runner_home}/install_info.txt"
+class { '::mcommons': }
 
-$db = {
-  name            => $::app_name,
-  user            => $::app_user,
-  password        => '',
-  root_password   => '',
-  create_test     => true,
+class { '::mcommons::mysql':
+  db_password      => '',
+  db_root_password => '',
+  create_test_db   => true,
+  daily_backup     => false,
 }
 
-$elasticsearch = {
-  version   => '1.4', # major.minor
-  size      => '96m',
+class { '::mcommons::elasticsearch':
+  version => '1.4',
+  memory  => '48m',
 }
-$memcached_size = '24'
-$ruby_version    = '2.2.1'
 
-::mcommons::mysql { 'Setting up MySQL': }
-::mcommons::elasticsearch { 'Setting up ElasticSearch': }
-::mcommons::memcached { 'Setting up memcached': }
-::mcommons::nginx { 'Setting up nginx': }
-::mcommons::ruby { 'Setting up rbenv and Ruby': } ->
-::mcommons::ruby::unicorn { 'Setting up Unicorn': } ->
-::mcommons::ruby::gems { 'Bundle installing gems': } ->
-::mcommons::ruby::db_migrate { 'Migrating database': } ->
-::mcommons::ruby::rails { 'Configuring Rails environment': } ->
-::mcommons::ruby::rspec_deps { 'Installing RSpec dependencies': }
+class { '::mcommons::memcached':
+  memory => 128,
+}
+
+# class { '::mcommons::apache':
+#  modules => ['php']
+# }
+
+class { '::mcommons::nginx': }
+
+class { '::mcommons::ruby':
+  version => '2.2.1',
+}
+# ::mcommons::ruby::unicorn { 'Setting up Unicorn': } ->
+# ::mcommons::ruby::gems { 'Bundle installing gems': } ->
+# ::mcommons::ruby::db_migrate { 'Migrating database': } ->
+# ::mcommons::ruby::rails { 'Configuring Rails environment': } ->
+# ::mcommons::ruby::rspec_deps { 'Installing RSpec dependencies': }

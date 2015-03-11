@@ -43,5 +43,10 @@ wget https://github.com/malmostad/puppet-mcommons/archive/master.tar.gz -O malmo
 puppet module install malmo-mcommons.tar.gz
 rm malmo-mcommons.tar.gz >/dev/null
 
-echo "Starting Puppet provisioning defined in server.pp"
-puppet apply server.pp
+# Vagrant use vagrant.pp for Puppet provisioning
+# Use server.pp if we are not in a Bagrant box
+if [ -e "/vagrant" ]
+then
+  echo "Starting Puppet provisioning defined in server.pp"
+  puppet apply server.pp
+fi
