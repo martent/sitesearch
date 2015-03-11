@@ -3,8 +3,9 @@ $runner_group = 'vagrant'
 $runner_home  = '/home/vagrant'
 $runner_path  = "${::runner_home}/.rbenv/shims:${::runner_home}/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin"
 
-$app_name = 'sitesearch'
-$app_home = '/vagrant'
+$app_name       = 'sitesearch'
+$app_home       = '/vagrant'
+$app_config_dir = '/vagrant/config'
 
 class { '::mcommons': }
 
