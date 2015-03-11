@@ -39,13 +39,13 @@ DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -
 touch /etc/puppet/hiera.yaml >/dev/null
 
 echo "Installing Puppet modules"
-wget https://github.com/malmostad/puppet-mcommons/archive/master.tar.gz -O malmo-mcommons.tar.gz >/dev/null
-puppet module install --force malmo-mcommons.tar.gz
+wget https://github.com/malmostad/puppet-mcommons/archive/master.tar.gz -O malmo-mcommons.tar.gz 2>/dev/null
+puppet module install malmo-mcommons.tar.gz
 rm malmo-mcommons.tar.gz >/dev/null
 
 # Vagrant use vagrant.pp for Puppet provisioning
 # Use server.pp if we are not in a Bagrant box
-if [ -e "/vagrant" ]
+if ! [ -e "/vagrant" ]
 then
   echo "Starting Puppet provisioning defined in server.pp"
   puppet apply server.pp
