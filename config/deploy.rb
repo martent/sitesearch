@@ -36,10 +36,10 @@ namespace :deploy do
     end
   end
 
-  desc "Full restart of unicorn server"
+  desc "Restart of unicorn server"
   task :full_restart do
     on roles(:app), except: {no_release: true} do
-      execute "/etc/init.d/unicorn_#{fetch(:application)} stop && sleep 2 && /etc/init.d/unicorn_#{fetch(:application)} start"
+      execute "/etc/init.d/unicorn_#{fetch(:application)} restart"
     end
   end
 
