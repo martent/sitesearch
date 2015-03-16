@@ -1,3 +1,5 @@
+$envs = ['development', 'test']
+
 $runner_name  = 'vagrant'
 $runner_group = 'vagrant'
 $runner_home  = '/home/vagrant'
@@ -5,7 +7,6 @@ $runner_path  = "${::runner_home}/.rbenv/shims:${::runner_home}/.rbenv/bin:/usr/
 
 $app_name       = 'sitesearch'
 $app_home       = '/vagrant'
-$app_config_dir = '/vagrant/config'
 
 class { '::mcommons': }
 
@@ -25,10 +26,6 @@ class { '::mcommons::memcached':
   memory => 128,
 }
 
-# class { '::mcommons::apache':
-#  modules => ['php']
-# }
-
 class { '::mcommons::nginx': }
 
 class { '::mcommons::ruby':
@@ -39,4 +36,4 @@ class { 'mcommons::ruby::unicorn': }
 class { 'mcommons::ruby::bundle_install': }
 class { 'mcommons::ruby::rails': }
 class { 'mcommons::ruby::rspec_deps': }
-mcommons::ruby::db_migrate { ['development', 'test']: }
+mcommons::ruby::db_migrate { $::envs: }

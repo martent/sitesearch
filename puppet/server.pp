@@ -1,3 +1,5 @@
+$envs = ['production']
+
 $runner_name  = 'app_runner'
 $runner_group = 'app_runner'
 $runner_home  = '/home/app_runner'
@@ -5,7 +7,6 @@ $runner_path  = "${::runner_home}/.rbenv/shims:${::runner_home}/.rbenv/bin:/usr/
 
 $app_name       = 'sitesearch'
 $app_home       = "${::runner_home}/${::app_name}/current"
-$app_config_dir = "${::runner_home}/${::app_name}/shared/config"
 
 class { '::mcommons': }
 
@@ -21,10 +22,6 @@ class { '::mcommons::memcached':
   memory => 512,
 }
 
-# class { '::mcommons::apache':
-#  modules => ['php']
-# }
-
 class { '::mcommons::nginx': }
 
 class { '::mcommons::ruby':
@@ -33,4 +30,3 @@ class { '::mcommons::ruby':
 
 class { 'mcommons::ruby::unicorn': }
 class { 'mcommons::ruby::rails': }
-mcommons::ruby::db_migrate { 'production': }
