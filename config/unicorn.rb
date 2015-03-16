@@ -1,5 +1,4 @@
-root = "/vagrant"
-# root = "/home/app-runner/sitesearch/current"
+root = "/home/app_runner/sitesearch/current"
 working_directory root
 pid "#{root}/tmp/pids/unicorn.pid"
 stderr_path "#{root}/log/unicorn.log"
