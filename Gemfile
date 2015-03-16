@@ -27,6 +27,8 @@ gem 'capistrano', '~> 3.3.5'
 gem 'capistrano-rails', '~> 1.1.2'
 gem 'capistrano-rbenv', '~> 2.0.2'
 gem 'whenever', '~> 0.9.2', require: false
+gem 'highline'
+gem 'execjs'
 
 group :test do
   gem 'factory_girl_rails'

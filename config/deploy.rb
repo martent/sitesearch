@@ -4,14 +4,14 @@ require 'erb'
 I18n.config.enforce_available_locales = false
 
 set :rbenv_type, :user
-set :rbenv_ruby, '2.1.3'
+set :rbenv_ruby, '2.2.1'
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 
 set :application, 'sitesearch'
-set :repo_url, "git@github.com:malmostad/#{fetch(:application)}.git"
-set :user, "deployer"
-set :deploy_to, "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
+set :repo_url, "https://github.com/malmostad/#{fetch(:application)}.git"
+set :user, 'app_runner'
+set :deploy_to, "/home/#{fetch(:user)}/#{fetch(:application)}"
 set :scm, :git
 set :deploy_via, :remote_cache
 
@@ -54,7 +54,6 @@ namespace :deploy do
       upload! "config/secrets.example.yml", "#{shared_path}/config/secrets.yml"
       puts "1. Edit the config files in #{shared_path}/config"
       puts "2. Run manually on server:"
-      puts "   $ sudo ln -nfs #{release_path}/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
       puts "   $ sudo ln -nfs #{release_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{fetch(:application)}"
     end
   end

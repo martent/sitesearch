@@ -2,8 +2,9 @@ set :rails_env, :production
 set :audience, "internal"
 set :stage, :production_internal
 
-set :branch, "2.1-duo"
+# set :branch, "2.2-stable"
+set :branch, "master"
 
-role :app, %w{deployer@188.226.144.234}
-role :web, %w{deployer@188.226.144.234}
-role :db,  %w{deployer@188.226.144.234}
+role :app, %w{app_runner@srvubuwebhost15.malmo.se}
+role :web, %w{app_runner@srvubuwebhost15.malmo.se}
+role :db,  %w{app_runner@srvubuwebhost15.malmo.se}
