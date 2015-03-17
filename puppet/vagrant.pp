@@ -26,13 +26,10 @@ class { '::mcommons::memcached':
   memory => 128,
 }
 
-class { '::mcommons::nginx': }
-
 class { '::mcommons::ruby':
   version => '2.2.1',
 }
 
-class { 'mcommons::ruby::unicorn': }
 class { 'mcommons::ruby::bundle_install': }
 class { 'mcommons::ruby::rails': }
 class { 'mcommons::ruby::rspec_deps': }
