@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Postgres backup script
+
 SAVEDIR=/home/deployer/backup
 
 if [ ! -d $SAVEDIR ]; then

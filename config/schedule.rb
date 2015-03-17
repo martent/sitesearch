@@ -3,10 +3,12 @@
 # Check output with
 # $ bundle exec whenever --set 'environment=production'
 
-set :output,  "#{path}/log/cron.log"
+# Only for Postgres
 
-if environment == "production" || environment == "staging"
-  every :day, at: '3:05am' do
-    command "cd #{path} && ./lib/jobs/backup.sh"
-  end
-end
+# set :output,  "#{path}/log/cron.log"
+#
+# if audience == 'external' && environment == 'production'
+#   every :day, at: '3:05am' do
+#     command "cd #{path} && ./lib/jobs/backup.sh"
+#   end
+# end
