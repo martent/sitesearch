@@ -9,7 +9,7 @@ $ ->
 
     # Track all clicks in the results list
     if $a.closest(".results").length > 0
-      _gaq.push(['_trackEvent', 'SearchClickPosition', GAAction, GALabel, $(".results > ul > li").index($a.closest("li")) + 1, 10])
+      _gaq.push(['_trackEvent', 'SearchClickPosition', GAAction, GALabel, $(".results > ol > li").index($a.closest("li")) + 1, 10])
 
     # Track clicks on breadcrumbs in the results list
     if $a.closest(".breadcrumbs").length > 0
