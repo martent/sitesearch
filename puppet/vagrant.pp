@@ -15,6 +15,7 @@ class { '::mcommons::mysql':
   db_root_password => '',
   create_test_db   => true,
   daily_backup     => false,
+  ruby_enable      => true,
 }
 
 class { '::mcommons::elasticsearch':
