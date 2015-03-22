@@ -49,13 +49,12 @@ The Puppet setup is based on assumptions about common configurations we use for 
 1. Add `app_runner` as a sudo user on the server.
 2. Download the provisioning files:
 
-        $ wget https://raw.githubusercontent.com/malmostad/sitesearch/master/puppet/bootstrap.sh
+        $ wget https://raw.githubusercontent.com/malmostad/puppet-mcommons/master/bootstrap.sh
         $ wget https://raw.githubusercontent.com/malmostad/sitesearch/master/puppet/server.pp
 
 3. Check that the files are OK and start the provisioning (compiling Ruby will take time):
 
-        $ chmod +x ./bootstrap.sh
-        $ sudo ./bootstrap.sh
+        $ sudo bash ./bootstrap.sh
 
 4. When finished, read the generated `install_info.txt` file (it's short) in `app_runner`'s home directory.
 
