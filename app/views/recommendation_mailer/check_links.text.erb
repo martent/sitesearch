@@ -1,0 +1,15 @@
+Hej!
+
+Jag har precis utfört en länkkontroll för rekommendationer i söktjänsten och stötte på <%= @failures.size %> länkar som inte fungerade. Det kan bero på något tillfälligt fel i nätet eller i tjänsten som länken går till, men det kan vara en poäng att kolla följande länkar som inte fungerade.
+
+<% @failures.each do |failure| %>
+Rekommendation: <%= failure[:recommendation].name %>
+Kontrollerad länk: <%= failure[:recommendation].link %>
+Redigera rekommendationen: <%= edit_recommendation_url(failure[:recommendation]) %>
+Tekniskt felmeddelande: <%= failure[:message] %>
+
+<% end %>
+
+Med vänlig hälsning,
+
+Malmö stads söktjänst

@@ -16,8 +16,12 @@ Rails.application.configure do
   config.cache_store = :dalli_store, '127.0.0.1:11211', { namespace: "sitesearch-#{Rails.env}" }
   # config.cache_store = :null_store
 
-  # Don't care if the mailer can't send.
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = {
+    host: 'www.local.malmo.se:3030',
+    protocol: 'https'
+  }
+  config.action_mailer.delivery_method = :file
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

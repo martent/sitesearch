@@ -22,4 +22,6 @@
     %span.control-label
     .controls
       = f.button :submit, class: 'btn btn-primary'
+      - unless @recommendation.new_record?
+        = link_to "Radera", @recommendation, class: "btn btn-danger", data: { confirm: 'Är du säker?', method: :delete }
       = link_to t('actions.cancel'), recommendations_path, class: "btn btn-default"
