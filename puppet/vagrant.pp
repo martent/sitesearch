@@ -21,15 +21,16 @@ class { '::mcommons::mysql':
 class { '::mcommons::elasticsearch':
   version      => '1.4',
   memory       => '48m',
-} ->
-exec {'Create ElasticSearch index':
+}
+
+-> exec {'Create ElasticSearch index':
   command => "bundle exec rake environment elasticsearch:reindex RAILS_ENV=development CLASS='Recommendation' ALIAS='recommendations' ; exit 0",
   user    => $::runner_name,
   path    => $::runner_path,
   cwd     => $::app_home,
 }
 
-exec {'Create ElasticSearch index for test':
+-> exec {'Create ElasticSearch index for test':
   command => "bundle exec rake environment elasticsearch:reindex RAILS_ENV=test CLASS='Recommendation' ALIAS='recommendations' ; exit 0",
   user    => $::runner_name,
   path    => $::runner_path,
