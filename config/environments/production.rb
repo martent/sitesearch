@@ -62,10 +62,11 @@ Rails.application.configure do
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
   # config.assets.precompile += %w( search.js )
 
-  config.action_mailer.default_url_options = {
-    host: 's1.malmo.se',
-    protocol: 'https'
-  }
+  # default_url_options are defined in app_config.yml and set in recommendation_mailer.rb
+  # config.action_mailer.default_url_options = {
+  #   host: 's2.malmo.se',
+  #   protocol: 'https'
+  # }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:             'mail2.malmo.se',

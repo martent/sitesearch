@@ -3,8 +3,15 @@
 # Check output with
 # $ bundle exec whenever --set 'environment=production'
 
-# Only for Postgres
+set :output,  "#{path}/log/cron.log"
 
+if environment == 'production'
+  every :day, at: '4:00am' do
+    rake 'check_links'
+  end
+end
+
+# For Postgres
 # set :output,  "#{path}/log/cron.log"
 #
 # if audience == 'external' && environment == 'production'

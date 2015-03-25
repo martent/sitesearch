@@ -28,10 +28,11 @@ Rails.application.configure do
   # Disable request forgery protection in test environment.
   config.action_controller.allow_forgery_protection = false
 
-  config.action_mailer.default_url_options = {
-    host: 'www.local.malmo.se:3000',
-    protocol: 'https'
-  }
+  # default_url_options are defined in app_config.yml and set in recommendation_mailer.rb
+  # config.action_mailer.default_url_options = {
+  #   host: 's2.malmo.se',
+  #   protocol: 'https'
+  # }
   config.action_mailer.delivery_method = :test
 
   # Print deprecation notices to the stderr.

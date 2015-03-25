@@ -17,10 +17,11 @@ Rails.application.configure do
   # config.cache_store = :null_store
 
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = {
-    host: 'www.local.malmo.se:3030',
-    protocol: 'https'
-  }
+  # default_url_options are defined in app_config.yml and set in recommendation_mailer.rb
+  # config.action_mailer.default_url_options = {
+  #   host: 's2.malmo.se',
+  #   protocol: 'https'
+  # }
   config.action_mailer.delivery_method = :file
 
   # Print deprecation notices to the Rails logger.
