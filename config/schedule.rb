@@ -5,7 +5,7 @@
 
 set :output,  "#{path}/log/cron.log"
 
-if environment == 'production'
+if environment.match 'production'
   every :day, at: '4:00am' do
     rake 'check_links'
   end
