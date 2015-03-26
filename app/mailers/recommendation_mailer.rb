@@ -4,15 +4,16 @@ ActionMailer::Base.default_url_options = {
 }
 
 class RecommendationMailer < ActionMailer::Base
-
   def check_links(failures)
     @failures = failures
     to = User.all.map(&:email).join(', ')
 
-    mail(to: to,
-         from: 'Malmö stads söktjänst <noreply@malmo.se>',
-         subject: 'Länkkontroll')
+    if to.present?
+      mail(to: to,
+           from: 'Malmö stads söktjänst <noreply@malmo.se>',
+           subject: 'Länkkontroll')
 
+    end
     puts "Link checker email send to #{to} at #{Time.new}"
   end
 end
