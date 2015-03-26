@@ -7,11 +7,14 @@
       %thead
         %tr
           %th Namn
+          %th E-post
           %th.auth Autentiserad via
           %th.last_login Senast inloggad
       %tbody
         - @users.each do |user|
           %tr
-            %td= user.name
+            %td= user.nickname
+            %td= user.email
             %td.auth= user.provider
             %td.last_login= l user.updated_at, format: :short
+            %td.delete= link_to "Radera", user, data: { confirm: 'Är du säker?', method: :delete }, class: "btn btn-danger btn-sm"
