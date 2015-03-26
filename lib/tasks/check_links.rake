@@ -14,8 +14,8 @@ task check_links: :environment do
   RecommendationMailer.check_links(failures).deliver if failures.present?
 end
 
-def check_link(link, limit = 1)
-  fail StandardError, 'Too many redirects' if limit == 0
+def check_link(link, redirected = 0)
+  fail StandardError, "Too many redirects (#{redirected})" if redirected >= 5
 
   uri = URI link
 
@@ -32,7 +32,7 @@ def check_link(link, limit = 1)
     when Net::HTTPSuccess then
       return true
     when Net::HTTPRedirection then
-      check_link response['location'], limit - 1
+      check_link response['location'], redirected + 1
     else
       fail StandardError, response.value
     end
