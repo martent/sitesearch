@@ -50,11 +50,7 @@ namespace :deploy do
       execute "mkdir -p #{shared_path}/log"
       execute "mkdir -p #{shared_path}/public/uploads"
       upload! "config/app_config.example.yml", "#{shared_path}/config/app_config.yml"
-      upload! "config/database.example.yml", "#{shared_path}/config/database.yml"
-      upload! "config/secrets.example.yml", "#{shared_path}/config/secrets.yml"
-      puts "1. Edit the config files in #{shared_path}/config"
-      puts "2. Run manually on server:"
-      puts "   $ sudo ln -nfs #{release_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{fetch(:application)}"
+      puts "Copy and edit config/app_config.example.yml on server"
     end
   end
 
