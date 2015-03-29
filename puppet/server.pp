@@ -11,7 +11,7 @@ $app_home       = "${::runner_home}/${::app_name}/current"
 class { '::mcommons': }
 
 class { '::mcommons::mysql':
-  ruby_enable      => true,
+  ruby_enable => true,
 }
 
 class { '::mcommons::elasticsearch':
