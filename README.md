@@ -3,13 +3,15 @@
 A Ruby on Rails app for the external site search on the City of Malmo and the intranet. Search recommendations are managed in the application. The [siteseeker_normalizer](https://github.com/malmostad/siteseeker_normalizer) Ruby Gem is used for the Siteseeker integration part.
 
 ## Dependencies
+
+* A Siteseeker account
 * nginx (for production)
 * Ruby 2.x
 * MySQL or PostgreSQL
 * ElasticSearch 1.4
 * Memcached
 
-We use Puppet in standalone mode to setup development and server environments. Our Puppet provisioning is highly opinionated, see [puppet-mcommons](https://github.com/malmostad/puppet-mcommons/) for details.
+We use Puppet in standalone mode to setup development and server environments, see [puppet-mcommons](https://github.com/malmostad/puppet-mcommons/) for in-depth details.
 
 ## Development Setup
 
@@ -39,6 +41,8 @@ $ rails s -b 0.0.0.0
 Point a browser on your host system to http://127.0.0.1:3030. Editing of the project files on your host system will be reflected when you hit reload in your browser.
 
 When you run the `vagrant up` command for the first time it creates an Ubuntu 14.04 based Vagrant box with a ready-to-use development environment for the application. This will take some time. Vagrant will launch fast after the first run.
+
+If you get port conflicts in your host system, change `forwarded_port` in the `Vagrantfile` You might also want to edit the value for `vm.hostname` and `puppet.facter` in the same file or do a mapping `localhost` mapping in your hosts `host` file to reflect that value.
 
 
 ## Server Provisioning
