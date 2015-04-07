@@ -25,7 +25,7 @@ $ cd sitesearch
 $ vagrant up
 ```
 
-Check the generated `install_info.txt` file in the project root when the provisioning has finished for database details.
+Check the generated `install_info.txt` file in the project root for database details when the provisioning has finished.
 
 Log in to the Vagrant box as the `vagrant` user and start the application in the Vagrant box:
 
@@ -52,13 +52,13 @@ On a fresh server running a base install of Ubuntu 14.04:
         $ wget https://raw.githubusercontent.com/malmostad/puppet-mcommons/master/bootstrap.sh
         $ wget https://raw.githubusercontent.com/malmostad/sitesearch/master/puppet/server.pp
 
-3. Check that the files are OK and start the provisioning:
+3. Run the provisioning:
 
         $ sudo bash ./bootstrap.sh
 
 4. When finished, read the generated `install_info.txt` file in `app_runner`'s home directory for database details.
 
-Nginx, MySQL, Elasticsearch and memcached are installed as services and configured. Logrotating and database backup is configured. Ruby is compiled and managed using [rbenv](https://github.com/sstephenson/rbenv) for the `app_runner` user.
+Nginx, MySQL, Elasticsearch and memcached are now installed as services and configured. Logrotating and database backup are configured. Ruby is compiled and managed using [rbenv](https://github.com/sstephenson/rbenv) for the `app_runner` user.
 
 The user `app_runner` must be used for all build and deployment and for command executions related to the Rails application on the server. Rbenv is configured for that specific user only. Unicorn, the Rack application server, is run by `app_runner`.
 
@@ -66,7 +66,7 @@ The user `app_runner` must be used for all build and deployment and for command 
 ## Build and Deployment
 Build and deployment is made with Capistrano.
 
-Run the deployment with one of the following commands including the appropriate environment name:
+In the project root on your workstation, run the deployment with one of the following commands including the appropriate environment name:
 
 ```shell
 $ bundle exec cap staging_external deploy
@@ -76,7 +76,7 @@ $ bundle exec cap production_internal deploy
 ```
 
 ## Testing
-Run tests before pushing code to the Git repository and before performing deployments. The application contains high level integration/feature tests and unit tests using RSpec, Capybara and PhantomJS. Run the test cases in the projects root directory:
+Run tests before pushing code to the Git repository and before performing deployments. The application contains unit tests and high level integration/feature tests using RSpec, Capybara and PhantomJS. Run the test cases in the projects root directory in your Vagrant box:
 
 ```shell
 $ bundle exec rspec
