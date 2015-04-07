@@ -19,8 +19,8 @@ class { '::mcommons::mysql':
 }
 
 class { '::mcommons::elasticsearch':
-  version      => '1.4',
-  memory       => '48m',
+  version => '1.4',
+  memory  => '48m',
 }
 
 -> exec {'Create ElasticSearch index':
