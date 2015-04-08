@@ -10,8 +10,9 @@ A Ruby on Rails app for the external site search on the City of Malmo and the in
 * MySQL or PostgreSQL
 * ElasticSearch 1.4
 * Memcached
+* [Global Assets](https://github.com/malmostad/global-assets).
 
-We use Puppet in standalone mode to setup development and server environments, see [puppet-mcommons](https://github.com/malmostad/puppet-mcommons/) for in-depth details.
+We use [Puppet](https://puppetlabs.com/) in standalone mode to setup development and server environments, see [puppet-mcommons](https://github.com/malmostad/puppet-mcommons/) for in-depth details.
 
 ## Development Setup
 
@@ -52,7 +53,7 @@ The project contains resources for a standalone Puppet (no master) one-time prov
 On a fresh server running a base install of Ubuntu 14.04:
 
 1. Add `app_runner` as a sudo user.
-2. Log on to the server as `app_runner` and download the provisioning files:
+2. Log on to the server as `app_runner` and download the two provisioning files needed:
 
         $ wget https://raw.githubusercontent.com/malmostad/puppet-mcommons/master/bootstrap.sh
         $ wget https://raw.githubusercontent.com/malmostad/sitesearch/master/puppet/server.pp
@@ -61,11 +62,19 @@ On a fresh server running a base install of Ubuntu 14.04:
 
         $ sudo bash ./bootstrap.sh
 
-4. When finished, read the generated `install_info.txt` file in `app_runner`'s home directory for database details.
+When finished, read the generated `install_info.txt` file in `app_runner`'s home directory for database details.
 
-Nginx, MySQL, Elasticsearch and memcached are now installed as services and configured. Logrotating and database backup are configured. Ruby is compiled and managed using [rbenv](https://github.com/sstephenson/rbenv) for the `app_runner` user.
+So, what happened?
 
-The user `app_runner` must be used for all build and deployment and for command executions related to the Rails application on the server. Rbenv is configured for that specific user only. The Rack application server, Unicorn, is run by `app_runner`.
+* Nginx, MySQL, Elasticsearch and memcached are configured and installed as services
+* A database ready for Rails migration is created (see deployment below)
+* Logrotating and database backup are configured
+* Snakeoil SSL certs are generated as placeholders
+* Ruby is compiled and managed using [rbenv](https://github.com/sstephenson/rbenv) for the `app_runner` user.
+
+The environment should now be ready for application deployment as described below.
+
+The user `app_runner` must be used for all deployment task and for command executions related to the Rails application on the server. Rbenv is configured for that specific user only. The Rack application server, Unicorn, is run by `app_runner`.
 
 
 ## Build and Deployment
