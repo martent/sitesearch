@@ -76,11 +76,10 @@ The environment should now be ready for application deployment as described belo
 
 The user `app_runner` must be used for all deployment task and for command executions related to the Rails application on the server. Rbenv is configured for that specific user only. The Rack application server, Unicorn, is run by `app_runner`.
 
-
 ## Build and Deployment
 Build and deployment is made with Capistrano.
 
-In the project root on your workstation, run the deployment with one of the following commands including the appropriate environment name:
+In the project root, run one of the following commands including the appropriate environment name:
 
 ```shell
 $ bundle exec cap staging_external deploy
