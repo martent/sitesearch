@@ -8,7 +8,7 @@ A Ruby on Rails app for the external site search on the City of Malmo and the in
 * nginx (for production)
 * Ruby 2.x
 * MySQL or PostgreSQL
-* ElasticSearch 1.4
+* ElasticSearch 1.5
 * Memcached
 * [Global Assets](https://github.com/malmostad/global-assets).
 
@@ -77,7 +77,7 @@ The environment should now be ready for application deployment as described belo
 The user `app_runner` must be used for all deployment task and for command executions related to the Rails application on the server. Rbenv is configured for that specific user only. The Rack application server, Unicorn, is run by `app_runner`.
 
 ## Build and Deployment
-Build and deployment is made with Capistrano.
+Build and deployment is made with Capistrano 3.
 
 In the project root, run one of the following commands including the appropriate environment name:
 
