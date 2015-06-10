@@ -319,7 +319,7 @@ DEPENDENCIES
   rspec-rails (= 2.14.2)
   sass-rails (~> 4.0.3)
   simple_form (~> 3.1.0.rc2)!
-  siteseeker_normalizer
+  siteseeker_normalizer (= 0.1.6)
   spring
   spring-commands-rspec
   thin

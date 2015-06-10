@@ -22,7 +22,7 @@ gem 'bcrypt-ruby', '~> 3.1.5'
 
 gem 'omniauth-github', '~> 1.1.2'
 gem 'octokit', '~> 3.3.1'
-gem 'siteseeker_normalizer' #, '0.1.16'
+gem 'siteseeker_normalizer', '0.1.6'
 
 gem 'capistrano', '~> 3.2.1'
 gem 'capistrano-rails', '~> 1.1.2'
