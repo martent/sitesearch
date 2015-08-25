@@ -15,7 +15,6 @@
       = stylesheet_link_tag "#{APP_CONFIG['assets_url_base']}legacy/ie8.css", media: 'all'
     %noscript= stylesheet_link_tag "#{APP_CONFIG['assets_url_base']}icons.fallback.css", media: 'all'
     %link{ rel: 'icon', type: 'image/x-icon', href: "#{APP_CONFIG['assets_url_base']}favicon.ico" }
-    = javascript_include_tag 'application'
     = csrf_meta_tags
   %body.mf-v4{ class: @body_classes }
     - if current_user
@@ -29,4 +28,5 @@
       - flash.each do |key, value|
         %p{ class: "flash #{key}" }= value
       = yield
-    -# = javascript_include_tag "#{APP_CONFIG['assets_url_base']}malmo.js"
+    = javascript_include_tag "#{APP_CONFIG['assets_url_base']}malmo.js"
+    = javascript_include_tag 'application'
