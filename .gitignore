@@ -7,5 +7,7 @@
 /public/uploads
 /config/secrets.yml
 /config/database.yml
+/config/database-pg.yml
+/config/database-mysql.yml
 /config/app_config.yml
 /.capistrano
