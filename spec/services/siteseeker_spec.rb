@@ -73,9 +73,9 @@ describe "SiteseekerNormalizer" do
 
   it "should raise an error for an invalid search url" do
     expect {
-      client = SiteseekerNormalizer::Client.new("x")
-      client.search("y")
-    }.to raise_error
+      client = SiteseekerNormalizer::Client.new("x", "y")
+      client.search("z")
+    }.to raise_error(SocketError)
   end
 
   it "should raise an error for an invalid account name" do
