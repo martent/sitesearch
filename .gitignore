@@ -6,6 +6,8 @@
 /public/uploads
 /config/secrets.yml
 /config/database.yml
+/config/database-pg.yml
 /config/app_config.yml
 /.vagrant
 /.capistrano
+*.sql

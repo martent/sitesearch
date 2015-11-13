@@ -15,7 +15,7 @@ namespace :elasticsearch do
     aliaz = "#{ENV["ALIAS"]}"
     ENV['INDEX'] = "#{aliaz}_#{Time.new.strftime('%Y%m%d%H%M%S')}"
 
-    client = Elasticsearch::Client.new
+    client = Elasticsearch::Client.new host: '0.0.0.0:9200'
     has_alias = client.indices.exists_alias name: aliaz
     old_indices = has_alias ? client.indices.get_alias(name: aliaz).map {|k,v| k } : []
 
