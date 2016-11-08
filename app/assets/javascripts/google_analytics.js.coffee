@@ -32,3 +32,6 @@ $ ->
     # Track clicks on editors choich in the results list
     if $a.closest(".categories").length > 0
       ga('send', 'event', 'SearchClickCategory', GAAction,  GALabel)
+
+  if $('.summary.no-results').length > 0
+    ga('send', 'event', 'SearchNoResults', $("#q").val(),  0, 1)

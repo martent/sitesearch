@@ -1,3 +1,3 @@
-%p.summary
+%p.summary{ class: @results.total.zero? ? 'no-results' : '' }
   = "Din sökning gav "
   = pluralize(@results.total, "träff", "träffar")
