@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.2.4'
+gem 'rails', '4.2.7.1'
 gem 'haml-rails', '~> 0.9.0'
-gem 'sass-rails', '~> 5.0.4'
-gem 'uglifier', '~> 2.7.2'
-gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails', '~> 4.0.5'
+gem 'sass-rails', '5.0.6'
+gem 'uglifier', '2.7.2'
+gem 'coffee-rails', '4.2.1'
+gem 'jquery-rails', '4.2.1'
 
 gem 'simple_form', '~> 3.2.0'
 gem 'carrierwave', '~> 0.10.0'
@@ -14,8 +14,8 @@ gem 'mini_magick', '~> 4.3.6'
 # gem 'pg', '~> 0.18.1'
 gem 'mysql2', '~> 0.3.20'
 gem 'dalli', '~> 2.7.4'
-gem 'elasticsearch-model', '~> 0.1.8'
-gem 'elasticsearch-rails', '~> 0.1.8'
+gem 'elasticsearch-model', '0.1.9'
+gem 'elasticsearch-rails', '0.1.9'
 
 gem 'bcrypt-ruby', '~> 3.1.5'
 
@@ -41,7 +41,7 @@ group :test do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.3.3'
+  gem 'rspec-rails'
   gem 'quiet_assets'
   gem 'thin'
   gem 'rb-readline'
@@ -51,4 +51,4 @@ group :development do
   gem 'pry-rails'
 end
 
-gem 'unicorn', '5.0.0', group: [:test, :production]
+gem 'unicorn', '5.2.0', group: [:test, :production]
