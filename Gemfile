@@ -23,9 +23,9 @@ gem 'omniauth-github', '~> 1.1.2'
 gem 'octokit', '~> 4.1.1'
 gem 'siteseeker_normalizer', '~> 0.1.6'
 
-gem 'capistrano', '~> 3.4.0'
-gem 'capistrano-rails', '~> 1.1.5'
-gem 'capistrano-rbenv', '~> 2.0.3'
+gem 'capistrano', '~> 3.6.1'
+gem 'capistrano-rails', '~> 1.1.8'
+gem 'capistrano-rbenv', '~> 2.0.4'
 gem 'whenever', '~> 0.9.2', require: false
 gem 'highline'
 gem 'execjs'
