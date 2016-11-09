@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.10'
+gem 'rails', '4.2.7.1'
 gem 'haml-rails', '~> 0.5.3'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '~> 2.5.3'
@@ -9,7 +9,7 @@ gem 'coffee-rails', '~> 4.0.1'
 gem 'jquery-rails', '~> 3.1.2'
 # gem 'jbuilder', '~> 2.0'
 
-gem 'simple_form', '~> 3.1.0.rc2', :git => 'https://github.com/plataformatec/simple_form'
+gem 'simple_form', '3.1.1'
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 3.8.1'
 
