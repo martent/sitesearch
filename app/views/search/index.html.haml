@@ -1,5 +1,5 @@
 - cache ["search-results", params], expires_in: (@error.present? ? 0 : 12.hour) do
-  - title "Sök på malmo.se"
+  - title APP_CONFIG["search_title"]
   %main{ role: "main"}
     .search-and-results
       %h1.body-copy= h1
@@ -13,7 +13,7 @@
           %p.filter= link_to "Filtrera", "#filter"
         = render "suggestions"
         %section.recommendations
-          %ul
+          %ol
             = render "recommendations"
         %section.results
           %ol
