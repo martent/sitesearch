@@ -242,7 +242,6 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
-    rb-readline (0.5.3)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
@@ -348,7 +347,6 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.7.1)
   rb-fsevent
-  rb-readline
   rspec-rails
   sass-rails (= 5.0.6)
   simple_form (~> 3.2.0)
