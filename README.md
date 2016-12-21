@@ -8,7 +8,7 @@ A Ruby on Rails app for the external site search on the City of Malmo and the in
 * nginx (for production)
 * Ruby 2.x
 * MySQL or PostgreSQL
-* ElasticSearch 1.5
+* ElasticSearch 5.x
 * Memcached
 * [Global Assets](https://github.com/malmostad/global-assets).
 

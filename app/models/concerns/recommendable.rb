@@ -12,15 +12,15 @@ module Recommendable
     index_name "recommendations_test" if Rails.env.test?
 
     mappings dynamic: 'false' do
-      indexes :name, analyzer: 'simple'
-      indexes :link, analyzer: 'simple'
-      indexes :description, analyzer: 'simple'
+      indexes :name, analyzer: 'simple', type: 'text'
+      indexes :link, analyzer: 'simple', type: 'text'
+      indexes :description, analyzer: 'simple', type: 'text'
       indexes :images do
         indexes :original, index: 'not_analyzed'
         indexes :mini, index: 'not_analyzed'
         indexes :thumb, index: 'not_analyzed'
       end
-      indexes :terms, index_analyzer: 'term_index', search_analyzer: 'term_search'
+      indexes :terms, analyzer: 'term_index', search_analyzer: 'term_search', type: 'text'
     end
   end
 
