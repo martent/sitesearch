@@ -1,3 +1,6 @@
+require "capistrano/scm/git"
+install_plugin Capistrano::SCM::Git
+
 # https://github.com/capistrano/rbenv
 require 'erb'
 
@@ -12,7 +15,6 @@ set :application, 'sitesearch'
 set :repo_url, "https://github.com/malmostad/#{fetch(:application)}.git"
 set :user, 'app_runner'
 set :deploy_to, "/home/#{fetch(:user)}/#{fetch(:application)}"
-set :scm, :git
 set :deploy_via, :remote_cache
 
 # set :format, :pretty
