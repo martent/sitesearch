@@ -1,6 +1,3 @@
-require "capistrano/scm/git"
-install_plugin Capistrano::SCM::Git
-
 # https://github.com/capistrano/rbenv
 require 'erb'
 
