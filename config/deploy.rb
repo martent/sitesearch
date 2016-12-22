@@ -67,7 +67,6 @@ namespace :deploy do
   desc "Upload audience specific files to server ('external' or 'internal')"
   task :audience_specifics do
     on roles(:app) do
-      upload! "config/nginx_#{fetch(:audience)}.conf", "#{release_path}/config/nginx.conf"
       upload! "public/500_#{fetch(:audience)}.html", "#{release_path}/public/500.html"
     end
   end
