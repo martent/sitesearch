@@ -22,8 +22,8 @@ gem 'omniauth-github', '1.1.2'
 gem 'octokit', '4.6.2'
 gem 'siteseeker_normalizer', '0.1.6'
 
-gem 'capistrano', '3.7.1'
-gem 'capistrano-rails', '1.2.0'
+gem 'capistrano', '3.7.2'
+gem 'capistrano-rails', '1.2.2'
 gem 'capistrano-rbenv', '2.1.0'
 
 gem 'whenever', '0.9.7', require: false
