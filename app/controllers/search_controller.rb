@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
-  protect_from_forgery except: [:index, :autocomplete]
-  before_action :search_client, :allow_page_caching
+  protect_from_forgery except: :autocomplete
+  before_action :search_client
 
   def index
     @terms = params[:q]
@@ -25,9 +25,5 @@ class SearchController < ApplicationController
   private
     def search_client
       @client = CombinedSearch.new(params.except(:action, :controller))
-    end
-
-    def allow_page_caching
-      expires_in(6.hours) unless Rails.env.development?
     end
 end
