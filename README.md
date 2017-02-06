@@ -82,10 +82,8 @@ Build and deployment is made with Capistrano 3.
 In the project root, run one of the following commands including the appropriate environment name:
 
 ```shell
-$ bundle exec cap staging_external deploy
-$ bundle exec cap staging_internal deploy
-$ bundle exec cap production_external deploy
-$ bundle exec cap production_internal deploy
+$ bundle exec cap external deploy
+$ bundle exec cap internal deploy
 ```
 
 ## Testing
