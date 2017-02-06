@@ -8,14 +8,16 @@
         %tr
           %th Namn
           %th.terms Sökord
+          %th.link Länk
           %th.delete
       %tbody
         - @recommendations.each do |recommendation|
           %tr
             %td= link_to recommendation.name, edit_recommendation_path(recommendation)
             %td.terms= recommendation.terms.map(&:name).join(", ")
-            %td.delete= link_to "Radera", recommendation, class: "btn btn-danger btn-xs", data: { confirm: 'Är du säker?', method: :delete }
+            %td.link= link_to recommendation.link, recommendation.link
+            %td.delete= link_to "Radera", recommendation, method: :delete, class: "btn btn-danger btn-xs", data: { confirm: 'Är du säker?' }
 
         %tr
-          %td{ colspan: 3 }
+          %td{ colspan: 4 }
             .actions= link_to "Lägg till", new_recommendation_path, class: "btn btn-default"
