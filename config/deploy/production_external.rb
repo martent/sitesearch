@@ -4,6 +4,6 @@ set :stage, :production_external
 
 set :branch, "master"
 
-role :app, %w{app_runner@srvubuwebhost25.malmo.se}
-role :web, %w{app_runner@srvubuwebhost25.malmo.se}
-role :db,  %w{app_runner@srvubuwebhost25.malmo.se}
+role :app, %w{app_runner@sok.malmo.se}
+role :web, %w{app_runner@sok.malmo.se}
+role :db,  %w{app_runner@sok.malmo.se}

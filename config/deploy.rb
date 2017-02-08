@@ -55,7 +55,7 @@ namespace :deploy do
 
   desc "Make sure local git is in sync with remote."
   task :check_revision do
-    on roles(:app) do
+    on roles(:all) do
       unless `git rev-parse HEAD` == `git rev-parse origin/#{fetch(:branch)}`
         puts "WARNING: HEAD is not the same as origin/#{fetch(:branch)}"
         puts "Run `git push` to sync changes."
@@ -91,7 +91,8 @@ namespace :deploy do
     end
   end
 
-  before :starting, "deploy:are_you_sure", "deploy:check_revision"
+  before :starting, "deploy:are_you_sure"
+  before :starting, "deploy:check_revision"
   after :updated, "deploy:audience_specifics"
   after :published, "deploy:full_restart"
   after :finishing, "deploy:cleanup"

@@ -19,10 +19,10 @@
   %body.mf-v4{ class: @body_classes }
     - if current_user
       %nav.app
-        = link_to "Rekommendationer", recommendations_path
-        = link_to "Sökord", terms_path
-        = link_to "#{current_user.name}", users_path, class: "username"
-        = link_to "Logga ut", logout_path, class: "logout"
+        = link_to "Rekommendationer", recommendations_path, rel: 'nofollow'
+        = link_to "Sökord", terms_path, rel: 'nofollow'
+        = link_to "#{current_user.name}", users_path, class: "username", rel: 'nofollow'
+        = link_to "Logga ut", logout_path, class: "logout", rel: 'nofollow'
     .wrapper
       = render "layouts/breadcrumbs"
       - flash.each do |key, value|

@@ -38,7 +38,7 @@ class { '::mcommons::elasticsearch':
 }
 
 class { '::mcommons::memcached':
-  memory => 128,
+  memory => 32,
 }
 
 class { '::mcommons::ruby':
