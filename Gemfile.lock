@@ -320,9 +320,9 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (= 3.1.11)
-  capistrano (~> 3.7.1)
-  capistrano-rails (~> 1.2.0)
-  capistrano-rbenv (~> 2.1.0)
+  capistrano (= 3.7.2)
+  capistrano-rails (= 1.2.2)
+  capistrano-rbenv (= 2.1.0)
   capybara
   carrierwave (= 1.0.0)
   coffee-rails (= 4.2.1)
