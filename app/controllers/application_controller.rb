@@ -23,8 +23,8 @@ class ApplicationController < ActionController::Base
   end
 
   def not_found(msg = "Sidan kunde inte hittas")
-    logger.warn msg
-    logger.warn "Not found: #{request.fullpath}"
+    logger.info msg
+    logger.info "Not found: #{request.fullpath}"
     respond_to do |format|
       format.html { render template: 'errors/not_found_error', status: 404 }
       format.all  { render nothing: true, status: 404 }
