@@ -5,11 +5,12 @@ A Ruby on Rails app for the external site search on the City of Malmo and the in
 ## Dependencies
 
 * A Siteseeker account
-* nginx (for production)
+* Nginx (for production)
 * Ruby 2.x
-* MySQL or PostgreSQL
+* MySQL
 * ElasticSearch 5.x
 * Memcached
+* Imagemagick
 * [Global Assets](https://github.com/malmostad/global-assets).
 
 We use [Puppet](https://puppetlabs.com/) in standalone mode to setup development and server environments, see [puppet-mcommons](https://github.com/malmostad/puppet-mcommons/) for in-depth details.
