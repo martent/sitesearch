@@ -14,13 +14,17 @@ class ApplicationController < ActionController::Base
       server_error(exception.message)
     end
   end
+
   rescue_from ActionController::RoutingError,
-    ActionController::UnknownController,
-    ::AbstractController::ActionNotFound,
-    ActiveRecord::RecordNotFound, with: lambda { |exception| not_found(exception.message) }
+              ActionController::UnknownController,
+              ::AbstractController::ActionNotFound,
+              ActiveRecord::RecordNotFound do |exception|
+    not_found(exception.message)
+  end
 
   def not_found(msg = "Sidan kunde inte hittas")
     logger.warn msg
+    logger.warn "Not found: #{request.fullpath}"
     respond_to do |format|
       format.html { render template: 'errors/not_found_error', status: 404 }
       format.all  { render nothing: true, status: 404 }
@@ -29,6 +33,7 @@ class ApplicationController < ActionController::Base
 
   def server_error(msg = "Ett fel inträffade")
     logger.error msg
+    logger.error "Path: #{request.fullpath}"
     respond_to do |format|
       format.html { render template: 'errors/server_error', status: 500 }
       format.all  { render nothing: true, status: 500}

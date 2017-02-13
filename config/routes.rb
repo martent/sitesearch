@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   resources :recommendations
   resources :terms
 
-  match '404', to: 'application#not_found', via: :all
-  match ':status', to: 'application#server_error', constraints: { status: /\d{3}/ }, via: :all
+  match ":status", to: 'application#server_error', constraints: { status: /5\d{2}/ }, via: :all
+  match '*path', via: :all, to: 'application#not_found'
 end
