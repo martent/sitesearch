@@ -5,7 +5,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = 'www.local.malmo.se'
 
   config.vm.provider :virtualbox do |v|
-    v.memory = 1024
+    v.memory = 1024 * 2
     v.cpus = 2
   end
   config.vm.provider :vmware_fusion
@@ -13,7 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.network 'forwarded_port', guest: 3000, host: 3030
 
-  config.vm.provision :shell, path: 'https://raw.githubusercontent.com/malmostad/puppet-mcommons/ubuntu-1604/bootstrap.sh'
+  config.vm.provision :shell, path: 'https://raw.githubusercontent.com/malmostad/puppet-mcommons/master/bootstrap.sh'
 
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = 'puppet'
