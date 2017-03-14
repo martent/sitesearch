@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :sessions
   resources :users
-  resources :recommendations
+  resources :recommendations, except: :show
   resources :terms
 
   match ":status", to: 'application#server_error', constraints: { status: /5\d{2}/ }, via: :all
