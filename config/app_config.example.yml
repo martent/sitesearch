@@ -1,7 +1,7 @@
 defaults: &defaults
   base_url: "http://malmo.se/"
   assets_url_base: "//www.local.malmo.se:3001/assets/"
-  action_mailer_default_url_options_host: 's2.malmo.se'
+  action_mailer_default_url_options_host: 'sok.malmo.se'
   search_title: "Sök på malmo.se"
   omniauth:
     github_team: 123

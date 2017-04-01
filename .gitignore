@@ -10,4 +10,3 @@
 /config/app_config.yml
 /.vagrant
 /.capistrano
-*.sql

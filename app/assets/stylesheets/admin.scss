@@ -40,6 +40,14 @@ nav.app {
     background-size: 12px;
     background-position: bottom;
   }
+
+  td.link, th.link {
+    max-width: 8em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
   .duplicate {
     color: #c00;
   }
@@ -52,7 +60,7 @@ nav.app {
   }
   @media (max-width: 48em) {
     td, th {
-      &.terms, &.auth {
+      &.terms, &.link, &.auth {
         display: none;
       }
     }

@@ -3,8 +3,10 @@ require 'erb'
 
 I18n.config.enforce_available_locales = false
 
+set :shared_path, -> { shared_path }
+
 set :rbenv_type, :user
-set :rbenv_ruby, '2.3.1'
+set :rbenv_ruby, File.read('.ruby-version').strip
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 
@@ -12,7 +14,6 @@ set :application, 'sitesearch'
 set :repo_url, "https://github.com/malmostad/#{fetch(:application)}.git"
 set :user, 'app_runner'
 set :deploy_to, "/home/#{fetch(:user)}/#{fetch(:application)}"
-set :scm, :git
 set :deploy_via, :remote_cache
 
 # set :format, :pretty
@@ -56,7 +57,7 @@ namespace :deploy do
 
   desc "Make sure local git is in sync with remote."
   task :check_revision do
-    on roles(:app) do
+    on roles(:all) do
       unless `git rev-parse HEAD` == `git rev-parse origin/#{fetch(:branch)}`
         puts "WARNING: HEAD is not the same as origin/#{fetch(:branch)}"
         puts "Run `git push` to sync changes."
@@ -68,7 +69,6 @@ namespace :deploy do
   desc "Upload audience specific files to server ('external' or 'internal')"
   task :audience_specifics do
     on roles(:app) do
-      upload! "config/nginx_#{fetch(:audience)}.conf", "#{release_path}/config/nginx.conf"
       upload! "public/500_#{fetch(:audience)}.html", "#{release_path}/public/500.html"
     end
   end
@@ -93,7 +93,8 @@ namespace :deploy do
     end
   end
 
-  before :starting, "deploy:are_you_sure", "deploy:check_revision"
+  before :starting, "deploy:are_you_sure"
+  before :starting, "deploy:check_revision"
   after :updated, "deploy:audience_specifics"
   after :published, "deploy:full_restart"
   after :finishing, "deploy:cleanup"

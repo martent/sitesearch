@@ -19,7 +19,7 @@ class { '::mcommons::mysql':
 }
 
 class { '::mcommons::elasticsearch':
-  version => '1.7',
+  version => '5.x',
   memory  => '48m',
 }
 
@@ -38,11 +38,11 @@ class { '::mcommons::elasticsearch':
 }
 
 class { '::mcommons::memcached':
-  memory => 128,
+  memory => 32,
 }
 
 class { '::mcommons::ruby':
-  version => '2.2.3',
+  version => '2.3.3',
 }
 
 class { 'mcommons::ruby::bundle_install': }

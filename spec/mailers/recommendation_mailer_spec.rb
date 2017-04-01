@@ -13,11 +13,13 @@ describe RecommendationMailer do
     }
 
     it 'renders the headers' do
+      sleep 1
       expect(mail.subject).to eq('Länkkontroll')
       expect(mail.from.first).to match('noreply@malmo.se')
     end
 
     it 'renders the body' do
+      sleep 1
       expect(mail.body.encoded).to match('Hej!')
     end
   end

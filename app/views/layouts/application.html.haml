@@ -5,6 +5,7 @@
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
     %meta{ name: 'robots', content: 'noindex, nofollow' }
     %title= "#{APP_CONFIG['title_suffix']} – Sök"
+    / <WA disable link>
     /[if IE]
       %meta{ "http-equiv" => "X-UA-Compatible", "content" => "IE=edge"}
     /[if lte IE 8]
@@ -19,10 +20,10 @@
   %body.mf-v4{ class: @body_classes }
     - if current_user
       %nav.app
-        = link_to "Rekommendationer", recommendations_path
-        = link_to "Sökord", terms_path
-        = link_to "#{current_user.name}", users_path, class: "username"
-        = link_to "Logga ut", logout_path, class: "logout"
+        = link_to "Rekommendationer", recommendations_path, rel: 'nofollow'
+        = link_to "Sökord", terms_path, rel: 'nofollow'
+        = link_to "#{current_user.name}", users_path, class: "username", rel: 'nofollow'
+        = link_to "Logga ut", logout_path, class: "logout", rel: 'nofollow'
     .wrapper
       = render "layouts/breadcrumbs"
       - flash.each do |key, value|
